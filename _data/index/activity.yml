@@ -1,0 +1,35 @@
+# careers section data
+# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: SW 마에스트로 11기
+  link: http://swmaestro.org/user/main.do
+  date: 2020
+  job:
+
+- name: Prography 6기
+  link: http://prography.org/
+  date: 2020
+  job: Android Developer
+
+- name: NAVER AI Burning Day 해커톤 출전
+  link: https://campaign.naver.com/aihackathon_ai_burning/
+  date: 2020
+  job: Android Developer
+
+- name: IT 창업 동아리 SOPT 25기 수료
+  link: http://sopt.org/wp/
+  date: 2019
+  job: Android Developer
+
+- name: 2019 스마트 서울 모바일 앱 공모전 출전
+  link: https://www.seoulappcontest.org/
+  date: 2019
+  job: Android Developer
+
+- name: AWSkrug University Student Group 3기
+  link: https://www.facebook.com/ausgkr/
+  date: 2019 - 2020
+  job: Android Developer
+
+- name: 한이음 공모전 출전
+  link:
+  date: 2018
