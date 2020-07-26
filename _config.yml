@@ -4,9 +4,9 @@
 ####################################
 #
 remote_theme : renyuanz/leonids
-title: choheeda
+title: choheeis
 email: chchgml10@gmail.com
-description: A simple and awesome blog theme powered by jekyll.
+description: 안드로이드 개발자를 목표로 달려나가는 김초희의 블로그입니다😍
 url: https://choheeis.github.io/choheeda.github.io/
 baseurl : ""
 keywords: ["blog", "jekyll"]
@@ -36,11 +36,11 @@ kramdown:
 ####################################
 #
 owner:
-  name: Leonids
-  avatar: leonids-logo.png
+  name: Kimchohee
+  avatar: avatar.png
   job: "A jekyll theme"
   bio: "A simple and awesome blog theme powered by jekyll."
-  email:
+  email: chchgml10@gmail.com
   disqus-shortname:
   twitter: #username
   facebook: #username
@@ -68,7 +68,7 @@ owner:
   soundcloud: #username
   weibo: #username
   flickr: #username
-  500px: #username
+  500px: Kimchohee
   codepen: #username
   reddit: #username
   telegram: #username

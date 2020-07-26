@@ -1,8 +1,5 @@
-- name: Massachusets Instutite of Technology
-  link: http://web.mit.edu/
-  date: 2011 - <i class="fa fa-clock-o" aria-hidden="true" title="Until Now"></i>
-  descr: <br> (expected graduation in 2019)
+- name: 서울과학기술대학교 컴퓨터공학과
+  date: 2017
 
-- name: Harvard
-  link: http://www.harvard.edu/
-  date: 2007 - 2011
+- name: 전주기전여자고등학교
+  date: 2014 - 2017
