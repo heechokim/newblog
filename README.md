@@ -1,46 +1,7 @@
-# Leonids Jekyll Themes
+# 공부한 전공 지식과 개발 과정을 기록하는 블로그
 
-**[Leonids](http://renyuanz.github.io/leonids)** is a clean, fixed sidebar Jekyll theme which is perfect for powering your GitHub hosted blog.
+* 시작일 : 2019.02.20 (다른 레포지토리를 포크하는 방식으로 시작)
+* 블로그 변경일 : 2020.07.27 (블로그 테마 변경 및 이전 포크 레포지토리 삭제)
 
-## What is Leonids?
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Simple and clear permalink structure.
-* Fixed sidebar to provide a good navigation experience while reading.
-* Support for Disqus Comments.
-* Support for multi-authors.
-* **And** the Leonids (/ˈliːənɪdz/ lee-ə-nidz) are a prolific meteor shower associated with the comet [Tempel-Tuttle](https://en.wikipedia.org/wiki/55P/Tempel%E2%80%93Tuttle).
 
-See a [demo](http://renyuanz.github.io/leonids/) hosted on GitHub.
-
-## Quick setup
-
-```
-git clone https://github.com/renyuanz/leonids
-cd leonids
-jekyll server
-```
-
-Check out your awesome blog at `http://localhost:4000` and Cheers!
-
-## Running with Docker
-
-```
-docker run --rm -it --volume=$PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --force_polling
-```
-
-## Resume Page by [@Skn0tt](https://github.com/Skn0tt)
-Leonids features a simple resume page. It is divided up into five sections:
-
-* Bio (Edit \_data/index/careers.yml)
-* Education (Edit \_data/index/education.yml)
-* Skills (Edit \_data/index/skills.yml)
-* Projects (Edit \_data/index/projects.yml)
-* About (Edit \_includes/sections/about.html)
-
-You can put all your info into these files, and they will be featured on the resume page.
-
-## TODO
-
-- [ ] Redesign categories page. Ref: [dribbble: blog category section By Ilja Miskov](https://dribbble.com/shots/2274792-Blog-Category-Selection)
-- [ ] Multi languages support.
