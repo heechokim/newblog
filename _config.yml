@@ -36,10 +36,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: Kimchohee
+  name: 김초희
   avatar: avatar.png
-  job: "A jekyll theme"
-  bio: "A simple and awesome blog theme powered by jekyll."
+  job: "나는야 안드로이드 개발자 꿈나무><"
+  bio: "Welcome~ 구경하러 오신 분들 모두 좋은 하루 되세요🍉"
   email: chchgml10@gmail.com
   disqus-shortname:
   twitter: #username
@@ -57,7 +57,7 @@ owner:
   linkedin: #username
   skype: #username
   xing: #username
-  instagram: #username
+  instagram: chooeeh
   lastfm: #username
   tumblr: #username
   pinterest: #username
@@ -68,7 +68,7 @@ owner:
   soundcloud: #username
   weibo: #username
   flickr: #username
-  500px: Kimchohee
+  500px: #username
   codepen: #username
   reddit: #username
   telegram: #username
