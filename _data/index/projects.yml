@@ -1,4 +1,21 @@
-- name: leonids
-  descr: "Bacon ipsum dolor sit amet doner meatball jowl short ribs, chicken prosciutto salami frankfurter. Pig drumstick turducken short ribs, brisket meatloaf ham hock shankle andouille corned beef strip steak. Venison ham bresaola strip steak. Pork belly ribeye prosciutto t-bone."
-  image: pong.png
-  github: https://github.com/renyuanz/leonids
+- name: 당신의 습관을 구워보세요! 습관빵
+  descr: "당신의 습관을 구워보세요! 습관빵 앱은 습관을 꾸준히 유지하기 어려워하는 현대인들에게 습관을 실행할 때마다 경험치를 부여하고, 레벨을 얻게하여 보상으로 귀여운 빵 이미지를 수집할 수 있는 모바일 앱 서비스입니다. 시중에 출시된 다른 습관 관련 앱들과 차별화를 주기 위해 브랜딩적인 면에서 많은 고민을 하였습니다. 현재 구글 플레이 스토어에 출시된 상태이며 마지막 업데이트(2020/07/24) 버전은 1.1.0 버전입니다. 앞으로 기획, 디자인, 개발적인 부분에서 꾸준히 성장시킬 예정입니다. Prography 6기 활동을 하며 안드로이드 개발자로 참여해 4개월간 기획, 디자인, 개발에 모두 참여하였습니다 🍞"
+  github: https://github.com/prography/6th-HabitBread-android
+
+- name: 인턴 경험의 모든것, 인턴즈
+descr: "산발적으로 퍼져있는 인턴 관련 정보를 한 곳에 모으고, 인턴 경험을 공유하며, 인턴 일정을 캘린더에 정리할 수 있는 모바일 앱 서비스입니다. IT 창업 동아리 SOPT 25기 안드로이드 파트원으로 활동하며 2주간의 장기 해커톤에 참여하여 개발한 서비스입니다. 기획파트, 디자인파트, iOS파트, Android파트, Server파트 총 12명의 인원과 팀을 이뤄 숙소를 잡고 합숙하며 개발했던 특별한 경험이였습니다 👩‍👩‍👧‍👦"
+github: https://github.com/INTENRZ/Android_INTERNZ
+
+- name: 노인을 위한 음성인식 키오스크 앱
+descr: "무인 주문기 키오스크의 가게 도입율이 60%를 차지하면서 무인 주문기에 익숙하지 않은 분들이 계실 것이라고 생각했습니다. 음성인식을 통해 대화를 주고 받으며 주문할 수 있는 키오스크 앱 서비스입니다. 실시간 음성인식 및 대화를 구현하기 위해 Naver AI Cloud Platform에서 제공하는 CSR, CPV 기술과 ChatBot 기술을 적용하였습니다. Naver AI Burning Day 해커톤에 참가하여 2박 3일간 개발하였고, 외부 AI API를 사용하여 안드로이드 앱 서비스에 AI 기술을 적용해본 뜻 깊은 경험이였습니다 👩🏻‍💻"
+github: https://github.com/Naver-AI-Burning-Day/andriod_kiosk
+
+- name: 서울시 창업 멤버 매칭 및 장려 어플리케이션, 스타트픽
+descr: "창업 멤버를 찾고, 함께 창업하기를 독려하는 모바일 앱 서비스입니다. 2019 서울시 모바일 앱 공모전에 출전하였고, 안드로이드 개발자로서 처음으로 디자인파트, 서버파트와 협업하였습니다 ✅ "
+github: https://github.com/seoulgogo/StartPick-Android
+
+- name: 서울과학기술대학교 전화번호부 어플리케이션
+descr: "안드로이드 앱 서비스를 개발해보고 싶어 처음으로 개발한 개인 프로젝트입니다. 모교인 서울과학기술대학교의 전화번호를 쉽게 검색할 수 있고, 전화 연결 및 전화번호 복사 기능을 제공합니다. 📞"
+github: https://github.com/choheeis/Seoultech_PhoneBook
+
+
