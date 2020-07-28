@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] 👩‍👩‍👦‍👦 Union Find 알고리즘"
 date:   2020-05-04 18:34:10 +0700
-categories: [알고리즘]
+categories: [algorithm]
 ---
 
 > [동빈나 Union-Find 영상](https://www.youtube.com/watch?v=AMByrd53PHM&list=PLRx0vPvlEmdDHxCvAQS1_6XV4deOwfVrz&index=18) 을 보고 공부한 내용입니다.

@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] 😎 Dynamic Programming"
 date:   2020-05-01 18:34:10 +0700
-categories: [알고리즘]
+categories: [algorithm]
 ---
 
 > [동빈나 Dynamic Programming](https://www.youtube.com/watch?v=FmXZG7D8nS4&list=PLRx0vPvlEmdDHxCvAQS1_6XV4deOwfVrz&index=21) 과 [동빈나 다이나믹 프로그래밍 타일링 문제](https://www.youtube.com/watch?v=YHZiWaL49HY&list=PLRx0vPvlEmdDHxCvAQS1_6XV4deOwfVrz&index=22) 을 보고 공부한 내용입니다.

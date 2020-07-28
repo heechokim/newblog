@@ -2,7 +2,7 @@
 layout: post
 title:  "[C++] 😊 algorithm 헤더파일에 속하는 유용한 함수들"
 date:   2020-05-21 18:34:10 +0700
-categories: [C++]
+categories: [c++]
 ---
 
 <br>

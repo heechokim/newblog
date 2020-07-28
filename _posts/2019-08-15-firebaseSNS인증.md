@@ -2,7 +2,7 @@
 layout: post
 title:  "[파이어베이스] ✋ SNS 로그인기능?!"
 date:   2019-08-15 18:34:10 +0700
-categories: [Firebase]
+categories: [firebase]
 ---
 
 > ✋ 요즘 안드로이드 어플 개발을 할 때, 로그인 기능에 소셜 로그인(SNS로그인) 기능을 넣는 경우가 많다!

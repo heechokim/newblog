@@ -2,7 +2,7 @@
 layout: post
 title:  "[Kotlin] ⭐️ Inner class"
 date:   2020-05-29 18:34:10 +0700
-categories: [Kotlin]
+categories: [kotlin]
 ---
 
 <br>

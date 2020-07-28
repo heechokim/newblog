@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] 🎨 계수정렬"
 date:   2020-02-24 18:34:10 +0700
-categories: [알고리즘]
+categories: [algorithm]
 ---
 
 

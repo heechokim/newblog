@@ -2,7 +2,7 @@
 layout: post
 title:  "[Kotlin] 🤐 안드로이드에서 사용되는 코틀린 언어 압축 스터디"
 date:   2020-07-14 18:34:10 +0700
-categories: [Kotlin]
+categories: [kotlin]
 ---
 
 ## 🤐 안드로이드 개발에 사용되는 코틀린 언어 압축 스터디

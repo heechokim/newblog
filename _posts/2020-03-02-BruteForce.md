@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] 🤖 Brute Force란!?"
 date:   2020-03-02 18:34:10 +0700
-categories: [알고리즘]
+categories: [algorithm]
 ---
 
 <br>

@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] 😛 단순 문자열 매칭 알고리즘"
 date:   2020-01-21 18:34:10 +0700
-categories: [Algorithm]
+categories: [algorithm]
 ---
 
 > [유튜브 동빈나](https://www.youtube.com/watch?v=WAzjfl7Pt_4&list=PLRx0vPvlEmdDHxCvAQS1_6XV4deOwfVrz&index=33) 영상으로 공부한 내용입니다.

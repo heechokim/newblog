@@ -2,7 +2,7 @@
 layout: post
 title:  "[알고리즘] ⌛️ 시간복잡도란 무엇일까?"
 date:   2020-07-28 18:34:10 +0700
-categories: [Algorithm]
+categories: [algorithm]
 ---
 
 # [⌛️ 알고리즘의 기본 - 시간복잡도!]

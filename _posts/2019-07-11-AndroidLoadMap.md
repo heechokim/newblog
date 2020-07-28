@@ -2,7 +2,7 @@
 layout: post
 title:  "[세미나] 🎏 안드로이드 개발자가 되기위해서는?"
 date:   2019-07-11 18:34:10 +0700
-categories: [Conference]
+categories: [conference]
 ---
 
 > 🐸 "네이버 테크 콘서트 - 모바일(안드로이드)" 세미나에 참석하고 얻어온 값진 것들!
