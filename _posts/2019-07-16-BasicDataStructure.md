@@ -2,7 +2,7 @@
 layout: post
 title:  "[자료구조] 🎁 꼭! 알아두어야 할 자료구조들!"
 date:   2019-07-16 18:34:10 +0700
-categories: [c++]
+categories: [자료구조]
 ---
 
 > [그림으로 배우는 알고리즘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=85969851) 이라는 책으로 자료구조를 쉽게 이해해보았다!
