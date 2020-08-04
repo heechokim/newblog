@@ -23,7 +23,7 @@ categories: [안드로이드]
 
 이 문서를 읽어보면 간단한 설명이 적혀있는데 CoordinatorLayout은 __AppBarLayout 및 FloatingActionButton과 같은 최상위 위젯을 배치할 때 사용되는 Layout__ 이라고 설명되어 있다.
 
-이러한 CoordinatorLayout에 대한 자세한 내용은 다음에 살펴보고 이제 CoordinatorLayout을 프로젝트에서 사용하려면 어떻게 해야하는지 알아보자.
+이러한 CoordinatorLayout에 대한 자세한 내용은 아래에서 살펴보고 지금은 CoordinatorLayout을 프로젝트에서 사용하려면 어떻게 해야하는지 알아보자.
 
 <br>
 
