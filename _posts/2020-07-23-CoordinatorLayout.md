@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "[안드로이드] 👨‍👩‍👧 Coordinator Layout"
+title:  "[SunFlower] 👨‍👩‍👧 Coordinator Layout"
 date:   2020-07-23 18:34:10 +0700
-categories: [안드로이드]
+categories: [sunflower]
 ---
 
 # [Coordinator Layout]
