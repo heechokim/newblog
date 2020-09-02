@@ -63,12 +63,6 @@ categories: [kotlin]
 
 이렇게 Hello World! 라는 문자열이 잘 출력되는 것을 확인할 수 있다!
 
+<br>
 
-
-
-
-
-
-
-
-
+# 끝!
