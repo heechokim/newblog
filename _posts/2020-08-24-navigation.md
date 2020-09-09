@@ -301,47 +301,32 @@ __그러면 NavController가 NavHost에 적절한 대상을 표시하게 된다.
 
     * [Activity.findNavController(viewId: Int)](https://developer.android.com/reference/kotlin/androidx/navigation/package-summary#findnavcontroller)
 
-    이렇게 물리적인 destination 간의 이동을 할 때 꼭 사용하는 것을 권장하는 것이 하나있다!
+    위 3가지 방법 중 두 번째 방법인 View.findNavController() 를 사용하여 물리적인 이동을 해보자!
 
-    __Safe Args Gradle 플러그인__ 을 사용하면 안전 탐색을 할 수 있고 destination 간에 탐색하며 전달하는 인자를 사용 가능하게 하는 간단한 객체를 사용할 수 있다.
+    일단 위에서 작성한 nav_graph를 보면 fragmentFirst라는 destination과 fragmentSecond 라는 destination이 만들어져 있다.
 
-    Safe Args Gradle 플러그인을 사용하기 위해서는 최상위 buile.gradle 파일(프로젝트 수준)에 다음과 같은 classpath를 작성해주어야 한다.
+    이 각 Fragment를 아래와 같이 디자인하고, fragmentFirst 프래그먼트 화면의 textView를 클릭하면 fragmentSecond 프래그먼트로 이동하여 탐색하는 로직을 View.findNavController()를 사용해서 구현해보자!
 
-    ~~~kotlin
-    buildscript {
-        repositories {
-            google()
-        }
-        dependencies {
-            def nav_version = "2.3.0"
-            classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-        }
-    }
-    ~~~
+    <img width="200" alt="17" src="https://user-images.githubusercontent.com/31889335/92577246-68443100-f2c5-11ea-9a29-fdc28cab50c8.png">
 
-    또, 앱 모듈 build.gradle 파일(앱 수준)에 다음과 같은 플러그인도 추가해줘야 한다.
+    <img width="200" alt="18" src="https://user-images.githubusercontent.com/31889335/92577254-6aa68b00-f2c5-11ea-8ba4-f3d1ceb52697.png">
 
-    ~~~kotlin
-    apply plugin: 'androidx.navigation.safeargs.kotlin'
-    ~~~
+    위 그림처럼 fragmentFirst의 화면 중앙에 id가 textView_first인 textView를 배치하였다.
 
-    > 여기부터는 [Android developer - 대상간 데이터 전달](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args) 문서를 읽고 더 자세히 작성했다!
+    fragmentFirst.kt 파일에서 textView_first에 setOnClickListner를 달고 클릭하였을 시 View.findNavController() 를 사용하여 fragmentSecond 프래그먼트로 이동하도록 하였다.
 
-    
+    <img width="649" alt="19" src="https://user-images.githubusercontent.com/31889335/92578612-04226c80-f2c7-11ea-83cf-203080b65c8b.png">
 
+    findNavController() 메소드의 인자에는 nav_graph에서 생성했던 fragmentSecond로 향하는 action의 id 값을 작성하면 된다.
 
+    > findNavController() 메소드 인자에 nav_graph에 존재하는 fragmentSecond 프래그먼트의 id 값을 넣어도 되지만 가급적이면 action의 id를 넣어주는 것이 좋다.
 
+    ![navigation](https://user-images.githubusercontent.com/31889335/92581577-d2aba000-f2ca-11ea-85e2-f2d31d577ff1.gif)
 
+    물리적인 이동을 하는 코드를 작성하는 방법으로 findNavController() 메소드를 사용하여 할 수도 있지만 더 권장하는 방법은 __Safe Args Gradle 플러그인__ 이라는 것을 사용하는 것이다.
 
+    이 부분은 navigation의 물리적인 이동에 관한 글을 따로 만들어서 작성해보자!
 
+    <br>
 
-
-
-
-
-
-
-    
-
-
-    
+# 끝!
