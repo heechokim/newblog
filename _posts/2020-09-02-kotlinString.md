@@ -36,3 +36,42 @@ fun main() {
     이 함수는 파라미터 중 하나인 delimiters 를 구분자로 하여 문자열을 순차적으로 분리하고, 나누어진 결과를 String형으로 __배열__ 에 저장한다.
 
     따라서 위 코드에서는 input[0]에 "kim" 이 저장되고, input[1]에 "cho" 가 저장되며 input[2]에 "hee" 가 저장되는 것이다.
+
+## 2️⃣ 코틀린의 string template 사용하기
+
+> [kotlin 공식 문서 - string templates](https://kotlinlang.org/docs/reference/basic-types.html#string-templates
+) 를 기반으로 작성한 내용.
+
+코틀린에서는 literal string 자료에 사용할 수 있는 템플릿이 존재한다!
+
+예를 들어 "Kimchohee JJang" 이라는 문자열의 Kimchohee 부분을 Kimganada로 바꾸고 싶을 때 코틀린 string 템플릿을 사용하면 쉽게 바꿀 수 있다.
+
+~~~kotlin
+fun main() {
+    val name1 = "Kimchohee"
+    val name2 = "Kimganada"
+    println("$name1 JJang")
+    println("$name2 JJang")
+}
+~~~
+
+위 코드의 출력 결과는 다음과 같다.
+
+템플릿 사용법은 위 코드에서 볼 수 있는 것처럼 기호 __$__ 표시를 사용하는 것이다.
+
+<img width="133" alt="03" src="https://user-images.githubusercontent.com/31889335/95332802-e0af0980-08e6-11eb-91cd-7bb9a037e104.png">
+
+$ 기호를 사용한 string 템플릿의 또 다른 예시는 다음과 같다.
+
+~~~kotlin
+fun main() {
+    val tmp = "abcde"
+    println("tmp's length is ${tmp.length}")
+}
+~~~
+
+<img width="149" alt="04" src="https://user-images.githubusercontent.com/31889335/95333861-4e0f6a00-08e8-11eb-9d36-1f15b8accd75.png">
+
+위 코드는 이전 코드와 다르게 코틀린 string 템플릿을 사용할 때 $ 기호 뒤에 {}를 붙여서 사용한다.
+
+$ 기호 뒤에 {} 를 붙이고 붙이지 않고의 차이는 $ 뒤에 오는 변수 이름이 단순한 변수 이름인지 tmp.length 처럼 변수 이름 이상의 것인지에 따라 달라진다.
