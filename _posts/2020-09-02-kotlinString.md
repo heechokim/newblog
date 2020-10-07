@@ -5,8 +5,6 @@ date:   2020-09-02 18:34:10 +0700
 categories: [kotlin]
 ---
 
-# 
-
 ## 1️⃣ 공백 포함된 하나의 문자열을 공백을 기준으로 분리하기
 
 공백이 포함된 문자열을 공백을 구분자로 하여 분리해보자!
@@ -24,8 +22,6 @@ fun main() {
 위와 같은 코드를 실행하면 다음과 같이 공백을 기준으로 하여 kim, cho, hee 세 문자열로 분리된 것을 확인할 수 있다.
 
 <img width="121" alt="02" src="https://user-images.githubusercontent.com/31889335/95299576-e7bf2300-08b8-11eb-90f2-29e651cf9d05.png">
-
-<br></br>
 
 * __[split()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/split.html)__ 함수
 
