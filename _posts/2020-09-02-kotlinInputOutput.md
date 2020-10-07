@@ -23,8 +23,6 @@ categories: [kotlin]
 
     따라서 println() 함수로 출력한 결과에는 항상 개행이 따라오게 된다!
 
-<br>
-
 ## 2️⃣ 입력 함수들
 
 * __[readLine()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/read-line.html)__ 함수
@@ -41,4 +39,29 @@ categories: [kotlin]
 
     null이 반환되는 경우는 입력의 대상이 파일일 때 파일의 맨 끝에 도달해 더 이상 읽을 데이터가 없을 경우이다.
 
-<br>
+## 3️⃣ 공백을 기준으로 입력받기
+
+아래 코드는 숫자형 데이터를 공백 기준으로 입력받고, 그 합을 구하는 코드이다.
+
+~~~kotlin
+fun main() {
+    val input = readLine()!!.split(" ").map { it.toInt() }
+
+    var sum = 0
+    for(i in (0 until input.size)) {
+        sum += input[i]
+    }
+
+    println(sum)
+}
+~~~
+
+위 코드를 실행시킨 후, 1 2를 입력받은 결과는 다음과 같다.
+
+<img width="41" alt="03" src="https://user-images.githubusercontent.com/31889335/95300785-9a43b580-08ba-11eb-90b1-d378c26c74bb.png">
+
+공백을 기준으로 입력받기 위해 먼저 readLine() 함수로 공백을 포함한 전체 문자열을 입력 받는다.
+
+그 후, split 함수를 사용하여 공백을 구분자로 하여 문자열을 분리한 후, 각 문자열을 배열에 저장한다.
+
+이 배열에 저장된 데이터는 숫자가 아닌 문자이므로 int 형으로 변환한다.
