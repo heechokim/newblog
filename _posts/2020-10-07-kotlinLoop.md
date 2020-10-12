@@ -72,4 +72,23 @@ categories: [kotlin]
 
     <img width="36" alt="03" src="https://user-images.githubusercontent.com/31889335/95304059-032d2c80-08bf-11eb-80ef-9e62a27b08bc.png">
 
-> 이어서 계속 해야함! 
+* __downTo 연산자를 사용하여 반복 범위를 나타내는 for 문__
+
+    ~~~kotlin
+    fun main() {
+        // 10 부터 0까지 내림차순으로 반복
+        for(i in 10 downTo 0) {
+            println(i)
+        }
+    }
+    ~~~
+
+    <img width="50" src="img/Kotlin/loop/04.png">
+
+* __[forEach](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html) 함수를 사용하여 반복하기__
+
+    <img width="" src="img/Kotlin/loop/05.png">
+
+    배열의 처음부터 끝까지에 있는 모든 원소에 접근하여 forEach() 괄호 안의 action을 수행할 때 사용한다.
+
+    배열로써 문자열도 가능하고, 문자열일 경우 각 문자에 대해서 action을 수행한다.
