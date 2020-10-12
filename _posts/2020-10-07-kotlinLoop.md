@@ -28,7 +28,7 @@ categories: [kotlin]
 
     출력 결과는 다음과 같다.
 
-    <img width="64" alt="01" src="https://user-images.githubusercontent.com/31889335/95303016-a4b37e80-08bd-11eb-88f0-3847d771e268.png">
+    <img width="64" alt="01" src="https://user-images.githubusercontent.com/31889335/95757911-b7c1b680-0ce2-11eb-943d-551d67bf6eb0.png">
 
 * __..연산자 사용하여 반복 범위를 나타내는 for 문__
 
@@ -83,11 +83,12 @@ categories: [kotlin]
     }
     ~~~
 
-    <img width="50" src="img/Kotlin/loop/04.png">
+    <img width="47" alt="04" src="https://user-images.githubusercontent.com/31889335/95757927-ba241080-0ce2-11eb-9e27-29b4c44c6375.png">
+
 
 * __[forEach](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html) 함수를 사용하여 반복하기__
 
-    <img width="" src="img/Kotlin/loop/05.png">
+    <img width="519" alt="05" src="https://user-images.githubusercontent.com/31889335/95757930-babca700-0ce2-11eb-9337-828c775e5c18.png">
 
     배열의 처음부터 끝까지에 있는 모든 원소에 접근하여 forEach() 괄호 안의 action을 수행할 때 사용한다.
 

@@ -19,7 +19,29 @@ categories: [kotlin]
 
 __첫 번째 방법은 ArrayList를 Stack처럼 사용하는 것__ 이다.
 
-ArrayList에 대해서는 [Kotlin - Array에 관련된 이전 포스팅](https://choheeis.github.io/newblog//articles/2020-10/kotlinArray)
+ArrayList에 대해서는 [Kotlin - Array에 관련된 이전 포스팅](https://choheeis.github.io/newblog//articles/2020-10/kotlinArray) 에서 ArrayList 부분을 보면 된다!
+
+~~~kotlin
+fun main() {
+    // stack
+    var arrayList = arrayListOf<Int>()
+
+    // push = add()
+    arrayList.add(1)
+    arrayList.add(2)
+    arrayList.add(3)
+
+    // pop = removeAt(가장 마지막 인덱스)
+    arrayList.removeAt(arrayList.size-1)
+
+    // top
+    print(arrayList[arrayList.size-1])
+    
+    // isEmpty or isNotEmpty
+    println(arrayList.isEmpty())
+    println(arrayList.isNotEmpty())
+}
+~~~
 
 > 두 번째 방법은 자바의 Stack Collection 사용하기
 
