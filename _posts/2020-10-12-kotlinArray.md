@@ -15,7 +15,7 @@ categories: [kotlin]
 
 [kotlin.collections 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) 를 보면 kotlin 표준 라이브러리의 kotlin.collections 패키지에 어떤 것들이 구현되어 있는지 알 수 있다.
 
-<img src="img/Kotlin/array/01.png">
+<img alt="01" src="img/Kotlin/array/01.png">
 
 위 그림의 설명을 읽어보면 이 패키지에는 List, Set, Map 등의 Collection type들과 확장 함수들이 구현되어 있다다.
 
@@ -106,7 +106,10 @@ ArrayList도 vector와 같은 방법으로 데이터를 추가하기 때문에 �
 
         [add()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/add.html) 함수 사용하기
 
-        
+    * __4. ArrayList에 저장된 데이터를 인덱스 사용해 제거하기__
+
+        [removeAt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/remove-at.html) 함수 사용하기
+
 
 
 
