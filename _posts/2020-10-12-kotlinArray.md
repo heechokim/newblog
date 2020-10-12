@@ -15,7 +15,7 @@ categories: [kotlin]
 
 [kotlin.collections 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/) 를 보면 kotlin 표준 라이브러리의 kotlin.collections 패키지에 어떤 것들이 구현되어 있는지 알 수 있다.
 
-<img alt="01" src="img/Kotlin/array/01.png">
+<img width="728" alt="01" src="https://user-images.githubusercontent.com/31889335/95757699-6fa29400-0ce2-11eb-81e9-ea7c7d7589f2.png">
 
 위 그림의 설명을 읽어보면 이 패키지에는 List, Set, Map 등의 Collection type들과 확장 함수들이 구현되어 있다다.
 
@@ -47,7 +47,7 @@ List는 일반적으로 순서가 있는 자료구조이다. List에 대한 자�
 
 [ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/) 는 kotlin.collections 패키지에 구현되어 있는 자료구조 중 하나이다.
 
-<img src="img/Kotlin/array/02.png">
+<img width="446" alt="02" src="https://user-images.githubusercontent.com/31889335/95757709-74674800-0ce2-11eb-90c4-51f755e7c372.png">
 
 ArrayList는 위에서 설명한 MutableList라는 자료구조를 상속한 형태이기 때문에 ArrayList에 데이터를 추가하거나 삭제할 수 있다.
 
