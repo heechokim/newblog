@@ -71,7 +71,7 @@ __ArrayList는 자체적으로 메모리 효율성을 높이는 기능이 없다
 
 이 말을 이해하기 위해 [c++의 vector 포스팅](https://choheeis.github.io/newblog//articles/2020-01/C++Vector)에서 vector가 동적으로 크기를 변경하는 과정 부분을 읽어보면 좋다.
 
-vector는 초반에 임의의 크기의 배열을 만들어 놓고 데이터를 추가하다가 배열이 꽉 차게 되면 기존 배열의 복사본에 임의의 크기를 더 늘린 새로운 배열을 만드는 형식으로 크기가 변경된다.
+vector는 초반에 임의의 크기의 배열을 만들어 놓고 데이터를 추가하다가 배열이 꽉 차게 되면 기존 배열의 복사본에 임의의 크기(2배 정도)를 더 늘린 새로운 배열을 만드는 형식으로 크기가 변경된다.
 
 이러한 방법으로 크기를 늘렸을 때 새로 늘린 크기 만큼의 메모리 공간에 데이터를 꽉 채워 추가하지 않는한 메모리 낭비가 생길 수 있다. 
 
@@ -115,8 +115,3 @@ ArrayList도 vector와 같은 방법으로 데이터를 추가하기 때문에 �
     * __4. ArrayList에 저장된 데이터를 인덱스 사용해 제거하기__
 
         [removeAt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/remove-at.html) 함수 사용하기
-
-## 4️⃣ Array 라는 자료구조
-
-array, list, vector(java) 시간 차이 보여주는 포스팅
-https://hwan-shell.tistory.com/246
