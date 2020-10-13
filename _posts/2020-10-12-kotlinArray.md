@@ -17,11 +17,23 @@ categories: [kotlin]
 
 <img width="728" alt="01" src="https://user-images.githubusercontent.com/31889335/95757699-6fa29400-0ce2-11eb-81e9-ea7c7d7589f2.png">
 
-위 그림의 설명을 읽어보면 이 패키지에는 List, Set, Map 등의 Collection type들과 확장 함수들이 구현되어 있다다.
+위 그림의 설명을 읽어보면 이 패키지에는 List, Set, Map 등 Collection type에 속하는 자료구조들이 구현되어 있고 이들을 쉽게 사용할 수 있도록 하는 확장 함수들이 구현되어 있다고 한다.
 
-즉, 이 패키지는 일반적인 배열 뿐만 아니라 Set, Map, HashMap, List, ArrayList, LinkedHashMap 등 Collection 형의 다양한 자료구조들이 구현되어 있는 곳이고 이 자료구조들을 조금 더 쉽게 사용할 수 있도록 도와주는 확장 함수들이 구현되어 있는 곳이다.
+즉, 이 패키지는 일반적인 배열 뿐만 아니라 Set, Map, HashMap, ArrayList, LinkedHashMap 등 Collection 형의 다양한 자료구조들이 구현되어 있는 곳이라는 것이다. 
 
-그렇기 때문에 패키지 이름이 __kotlin.collections__ 인 것이다.
+따라서 코틀린 표준 라이브러리의 kotlin.collections 패키지 안에 미리 구현되어 있는 다양한 자료구조들을 가져다 쉽게 사용할 수 있다!
+
+[Kotlin-Collection Overview 문서](https://kotlinlang.org/docs/reference/collections-overview.html) 를 보면 
+
+<img width="737" alt="03" src="https://user-images.githubusercontent.com/31889335/95835987-dfb02900-0d79-11eb-9d88-a661b86caf8d.png">
+
+위와 같은 다이어그램을 볼 수 있다.
+
+이 다이어그램에 속한 각 박스들은 kotlin.collections 패키지에 구현된 다양한 자료구조들을 구현할 때 사용되는 인터페이스이다. 
+
+예를 들어, 다음에 알아볼 [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/) 라는 자료구조는 당연히 kotlin.collections 패키지 안에 구현되어 있는 자료구조이고, 
+
+
 
 ## 3️⃣ List 라는 Collection type의 자료구조
 
@@ -119,3 +131,4 @@ ArrayList도 vector와 같은 방법으로 데이터를 추가하기 때문에 �
 
 
 
+https://kotlinlang.org/docs/reference/collections-overview.html#collection 이거 보고 다시 해야함

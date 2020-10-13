@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[Kotlin] 6️⃣ 코틀린에서 Stack 사용하기"
+title:  "[Kotlin] 8️⃣ 코틀린에서 Stack 사용하기"
 date:   2020-10-12 18:34:10 +0700
 categories: [kotlin]
 ---
