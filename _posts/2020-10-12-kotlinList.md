@@ -1,19 +1,19 @@
 ---
 layout: post
-title:  "[Kotlin] 7️⃣ 코틀린의 배열들"
+title:  "[Kotlin] 7️⃣ 코틀린의 List들"
 date:   2020-10-12 18:34:10 +0700
 categories: [kotlin]
 ---
 
-## 0️⃣ 코틀린에서 배열을 사용하려면?
+## 0️⃣ 코틀린에서 List을 사용하려면?
 
-코틀린에서 배열은 kotlin 표준 라이브러리(kotlin stdlib) 안의 __kotlin.collections__ 라는 패키지 안에 구현되어 있다.
+코틀린에서 List은 kotlin 표준 라이브러리(kotlin stdlib) 안의 __kotlin.collections__ 라는 패키지 안에 구현되어 있다.
 
-따라서 코틀린에서 배열을 사용하려면 kotlin 표준 라이브러리에 있는 배열을 가져다 사용하면 된다!
+따라서 코틀린에서 List을 사용하려면 kotlin 표준 라이브러리에 있는 것들을 가져다 사용하면 된다!
 
 [kotlin collection에 관련된 이전 포스팅](https://choheeis.github.io/newblog//articles/2020-10/kotlinCollection) 을 보면 kotlin.collections 패키지 안에는 크게 List, Map, Set 3가지로 분류된 자료구조들이 구현되어 있음을 알 수 있을 것이다.
 
-그 중 배열에 관련된 자료구조는 __List__ 분류에 속해있다.
+그 중 List에 관련된 자료구조는 __List__ 분류에 속해있다.
 
 ## 1️⃣ List 라는 자료구조
 
@@ -33,7 +33,7 @@ List는 일반적으로 순서가 있는 __직선형__ 자료구조이다.
 >
 > <img width="719" alt="03" src="https://user-images.githubusercontent.com/31889335/95871199-56641b00-0da8-11eb-802d-4df6e00ee08e.png">
 >
-> List를 구현하는 [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) 이라는 인터페이스를 보면 
+> List를 구현할 때 사용되는 [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) 이라는 인터페이스를 보면 
 >
 > <img width="378" alt="04" src="https://user-images.githubusercontent.com/31889335/95871332-80b5d880-0da8-11eb-97f4-511443ebb0f2.png">
 >
@@ -53,9 +53,21 @@ List는 일반적으로 순서가 있는 __직선형__ 자료구조이다.
 
 [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) 은 kotlin.collections 패키지에 구현되어 있는 자료구조에서 List 분류에 해당하는 자료구조 중 하나이다.
 
+<img width="505" alt="05" src="https://user-images.githubusercontent.com/31889335/96462472-915ec680-1260-11eb-97c3-666e2110cb29.png">
+
+사실 MutableList는 인터페이스이다.
+
 위 List 자료구조 설명 부분에서 설명한 것처럼 List와 비슷하지만 데이터를 추가하고 삭제할 수 있도록 구현된 자료구조이다. (mutable = 변하기 쉬운)
 
 [MutableList 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) 를 보면 MutableList 자료구조에 사용할 수 있는 여러가지 함수들을 알 수 있다.
+
+__여기서 한 가지 알 수 있는 것!__
+
+List 분류에 속하는 자료구조들은 상속받는 것들의 트리를 타고 올라가보면 맨 위에는 List 클래스가 있기 때문에 각 자료구조에서 사용되는 여러 함수들이 결국 List에서 상속받은 것들이 많다.
+
+(아래에서 배울 ArrayList도 MutableList를 구현하고 있고, MutableList는 결국 List를 구현하고 있음!)
+
+따라서 List 분류에 속하는 자료구조에 사용할 수 있는 함수는 이름이 같은것도 많고, 사용법이나 작동 원리가 비슷한 것도 많다!
 
 ## 3️⃣ ArrayList 라는 자료구조
 
@@ -80,38 +92,3 @@ ArrayList도 vector와 같은 방법으로 데이터를 추가하기 때문에 �
 > --> [MutableList와 ArrayList에 대한 차이를 가장 납득할 만하게 써놓은 블로그](https://zladnrms.tistory.com/140)
 
 [ArrayList 를 조작할 수 있는 함수들](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/#functions) 이나 [ArrayList 의 확장 함수들](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/#extension-functions) 을 보고 입맛대로 사용하면 된다.
-
-* __ArrayList 를 사용할 때 자주 사용되는 함수들__
-
-    * __1. ArrayList 선언 및 초기화하기__
-
-        [ArrayList 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/#constructors) 를 보면 초기화 하는 방법이 나와있지만
-
-        [arrayListOf() 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/array-list-of.html) 에서 볼 수 있듯이 kotlin.collections 패키지 내에 ArrayList를 선언하고 초기화할 때 더욱 쉽게 할 수 있도록 구현해놓은 확장함수를 사용하면 된다.
-
-        ~~~kotlin
-        fun main() {
-            // 빈 배열(ArrayList) 선언
-            val arrayList = arrayListOf<Int>()
-
-            // 1, 2, 3으로 초기화한 배열(ArrayList)
-            val arrayList2 = arrayListOf(1, 2, 3)
-        }
-        ~~~
-
-    * __2. ArrayList의 크기 알기__
-
-        ~~~kotlin
-        val arrayList2 = arrayListOf(1, 2, 3)
-        
-        // size 라는 property 사용
-        println(arrayList2.size)
-        ~~~
-        
-    * __3. ArrayList의 끝에 데이터 추가하기__
-
-        [add()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/add.html) 함수 사용하기
-
-    * __4. ArrayList에 저장된 데이터를 인덱스 사용해 제거하기__
-
-        [removeAt()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/remove-at.html) 함수 사용하기

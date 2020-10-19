@@ -5,8 +5,6 @@ date:   2020-10-07 18:34:10 +0700
 categories: [kotlin]
 ---
 
-# [5️⃣ 코틀린의 반복문들]
-
 [여기](https://kotlinlang.org/docs/tutorials/kotlin-for-py/loops.html) 참고하여 작성
 
 ## 1️⃣ 여러가지 for 문
@@ -85,6 +83,16 @@ categories: [kotlin]
 
     <img width="47" alt="04" src="https://user-images.githubusercontent.com/31889335/95757927-ba241080-0ce2-11eb-9e27-29b4c44c6375.png">
 
+* __step 연산자를 덧붙여서 반복 범위를 나타내는 for 문__
+
+    ~~~kotlin
+    fun main() {
+        // 10 부터 0까지 내림차순으로 반복하되 2 간격으로 띄어서 반복
+        for(i in 10 downTo 0 step 2) {
+            println(i)
+        }
+    }
+    ~~~
 
 * __[forEach](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html) 함수를 사용하여 반복하기__
 
