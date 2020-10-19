@@ -71,3 +71,33 @@ fun main() {
 위 코드는 이전 코드와 다르게 코틀린 string 템플릿을 사용할 때 $ 기호 뒤에 {}를 붙여서 사용한다.
 
 $ 기호 뒤에 {} 를 붙이고 붙이지 않고의 차이는 $ 뒤에 오는 변수 이름이 단순한 변수 이름인지 tmp.length 처럼 변수 이름 이상의 것인지에 따라 달라진다.
+
+## 3️⃣ string 을 이루는 char을 순서대로 꺼내기
+
+~~~kotlin
+// 방법 1
+fun main() {
+    val str = "Kimchohee"
+    for(char in str) {
+        println(char)
+    }
+}
+~~~
+
+위 코드처럼 for문을 작성하면 string을 배열처럼 보고 string을 이루는 각각의 char형 문자 데이터를 하나씩 처음부터 반복한다.
+
+위 코드의 출력 결과는 다음과 같다.
+
+<img width="27" alt="05" src="https://user-images.githubusercontent.com/31889335/95998214-9c37e680-0e6f-11eb-9b57-37a2e8eae6e2.png">
+
+~~~kotlin
+// 방법 2
+fun main() {
+    val str = "Kimchohee"
+    str.forEach {
+        println(it)
+    }
+}
+~~~
+
+또 다른 방법은 위 코드처럼 forEach 문을 사용하는 것이다. forEach 문은 위에서 본 for(char in str) 과 똑같은 기능을 한다.
