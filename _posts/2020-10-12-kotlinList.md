@@ -31,11 +31,11 @@ List는 일반적으로 순서가 있는 __직선형__ 자료구조이다.
 > 
 > 알고보니 List는 배열이라 중간에 원소를 추가, 삭제하는데에 링크드 리스트 만큼 빠르지 않았던 것..!
 >
-> <img width="719" alt="03" src="https://user-images.githubusercontent.com/31889335/95871199-56641b00-0da8-11eb-802d-4df6e00ee08e.png">
+> <img width="719" alt="03" src="https://user-images.githubusercontent.com/31889335/96464890-51e5a980-1263-11eb-85f4-6b050dff98f9.png">
 >
 > List를 구현할 때 사용되는 [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) 이라는 인터페이스를 보면 
 >
-> <img width="378" alt="04" src="https://user-images.githubusercontent.com/31889335/95871332-80b5d880-0da8-11eb-97f4-511443ebb0f2.png">
+> <img width="378" alt="04" src="https://user-images.githubusercontent.com/31889335/96464893-527e4000-1263-11eb-873c-af9d018d08b6.png">
 >
 > 또 [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/) 이라는 인터페이스로 구현되어 있다.
 >
@@ -53,7 +53,7 @@ List는 일반적으로 순서가 있는 __직선형__ 자료구조이다.
 
 [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) 은 kotlin.collections 패키지에 구현되어 있는 자료구조에서 List 분류에 해당하는 자료구조 중 하나이다.
 
-<img width="505" alt="05" src="https://user-images.githubusercontent.com/31889335/96462472-915ec680-1260-11eb-97c3-666e2110cb29.png">
+<img width="505" alt="05" src="https://user-images.githubusercontent.com/31889335/96464895-5316d680-1263-11eb-9846-4993b7c9ac07.png">
 
 사실 MutableList는 인터페이스이다.
 
@@ -73,7 +73,7 @@ List 분류에 속하는 자료구조들은 상속받는 것들의 트리를 타
 
 [ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/) 는 kotlin.collections 패키지에 구현되어 있는 자료구조에서 List 분류에 해당하는 자료구조 중 하나이다.
 
-<img width="446" alt="02" src="https://user-images.githubusercontent.com/31889335/95757709-74674800-0ce2-11eb-90c4-51f755e7c372.png">
+<img width="446" alt="02" src="https://user-images.githubusercontent.com/31889335/96464889-514d1300-1263-11eb-91af-878bda15549b.png">
 
 ArrayList는 위에서 설명한 MutableList라는 자료구조를 상속한 형태이기 때문에 ArrayList에도 데이터를 추가하거나 삭제할 수 있다.
 
