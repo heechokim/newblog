@@ -40,40 +40,67 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 
 ## 2️⃣ Array 라는 자료구조
 
-일단 [BooleanArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/) 를 예로 들어 Array 형태의 자료구조에 대해서 알아보자.
+* 자료구조 Array의 모습
 
-BooleanArray는 Java의 __boolean[]__ 과 같다. 즉, 배열이고 배열에 저장될 데이터들의 타입이 boolean 이라는 것이다.
+    일단 [BooleanArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/) 를 예로 들어 Array 형태의 자료구조 모습에 대해서 알아보자.
 
-BooleanArray 외의 다른 자료형들의 Array들도 이와 똑같다.
+    BooleanArray는 Java의 __boolean[]__ 과 같다. 즉, 배열이고 배열에 저장될 데이터들의 타입이 boolean 이라는 것이다.
 
-이러한 형태의 자료구조를 사용할 때 사용할 수 있는 함수들은 [BooleanArray 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/) 를 보면 알 수 있듯이 각각의 문서를 보면 된다.
+    BooleanArray 외의 다른 자료형들의 Array들도 이와 똑같다.
 
-__여기서 알아두면 좋은 점__ 은 이러한 Array 형태의 자료구조를 초기화 할 때의 방법인데
+* Array 자료구조 선언하기
 
-~~~kotlin
-fun main() {
-    // 크기가 3인 배열에 숫자 0, 1, 2 가 차례로 저장되며 초기화됨
-    // it 은 index 0 부터 순차대로 증가한다.
-    val numbers = IntArray(3){ it }
+    > 아래 내용들은 [여기](https://kotlinlang.org/docs/reference/basic-types.html#arrays) 를 참고하여 작성한 것!
 
-    numbers.forEach {
-        println(it)
-    }
-}
-~~~
+    1. 첫 번째 방법 ) 확장 함수 사용하기
 
-위와 같은 코드이다.
+        ~~~kotlin
+        var arrayTest = intArrayOf(1, 2, 3)
+        ~~~
 
-위 코드의 출력 결과는
+        위 코드와 같이 intArrayOf() 나 arrayOfNulls() 등 Array를 선언할 때 사용할 수 있는 여러 확장 함수들이 존재한다.
 
-<img width="30" alt="11" src="https://user-images.githubusercontent.com/31889335/96469008-b145b880-1267-11eb-9267-6c95bc2c218b.png">
+        위 코드는 배열 [1, 2, 3] 의 모습으로 생성되었다.
 
-이와 같다.
+    2. 두 번째 방법 ) 생성자 함수 사용하기
 
-<img width="724" alt="10" src="https://user-images.githubusercontent.com/31889335/96468086-a2aad180-1266-11eb-9af1-f465c4188548.png">
+        ~~~kotlin
+        var arrayTest = IntArray(5){ i -> i }
+        ~~~
 
-BooleanArray의 [Init 방법](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/-init-.html) 을 보면 두 번째 인자에 함수가 들어갈 수 있는 것을 알 수 있다.
+        확장 함수 말고 Array 클래스의 생성자 함수를 사용하여 Array를 생성하는 방법이 있다.
 
-코틀린은 함수형 프로그래밍 언어이기 때문에 어떤 함수의 인자에 또 다른 함수가 들어갈 수 있는데 만약 마지막 인자로 함수가 들어오면 위 코드와 같이 () 밖으로 {} 를 뺄 수 있다. 이에 대한 내용은 [이전 포스팅 - 코틀린 언어 압축 스터디](https://choheeis.github.io/newblog//articles/2020-07/KotlinZip) 포스팅의 고차 함수 부분을 보면 알 수 있을 것이다.
+        이 방법의 좋은 점은 배열의 크기를 정해놓고, 함수를 통해 배열의 각 원소에 저장될 데이터를 조작할 수 있다는 점이다.
 
-따라서 위 코드에서 IntArray 형 배열의 초기화를 IntArray(3){ it } 이라고 작성한 것이다.
+        위 코드의 i 는 0 부터 4까지 증가하기 때문에 [0, 1, 2, 3, 4] 의 모습으로 배열이 생성된다.
+
+        위 코드처럼 생성자 함수를 사용할 때 함수를 사용할 수 있는 이유에 대해 알아보자.
+
+        <img width="724" alt="10" src="https://user-images.githubusercontent.com/31889335/96468086-a2aad180-1266-11eb-9af1-f465c4188548.png">
+
+        BooleanArray의 [Init 방법](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/-init-.html) 을 보면 두 번째 인자에 함수가 들어갈 수 있는 것을 알 수 있다.
+
+        코틀린은 함수형 프로그래밍 언어이기 때문에 어떤 함수의 인자에 또 다른 함수가 들어갈 수 있는데 만약 마지막 인자로 함수가 들어오면 위 코드와 같이 () 밖으로 {} 를 뺄 수 있다. 이에 대한 내용은 [이전 포스팅 - 코틀린 언어 압축 스터디](https://choheeis.github.io/newblog//articles/2020-07/KotlinZip) 포스팅의 고차 함수 부분을 보면 알 수 있을 것이다.
+
+        따라서 위 코드에서 IntArray 형 배열의 초기화를 IntArray(5){ i -> i } 이라고 작성한 것이다.
+
+* Array 를 조작할 때 사용되는 함수들
+
+    1. get(인덱스)
+
+        배열 안에서 해당 인덱스에 해당하는 데이터를 return 하는 함수
+
+    2. set(인덱스, 데이터)
+
+        배열 안에서 해당 인덱스의 데이터를 set 함수의 두 번째 인자에 있는 데이터로 수정해주는 함수
+
+    3. [] 연산자로 바로 index에 해당하는 값을 get하거나 set할 수 있음 (인텔리제이에서 get과 set을 사용하면 [] 연산자로 바꾸라고 나옴!)
+
+
+## 3️⃣ Array를 List로 바꾸기
+
+코틀린에는 자료구조를 바꿔주는 함수가 다양하게 존재한다. 주로, __to~()__ 의 이름을 가진다.
+
+* [toList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html) 함수 사용
+
+* [toMutableList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html) 함수 사용

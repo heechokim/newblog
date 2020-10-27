@@ -96,8 +96,16 @@ categories: [kotlin]
 
 * __[forEach](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html) 함수를 사용하여 반복하기__
 
+    이 함수는 kotlin.collections 패키지에 구현되어 있는 함수이다.
+
     <img width="519" alt="05" src="https://user-images.githubusercontent.com/31889335/95757930-babca700-0ce2-11eb-9337-828c775e5c18.png">
 
     배열의 처음부터 끝까지에 있는 모든 원소에 접근하여 forEach() 괄호 안의 action을 수행할 때 사용한다.
 
     배열로써 문자열도 가능하고, 문자열일 경우 각 문자에 대해서 action을 수행한다.
+
+* __[forEachIndexed](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html) 함수 사용하여 반복하기__
+
+    이 함수도 kotlin.collections 패키지에 구현되어 있는 함수이다.
+
+    이 함수는 위에서 언급한 forEach 함수와 똑같은 기능을 하지만 반복할 때 배열의 각 원소 index를 사용할 수 있게 해준다는 차이가 있다.
