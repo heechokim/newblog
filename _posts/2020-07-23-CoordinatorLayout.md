@@ -61,7 +61,7 @@ dependencies {
 
 CoordinatorLayout을 사용하여 위에서 보여준 __리사이클러뷰를 위로 스크롤하면 AppBar가 나오고, 아래로 스크롤하면 AppBar가 사라지는__ 영상 속 화면을 구현해보자!
 
-[이 블로그의 다른 포스팅 - AppBar 구현하기]() 에서 구현 과정을 알아보면 된다.
+[이 블로그의 다른 포스팅 - AppBar 구현하기](https://choheeis.github.io/newblog//articles/2020-10/AppBar) 에서 구현 과정을 알아보면 된다.
 
 # 끝!
 
