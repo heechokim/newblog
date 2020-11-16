@@ -35,11 +35,15 @@ CoordinatorLayout은 FrameLayout을 상속받아 구현된 레이아웃이라는
 
 여기서 화면의 최상위 부분이라는 것은 안드로이드 화면에 배치되는 최상위 위젯을 의미하는데 __AppbarLayout__ 이나 __FloatingActionButton__ 이 최상위 위젯에 속한다.
 
-또한 하나 이상의 자식 뷰와 특별한 상호작용이라는 말의 뜻은 보통 __리사이클러뷰를 위로 스크롤하면 AppBar가 나오고, 아래로 스크롤하면 AppBar가 사라지는 효과__ 를 생각해보면 될 것 같다!
+또한 하나 이상의 자식 뷰와 특별한 상호작용이라는 말의 뜻은 __리사이클러뷰를 위로 스크롤하면 AppBar가 사라지고, 아래로 스크롤하면 AppBar가 나타나는 효과__ 를 생각해보면 될 것 같다!
 
 ![CoordinatorLayout_Example](https://user-images.githubusercontent.com/31889335/97552451-9fa6a280-1a17-11eb-8963-02dfdea1f96f.gif)
 
-따라서 위 두 가지 경우에 사용하길 의도하여 출시된 레이아웃이 CoordinatorLayout이다 😃
+위 애니메이션 효과는 CoordinatorLayout의 자식뷰인 RecyclerView와 AppBarLayout가 상호작용 한 결과이다.
+
+RecyclerView를 위로 스크롤하면 AppBar가 사라지는 상호작용이 일어났다고 생각하면 된다.
+
+이와 같이 두 가지 경우에 사용하길 의도하여 출시된 레이아웃이 CoordinatorLayout이다 😃
 
 <br>
 
