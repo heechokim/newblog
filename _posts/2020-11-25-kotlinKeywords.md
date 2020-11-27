@@ -34,3 +34,13 @@ categories: [kotlin]
     ~~~
 
     과 동일한 코드가 된다.
+
+* __super__
+
+    이 키워드는 sub class에서 super class에 존재하는 public 메소드나 public 속성을 호출할 때 사용한다.
+
+    자세한 내용은 [이 블로그의 다른 포스팅 - 안드로이드 개발에서 사용되는 코틀린 언어 패턴](https://choheeis.github.io/newblog//articles/2020-07/kotlinPattern) 에서 확인할 수 있다.
+
+* __lateinit__
+
+    이 키워드는 
