@@ -80,9 +80,9 @@ Kotlin으로 안드로이드 개발을 할 때 자주 사용되는 코틀린 언
 
     위 코드에서 주목해야 하는 부분은 Sub 클래스이다.
 
-    Sub 클래스는 Super 클래스를 상속받은 클래스이다. override 키워드를 사용해서 슈퍼 클래스의 메소드인 draw()를 재정의하고 있다.
+    Sub 클래스는 Super 클래스를 상속받은 클래스이다. Sub 클래스 안에서 override 키워드를 사용해서 슈퍼 클래스의 메소드인 draw()를 재정의하고 있다.
 
-    재정의할 때 super.draw() 라고 작성하여 슈퍼 클래스의 draw() 메소드를 한 번 호출하도록 한 모습이다.
+    재정의할 때 __super.draw()__ 라고 작성하여 슈퍼 클래스의 draw() 메소드를 한 번 호출하도록 한 모습이다.
 
     따라서 main() 함수를 호출하여 출력된 결과는
 
@@ -113,7 +113,7 @@ Kotlin으로 안드로이드 개발을 할 때 자주 사용되는 코틀린 언
 
     super class인 Fragment 클래스에 존재하는 onViewCreated() 메소드를 LoginFragment 클래스 안에서 재정의하기 위해 `override` 키워드를 사용하였다.
 
-    이 때, `super` 키워드를 사용하여 Fragment 클래스에 존재하는 onViewCreated() 메소드를 한 번 호출 후, 추가로 다른 작업을 하게 하도록 재정의하고 있다.
+    이 때, `super` 키워드를 사용하여 Fragment 클래스에 존재하는 onViewCreated() 메소드를 한 번 호출 후, 추가로 println("Kotlin") 이라는 다른 작업을 하게 하도록 재정의하고 있다.
 
 ## 2️⃣ __객체를 초기화__ 할 때 사용되는 코틀린 언어 패턴
 
@@ -131,7 +131,7 @@ Kotlin으로 안드로이드 개발을 할 때 자주 사용되는 코틀린 언
 
     어떤 경우에 어떤 문제가 발생하는지 알아보자.
 
-    만약 아래 코드와 같이 LoginFragment 클래스의 UI View 객체에 대한 멤버 변수(객체)를 선언하고 초기화한다고 가정해보자.
+    만약 아래 코드와 같이 LoginFragment 클래스의 멤버로 UI View 객체를 선언하고 초기화한다고 가정해보자.
 
     ~~~kotlin
     class LoginFragment : Fragment() {
@@ -147,23 +147,23 @@ Kotlin으로 안드로이드 개발을 할 때 자주 사용되는 코틀린 언
 
     하지만 위 코드를 실행시키면 컴파일 에러가 난다.
     
-    왜냐하면 안드로이드 앱 개발에는 __생명주기(life cycle)__ 이라는 중요한 개념이 존재하기 때문이다.
+    왜냐하면 안드로이드 앱 개발에는 __생명주기(life cycle)__ 라는 중요한 개념이 존재하기 때문이다.
     
-    kotlin 언어에서 객체의 속성을 초기화해야 한다는 특징이 있으므로 이를 지키기 위해 안드로이드 개발시 LoginFragment 클래스 상단에서 멤버 변수로 View 객체들을 초기화 한다면?
+    kotlin 언어는 객체의 속성을 반드시 초기화해야 한다는 특징이 있으므로 이를 지키기 위해 안드로이드 개발 시에도 LoginFragment 클래스 상단에서 멤버 변수로 View 객체들을 초기화 한다면?
     
     Fragment의 생명 주기에 따르면 UI 레이아웃은 onCreateView() 라는 생명 주기 콜백 메소드가 호출될 때 비로소 inflate 되어 참조할 수 있게 된다.
 
-    하지만 LoginFragment 클래스 상단에서 View 객체들의 속성을 해당 UI 레이아웃에 존재하는 뷰들로 초기화 한다면 아직 onCreateView() 메소드가 실행되기 전이라 UI 레이아웃 뷰들이 참조될 준비가 되어 있지 않은 상태이기 때문에 참조 자체가 안 된다.
+    하지만 LoginFragment 클래스 상단에서 View 객체들을 초기화 한다면 아직 onCreateView() 메소드가 실행되기 전이라 UI 레이아웃 뷰들이 참조될 준비가 되어 있지 않은 상태이기 때문에 참조 자체가 안 된다.
 
-    따라서 LoginFragment 클래스 상단에 View 객체들의 속성을 초기화할 계획만 작성해두고 진짜 초기화는 onCreateView() 메소드가 호출될 때까지 __지연시킬 수 있는 방법__ 이 필요하다.
+    따라서 LoginFragment 클래스 상단에 View 객체들을 초기화 할 __계획만 작성해두고__ 진짜 초기화 작업은 onCreateView() 메소드가 호출될 때까지 __지연시킬 수 있는 방법__ 이 필요하다.
 
     이를 위해 코틀린에서는 `lateinit` 이라는 키워드를 제공하고 있다.
 
     ✍🏻 [lateinit 키워드에 대한 kotlin 도큐먼트](https://kotlinlang.org/docs/reference/properties.html#late-initialized-properties-and-variables) 를 추가로 참고하여 작성합니다.
 
-    __lateinit__ 키워드를 붙여주면 해당 멤버 변수(객체)는 해당 클래스 인스턴스를 가져올 때 바로 초기화되는 것이 아니라 클래스의 body 안에서 초기화 될 수 있게 된다.
+    __lateinit__ 키워드를 붙여주어 선언해준 해당 멤버 변수(객체)는 해당 클래스 인스턴스를 가져올 때 곧바로 초기화되는 것이 아니라 클래스의 body 안에서 초기화 될 수 있게 된다.
 
-    다만, lateinit으로 초기화를 지연시킨 경우, 최대한 빨리 초기화를 시켜줘야 한다.
+    다만, lateinit으로 초기화를 지연시킨 경우 지연 시간이 길지 않도록 최대한 빨리 초기화 작업을 해줘야 한다.
     
     ~~~kotlin
     class LoginFragment : Fragment() {
@@ -188,17 +188,17 @@ Kotlin으로 안드로이드 개발을 할 때 자주 사용되는 코틀린 언
     }
     ~~~
 
-    lateinit 으로 지연시킨 객체 속성을 초기화 전에 엑세스하면 kotlin은 __UninitializedPropertyAccessException__ 을 발생시킨다.
+    lateinit 으로 지연시킨 객체 속성을 초기화 작업 전에 엑세스하면 kotlin은 __[UninitializedPropertyAccessException](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-uninitialized-property-access-exception/)__ 을 발생시킨다.
 
-## 3️⃣ __SAM 변환__ 을 적극 사용하는 코틀린 패턴
+## 3️⃣ SAM 변환 기능을 적극 사용하는 코틀린 패턴
 
 ✍🏻 [Android Developer 도규먼트 - kotlin pattern 중 SAM conversion 부분](https://developer.android.com/kotlin/common-patterns#sam) 과 [SAM Conversions 에 대한 kotlin 도큐먼트](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions)를 참고하여 작성합니다.
 
 코틀린은 SAM 변환(conversion) 기능을 제공한다.
 
-__SAM Conversion__ 이란 __Single Abstract Method Conversion__ 의 약자로, __단일 추상 메소드 변환__ 이라고 정의할 수 있다.
+__SAM Conversion__ 이란 __Single Abstract Method Conversion__ 의 약자로, __단일 추상 메소드 변환__ 이라고도 부를 수 있다.
 
-그렇다면 __단일 추상 메소드 변환__ 이라는 것은 무엇일까?
+그렇다면 __SAM Conversion__ 이라는 것은 무엇일까?
 
 이해하기 쉽게 알아보자.
 
@@ -223,15 +223,19 @@ loginButton.setOnClickListener {
 
 Button 클래스의 정의를 보면 위 그림에 빨간 줄로 표시해둔 것처럼 super class로 [View 라는 클래스](https://developer.android.com/reference/kotlin/android/view/View) 를 상속받고 있음을 알 수 있다.
 
-View 라는 클래스가 가지고 있는 public 메소드 중 __[setOnClickListener](https://developer.android.com/reference/kotlin/android/view/View#setonclicklistener)__ 라는 메소드가 존재한다. 이 메소드는 view(여기서는 Button이 된다)가 클릭될 때 호출되는 콜백을 등록할 수 있도록 지원해주는 메소드이다.
+View라는 클래스를 뜯어보면 이 클래스가 가지고 있는 public 메소드 중 __[setOnClickListener](https://developer.android.com/reference/kotlin/android/view/View#setonclicklistener)__ 라는 메소드가 존재함을 알 수 있을 것이다. 이 메소드는 view(여기서는 Button이 된다)가 클릭될 때 호출되어야 할 콜백 작업들을 등록할 수 있도록 지원해주는 메소드이다.
+
+이번에는 이 setOnClickListener 메소드를 뜯어보자.
 
 <img width="790" alt="03" src="https://user-images.githubusercontent.com/31889335/100537698-fc42ea80-326d-11eb-9878-d755fe4cb852.png">
 
-이 메소드의 매개 변수는 [onClickListener](https://developer.android.com/reference/kotlin/android/view/View.OnClickListener) 라는 인터페이스를 가지고 있는 것을 볼 수 있다.
+이 메소드는 매개 변수로 [onClickListener](https://developer.android.com/reference/kotlin/android/view/View.OnClickListener) 라는 인터페이스를 가지고 있는 것을 볼 수 있다.
 
 <img width="720" alt="04" src="https://user-images.githubusercontent.com/31889335/100537752-71162480-326e-11eb-8f3e-ebb1fdf62914.png">
 
-따라서 setOnClickListener 이라는 View 클래스의 public 메소드를 sub class에서 호출하려면 매개 변수인 OnClickListener(인터페이스)를 아래와 같이 구현해줘야 한다.
+따라서 setOnClickListener 이라는 View 클래스의 public 메소드를 sub class에서 호출하려면 매개 변수인 OnClickListener(인터페이스)를 구현해줘야 한다는 것이고, 아래와 같이 구현될 것이다.
+
+(인터페이스를 사용하려면 사용하고자 하는 곳에서 구현해야 한다는 객체 지향 언어의 다형성 때문에 아래와 같이 구현해야 함!)
 
 ~~~kotlin
 // kotlin 에서 OnClickListener를 구현한 모습
@@ -242,21 +246,25 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 })
 ~~~
 
-그런데 여기서 주목할 점이 있다. onClickListener 이라는 인터페이스 안에 정의된 메소드는 __onClick__ 이라는 __추상 메소드__ __딱 한 개만 정의되어 있다__ 는 점이다.
+그런데 여기서 주목할 점이 있다. onClickListener 라는 인터페이스 안에 정의되어 있는 메소드는 __onClick__ 이라는 __추상 메소드 딱 한 개뿐 이라는 점__ 이다.
+
+진짜로 딱 한 개만 정의되어 있는지 [onClickListener 도큐먼트](https://developer.android.com/reference/android/view/View.OnClickListener) 를 봐보자.
 
 <img width="340" alt="05" src="https://user-images.githubusercontent.com/31889335/100537791-d10ccb00-326e-11eb-83f2-c58bb24f4b4e.png">
 
 <img width="812" alt="06" src="https://user-images.githubusercontent.com/31889335/100538038-ab80c100-3270-11eb-8572-c451c2330390.png">
 
-지금까지의 내용을 정리해보면!
+정말 이 인터페이스 안에는 onClick 이라는 추상 메소드 단 한 개만 정의되어 있다!
 
-버튼에 클릭 이벤트를 주기 위해 setOnClickListener 이라는 메소드를 구현해야 하는데 이 메소드의 매개변수에 OnClickListener 이라는 인터페이스가 존재하므로 이 인터페이스 안에 정의된 메소드를 구현해줘야 한다.
+일단 이쯤에서 지금까지의 내용을 정리해보자.
+
+버튼이 클릭되면 실행될 작업들을 작성해주기 위해서는 setOnClickListener 이라는 메소드를 사용해야 하는데 이 메소드의 매개변수에 OnClickListener 라는 인터페이스가 존재하므로 이 인터페이스 안에 정의된 메소드를 구현해줘야 한다!
 
 그런데 OnClickListener 라는 인터페이스에 정의되어 있는 메소드는 onClick 이라는 단 한 개의 추상 메소드(단일 추상 메소드)이다.
 
-따라서 setOnClickListener()는 항상 OnClickListener 이라는 인터페이스를 매개 변수로 가져오고 OnClickListener은 항상 onClick 메소드라는 단일 추상 메소드만을 구현하게 된다는 것을 아는 것이 중요하다!
+따라서 setOnClickListener()는 항상 OnClickListener 라는 인터페이스를 매개 변수로 가져오고 OnClickListener는 항상 onClick 메소드라는 단일 추상 메소드만을 구현하게 된다는 것을 이해하면 SAM 변환을 이해하기 위한 충분한 배경 지식을 갖추게 된 것이다!
 
-그래서 원래는 아래와 같이 
+그래서 원래는 setOnClickListener를 사용하려면 아래와 같은 코드로 작성해야 한다.
 
 ~~~kotlin
 // kotlin 에서 OnClickListener를 구현한 모습
@@ -267,9 +275,7 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 })
 ~~~
 
-구현되어야 한다!
-
-그런데 안드로이드 스튜디오를 통해 이것을 구현하려고 하다보면 
+그런데 안드로이드 스튜디오에서 이것을 구현하려고 하다보면 
 
 <img width="599" alt="07" src="https://user-images.githubusercontent.com/31889335/100544858-fcf27580-329b-11eb-9231-359cf2cff1a6.png">
 
@@ -283,7 +289,7 @@ loginButton.setOnClickListener {
 }
 ~~~
 
-이 코드는 위에서 구현했던 
+이 코드는 아래 코드와
 
 ~~~kotlin
 // kotlin 에서 OnClickListener를 구현한 모습
@@ -294,11 +300,13 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 })
 ~~~
 
-이 코드와 같은 기능을 하지만 훨~씬 단순하고 간단한 모습이다.
+같은 기능을 하지만 훨~씬 단순하고 간단한 모습이다.
 
-이게 바로 __SAM 변환__ 기능이다!
+이게 바로 코틀린이 지원하는 __SAM 변환__ 기능이다!
 
-즉, 매개 변수로 인터페이스가 존재하며 이 인터페이스가 단일 추상 메소드를 가지고 있다면 코틀린에서 위와 같이 간단하게 구현하도록 변환시켜주는 것이다!
+즉, 매개 변수로 인터페이스가 존재하며 이 인터페이스가 단일 추상 메소드를 가지고 있을 때 코틀린에서 위와 같이 간단하게 구현하도록 변환시켜주는 것이다!
+
+이제 __SAM 변환 = Single Abstract Method Conversion = 단일 추상 메소드 변환__ 이라는 등식이 성립함을 이해할 수 있을 것이다.
 
 ## 4️⃣ __companion object__ 를 사용하는 코틀린 패턴
 
@@ -318,9 +326,9 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 
 1. __? 기호를 사용하여 Null 허용 여부를 명시하는 코틀린 패턴__
 
-    코틀린은 앱 전체에서 타입 안정성을 유지할 수 있도록 null 허용 여부 규칙을 엄격하게 지키도록 한다.
+    코틀린은 앱 전체에서 타입 안정성을 유지할 수 있도록 __null 허용 여부 규칙을 엄격하게 지키도록 한다.__
 
-    원칙적으로 코틀린에서는 객체 참조에 null 값이 포함될 수 없지만 null 값을 포함시켜야 하는 경우가 발생한다면 __? 기호__ 를 변수의 type명 뒤에 추가하여 __해당 변수에는 null 값이 저장될 수도 있다__ 는 것을 명시해야 한다.
+    원칙적으로 코틀린에서는 객체 참조에 null 값이 포함될 수 없지만 null 값을 포함시켜야 하는 경우가 발생한다면 __? 기호__ 를 변수의 type명 뒤에 추가하여 __해당 변수에는 null 값이 저장될 수도 있다__ 는 것을 직접 명시해야 한다.
 
     ~~~kotlin
     var name: String = null // 컴파일 에러
@@ -328,7 +336,7 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     var name: String? = null // 컴파일 성공
     ~~~
 
-    이렇게 코틀린은 null 허용 여부를 직접 명시해줘야 한다는 엄격한 규칙을 통해 앱을 비정상 종료시킬 수 있는 __NullPointerException__ 에러가 발생할 가능성을 줄이고자 한다.
+    이렇게 코틀린은 null 허용 여부를 직접 명시해줘야 한다는 엄격한 규칙을 적용함으로써 앱을 비정상 종료시킬 수 있는 __NullPointerException__ 에러가 발생할 가능성을 줄이고자 한 언어이다.
 
 2. __자바 코드와 상호적으로 작동하는 경우 달라지는 Null 허용 여부 표시__
 
@@ -351,9 +359,9 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 
     하지만 자바는 코틀린과 달리 Null 허용 여부에 대해 ? 연산자를 사용하여 명시적으로 나타내라는 엄격한 규칙이 없다!
 
-    자바는 코틀린보다 Null 허용 여부에 대해 덜 엄격한 편이다.
+    자바는 코틀린보다 Null 허용 여부에 대해 덜 엄격한 편이기 때문이다.
 
-    따라서 자바로 작성된 Android API를 코틀린으로 호출할 경우 Null 허용 여부가 코틀린 규칙에 벗어나는 경우가 발생하게 된다.
+    따라서 자바로 작성된 Android API를 코틀린으로 호출할 경우 Null 허용 여부가 엄격한 코틀린 규칙에 벗어나는 자바 코드가 호출되는 경우가 발생하게 된다.
 
     예를 들어 다음과 같은 상황이 발생할 수 있다.
 
@@ -369,15 +377,19 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     }
     ~~~
 
-    코틀린 개발 환경에서 위와 같이 자바로 작성된 Account 클래스의 name이라는 멤버를 참조한다면 코틀린 컴파일러는 name 멤버가 String인지 String?(null 허용)인지 알 수 없게 된다.
+    코틀린 개발 환경에서 위 Account 클래스의 name 이라는 멤버를 참조한다면 코틀린 컴파일러는 name 멤버가 String인지 String?(null 허용)인지 알 수 없게 된다.
 
-    코틀린 컴파일러 입장에서 이러한 모호성을 표시하기 위해 __!연산자__ 를 사용하여 __String!__ 이라고 표시된다. 사실 String!는 특별한 의미가 없고, String 이거나 String? 임을 표시하는 것이다.
-
-    코틀린 컴파일러는 String! 표시를 보고 String 또는 String? 둘 중 하나로 값을 할당할 수 있다.
-
-    이러한 모호성을 해결하기 위해서는 코틀린이 모호해할 것을 예상하여 배려를 해줘야 한다^^
+    코틀린 컴파일러 입장에서  public final String name; 코드를 보고 null 허용인가? 미허용인가? 하며 모호성을 띄게 된다는 것이다.
     
-    자바로 Account 클래스를 작성할 때 아래와 같이 @Nullable 어노테이션을 붙여주면 코틀린의 String?와 같은 역할임을 명시되어 모호성이 해결된다.
+    코틀린은 이러한 모호성을 표시하기 위해 __!연산자__ 를 사용하여 __String!__ 이라고 표시한다. String!는 특별한 의미가 없고, 'String 이거나 String? 둘 중 하나일 거야~' 를 나타내는 표현 방법이다.
+
+    그럼 코틀린 컴파일러는 String! 표시를 보고 String 또는 String? 둘 중 하나로 값을 할당할 수 있다.
+
+    하지만 !기호를 사용하여 모호성을 표시하는 것보다 애초에 모호성 자체를 없애는 것이 훨씬 좋기 때문에 모호성을 해결하기 위한 방법들이 생겨났다.
+
+    바로 코틀린이 모호해할 것을 예상하여 자바에서 null 허용 여부를 엄격하게 지키는 방법이다!
+    
+    자바로 Account 클래스를 작성할 때 아래와 같이 @Nullable 어노테이션을 붙여주면 코틀린의 String?와 같이 null을 허용한다는 것이 명시되어 모호성이 해결된다.
 
     ~~~java
     // 자바로 작성된 코드
@@ -392,13 +404,15 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     }
     ~~~
 
-    하지만 코틀린 언어로 안드로이드 개발을 할 때 모호성을 크게 걱정할 필요가 없다! 자바로 작성된 최근의 Android API는 대부분 어노테이션을 붙여주어 코틀린과 상호운용을 원활히 하도록 개선되었기 때문이다.
+    하지만 이제는 코틀린 언어로 안드로이드 개발을 할 때 자바가 null 허용 여부를 엄격하게 지키지 않아서 발생하는 모호성을 크게 걱정할 필요가 없다!
+    
+    자바로 작성된 최근의 Android API는 대부분 위와 같은 어노테이션을 붙여주어 코틀린과 상호운용을 원활히 하도록 개선되었기 때문이다 😃
 
 3. __!! 연산자를 사용하기도 하는 코틀린 패턴__
 
-    코틀린은 앱 전체에서 타입 안정성을 유지할 수 있도록 null 허용 여부 규칙을 엄격하게 지키도록 하여 __? 연산자__ 를 통해 Null 허용 여부를 명시해주어야 함을 배웠다.
+    코틀린은 앱 전체에서 타입 안정성을 유지할 수 있도록 null 허용 여부 규칙을 엄격하게 지키도록 하여 null을 허용하려면 __? 연산자__ 를 통해 Null 허용 여부를 명시해주어야 함을 배웠다.
 
-    이것은 ? 연산자를 통해 Null이 참조되더라도 NullPointerException 이 발생하지 않고, 앱이 강제 종료되지 않도록 한다는 것이다.
+    ? 연산자를 통해 Null이 참조되더라도 NullPointerException 이 발생하지 않고, 앱이 강제 종료되지 않게 된다.
 
     하지만 어떤 경우에는 Null일 경우 NullPointerException 를 발생시키고 코드 실행을 막아야 하는 경우도 분명 존재할 것이다.
 
@@ -411,11 +425,11 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 
     위 코드의 name 변수는 ? 연산자를 통해 Null이 허용된 String? 타입의 변수이다.
 
-    realName 변수는 trim() 이라는 함수를 사용해 name의 맨 앞과 뒤에 공백이 포함되어 있을 경우 공백을 제거한 문자열을 저장하는 변수이다.
+    realName 변수는 trim() 이라는 함수를 사용해 name의 맨 앞과 뒤에 공백이 포함되어 있을 경우 공백을 제거한 문자열이 저장되는 변수이다.
 
-    이 경우 만약 name에 "Kimchohee"가 아닌 null이 참조된다면 realName은 null 값의 앞 뒤 공백을 제거하라는 의미가 되므로 이상한 의미가 되버릴 것이다.
+    그런데 만약 name에 "Kimchohee"가 아닌 null이 참조된다면 realName은 null 값의 앞 뒤 공백을 제거하라는 의미가 되므로 말이 되지 않는 이상한 의미가 되버릴 것이다.
 
-    이를 방지하기 위해 
+    이런 상황을 방지하기 위해 
 
     ~~~kotlin
     val name: String? = "Kimchohee"
@@ -424,11 +438,11 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     val realName = name!!.trim()
     ~~~
 
-    위와 같이 원래는 Null이 허용된 변수이지만 변수를 사용하는 부분에서는 Null일 경우 NullPointerException 에러를 발생시키라는 !! 연산자를 붙여준 것이다.
+    위와 같이 원래는 Null이 허용된 변수이지만 realName에 정확한 값을 저장하기 위해 name의 값이 Null일 경우 NullPointerException 에러를 발생시키라는 !! 연산자를 붙여준 것이다.
 
     !! 연산자는 이러한 경우에 사용되지만 NullPointerException 에러를 발생시키는 원인이 되므로 자주 사용해서는 안된다.
 
-    따라서 !! 연산자를 사용하지 않고 똑같은 상황을 해결하는 방법도 존재한다!
+    코틀린은 !! 연산자를 사용할 수밖에 없어 NullPointerException이 발생하는 상황을 더욱 줄이고자 새로운 방법을 등장시켰다!존재한다!
 
     바로 __?: 연산자__ 를 사용하는 방법이다.
 
@@ -447,11 +461,11 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 
 ✍🏻 [Android Developer 도규먼트 - kotlin pattern 중 속성 초기화 부분](https://developer.android.com/kotlin/common-patterns#init) 을 참고하여 작성합니다.
 
-코틀린은 속성을 초기화하지 않음을 허용하지 않는다. 즉, 클래스가 초기화될 때 클래스 안의 멤버 속성들이 초기화 되도록 코드를 작성해야 한다.
+앞에서도 계속 언급되었지만 코틀린은 속성을 초기화하지 않음을 허용하지 않는다. 즉, 클래스가 생성될 때 클래스 안의 멤버 속성들이 곧바로 초기화 되도록 코드를 작성해야 한다.
 
-코틀린에서 속성을 초기화하는 방법은 여러 가지가 있다.
+코틀린에서 속성을 초기화할 때 사용되는 패턴은 여러 가지가 있다.
 
-1. 첫 번째 방법
+1. __첫 번째 방법__
 
     ~~~kotlin
     class LoginFragment : Fragment() {
@@ -459,9 +473,9 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     }
     ~~~
 
-    LoginFragment 라는 클래스가 생성될 때 index 라는 멤버 속성도 초기화 된다.
+    LoginFragment 라는 클래스가 생성될 때 index 라는 멤버도 곧바로 12로 초기화 된다.
 
-2. 두 번째 방법 --> __init 블럭__ 사용
+2. __두 번째 방법__ --> __init 블럭 사용__
 
     ~~~kotlin
     class LoginFragment : Fragment() {
@@ -473,7 +487,7 @@ loginButton.setOnClickListener(object : View.OnClickListener {
     }
     ~~~
 
-    > https://kotlinlang.org/docs/reference/classes.html#constructors 문서 읽고 init 블럭에 대해 조금 더 자세히 알아볼 피요 있음!
+    > https://kotlinlang.org/docs/reference/classes.html#constructors 문서 읽고 init 블럭에 대해 조금 더 자세히 알아볼 필요 있음!
 
 3. 세 번째 방법 --> __lateinit__ 사용
 
@@ -481,4 +495,4 @@ loginButton.setOnClickListener(object : View.OnClickListener {
 
 # 끝!
 
-대장정의 포스팅이였습니당,,,, 거의 1주일 동안 이어가며 쓴 것 같은데,, 중간 중간 덜 공부한 부분도 있네요ㅠㅠ 휴우! 😂
+대장정의 포스팅이였습니당,,,, 이렇게 코틀린을 개발 언어로 안드로이드 개발을 할 때 자주 사용되는 언어 패턴을 모두 알아보았습니다~ 거의 1주일 동안 이어가며 쓴 것 같은데,, 중간 중간 덜 공부한 부분도 있네요ㅠㅠ 휴우! 😂
