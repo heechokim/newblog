@@ -110,6 +110,8 @@ stringMapper("Android", { input ->
 
 람다 표현식에 대해서는 바로 아래에서 알아볼 수 있을 것이다!
 
+고차함수는 자바나 코틀린에서 콜백 인터페이스를 사용할 때처럼 구성 요소 간 통신할 때 유용하다.
+
 ## 2️⃣ 람다(Lambda) 표현식이란?
 
 ✍🏻 [kotlin 도큐먼트 - 람다 표현식](https://kotlinlang.org/docs/reference/lambdas.html#lambda-expressions-and-anonymous-functions) 을 참고하여 작성합니다.
@@ -252,20 +254,11 @@ fun(a: String, b: String): Boolean {
 
 __코틀린의 함수는 할당 명령문(=, 대입)의 대상이 될 수 있다.__ 라는 특징이 존재했었다.
 
-따라서 아래와 같은 코드가 성립한다는 것인데
-
-~~~kotlin
-// getLength()라는 함수가 존재한다고 가정
-val testFun = getLength("Kimchohee")
-~~~
-
-만약 위의 getLength() 함수가 이름이 없는 람다 표현식으로 표현된 함수라면 어떤 코드가 작성될까?
+따라서 아래와 같은 코드가 성립한다는 것이다.
 
 ~~~kotlin
 val testFun = { name -> name.length }
 ~~~
-
-라는 모습의 코드로 작성될 것이다!
 
 이 때, testFun 이라는 이름의 변수의 데이터 타입을 명시해주고 싶다면 어떻게 명시해야 할까?
 
@@ -280,3 +273,8 @@ val testFun: (String) -> Int = { name -> name.length }
 # 끝!
 
 고차 함수, 람다 표현식, 익명 함수가 이 포스팅처럼 하나의 흐름으로 공부할 수 있다는 것을 깨닫게 되었습니다 😁 어디에서 누군가 "Hoxy,, 너 고차 함수가 뭔지 아니?" 라고 물어보면 설명할 수 있길..!!
+
+(추가로 찾아볼 것들)
+* 일급 객체 조건 4개 다 만족해야 하나?
+* 람다 매개 변수 데이터 타입 생략 가능한거 코틀린에서만인가?
+* 고차함수를 사용함으로써 얻는 장점? —> 컴포넌트간 통신이 유용하다?
