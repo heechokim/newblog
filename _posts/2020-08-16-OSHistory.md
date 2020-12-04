@@ -15,7 +15,7 @@ categories: [operating system]
 
 최초의 컴퓨터는 무려 1940년대 말에 발명되었다. 
 
-<img width="393" alt="01" src="https://user-images.githubusercontent.com/31889335/90332454-ee879300-dff7-11ea-948e-b3c13d4fd691.png">
+<img width="393" alt="01" src="https://user-images.githubusercontent.com/31889335/100973221-81cfde80-357d-11eb-93a2-ca535e6aced7.png">
 
 초기 컴퓨터는 위와 같은 모습을 하고 있었으며 크기 자체가 너무 커 건물 하나를 차지하는 정도였다.
 
@@ -25,7 +25,7 @@ categories: [operating system]
 
 아래 사진이 천공카드이다! 예를 들어, y=x+3을 표현하기 위해 y에 해당하는 자리에 구멍을 뚫고, =에 해당하는 자리에 구멍을 뚫고, x자리와 +자리, 3자리에 각각 구멍을 뚫는 형식이라고 생각하면 된다.
 
-<img width="1343" alt="02" src="https://user-images.githubusercontent.com/31889335/90332740-88503f80-dffa-11ea-8c91-9458cde03bf1.png">
+<img width="1343" alt="02" src="https://user-images.githubusercontent.com/31889335/100973230-86949280-357d-11eb-9dee-8b7bbe5a8579.png">
 
 입력장치인 카드리더기가 읽은 천공카드의 내용이 메모리에 저장되고 나면 프로세서가 메모리에서 읽은 명령어들을 읽어 처리하였다.
 
@@ -116,7 +116,7 @@ int main(){
 
 메모리에 여러 프로그램을 올리게 됨으로써 얻는 장점은 다음과 같았다.
 
-<img width="834" alt="03" src="https://user-images.githubusercontent.com/31889335/90334037-9b1c4180-e005-11ea-9c10-d7b8951f84a2.png">
+<img width="834" alt="03" src="https://user-images.githubusercontent.com/31889335/100973240-898f8300-357d-11eb-8ed5-0e0723fa5084.png">
 
 프로그램 1에서 입출력장치가 실행되어야 하는 작업을 만난다면 프로세서는 다음 프로그램인 프로그램 2의 계산 부분을 처리하면 된다.
 
@@ -160,11 +160,11 @@ Multi-Programming System을 지원하는 운영체제의 등장과 더불어 197
 
 그 당시에 이러한 대화형 컴퓨터를 지원하려고 하다보니 조금 괴의한 모습의 컴퓨터가 등장했는데 바로 아래와 비슷한 모습이다.
 
-<img width="330" alt="04" src="https://user-images.githubusercontent.com/31889335/100715279-51ac0280-33fa-11eb-8444-e2c822e90c90.png">
+<img width="330" alt="04" src="https://user-images.githubusercontent.com/31889335/100973241-898f8300-357d-11eb-8d44-8921e51b9b2b.png">
 
 그 당시의 컴퓨터는 크기도 크고 아주 비쌌기 때문에 하나의 컴퓨터에 키보드와 모니터만 여러개 붙여서 여러 명이 하나의 컴퓨터와 대화할 수 있게 하는 모습의 컴퓨터가 등장하였다.
 
-<img width="967" alt="05" src="https://user-images.githubusercontent.com/31889335/100716677-5d98c400-33fc-11eb-8655-6ea31cc48f21.png">
+<img width="967" alt="05" src="https://user-images.githubusercontent.com/31889335/100973242-8ac0b000-357d-11eb-86f5-718e3475586d.png">
 
 위 그림과 같이 하나의 컴퓨터가 존재하고 여러 대의 __단말기(영어로는 Terminal)__ 이 붙어있는 모습이였다.
 
@@ -188,7 +188,7 @@ CPU가 User1부터 순서대로 프로그램을 옮겨다니면서 계산 작업
 
 하지만 Time-Sharing System에서는 프로그램 간 CPU 이동이 입출력 작업 만남의 여부에 달려있지 않고 정해진 고정 시간이 지나면 강제적으로 이동하는 시스템이다.
 
-<img width="544" alt="06" src="https://user-images.githubusercontent.com/31889335/100717846-f5e37880-33fd-11eb-9d37-d687372cdd9f.png">
+<img width="544" alt="06" src="https://user-images.githubusercontent.com/31889335/100973245-8dbba080-357d-11eb-96f2-143a90d096f4.png">
 
 위 그림처럼 CPU는 __아주 짧은 시간__ 인 0.01초나 0.001초 동안 User1이 실행시킨 프로그램의 계산 작업을 수행한다. 이 짧은 시간이 지나면 바로 User2가 실행시킨 프로그램으로 이동해 같은 시간 동안 계산 작업을 수행하고, 마찬가지로 이 시간이 지나면 User3이 실행시킨 프로그램으로  이동해 계산 작업을 수행하는 방식이다. User3에서의 작업 시간이 지나면 다시 User1이 실행시킨 프로그램으로 이동해 같은 시간 동안 계산 작업을 한다.
 
