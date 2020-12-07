@@ -9,9 +9,13 @@ categories: [kotlin]
 
 코틀린 공부를 하다보니 ArrayList 같은 List 형태의 배열도 있고, IntArray, BooleanArray 등의 Array 형의 배열도 있다는 것을 알게 되었다.
 
+사실 List와 Array 중 "배열" 이라고 불러야 하는 것은 Array이고, List는 "배열"이 아니라 "리스트"라고 불러야 한다.
+
 먼저 [이전 포스팅 - 코틀린의 List들](https://choheeis.github.io/newblog//articles/2020-10/kotlinList) 포스팅을 보면 코틀린 표준 라이브러리 안의 여러 패키지 중 kotlin.collections 라는 이름의 패키지에 List 형태의 자료구조들이 구현되어 있다는 것을 알 수 있을 것이다.
 
-코틀린에는 이 List 형태의 자료구조들과는 또 다르게 생긴 Array 형태의 자료구조들이 존재한다.
+이러한 List 형태의 자료구조와 Array 형태의 자료구조는 엄연히 다른 자료구조이다.
+
+코틀린에는 Array 형태의 자료구조들이 존재한다.
 
 Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구현되어 있다. 하지만 List 형태의 자료구조들과는 다른 곳인 __kotlin__ 이라는 이름의 패키지 안에 구현되어 있다!
 
@@ -21,7 +25,7 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 
 위와 같이 kotlin 이라는 이름의 패키지도 있고, kotlin.collecions 라는 이름의 패키지도 있는 것을 알 수 있다.
 
-여기서 [kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/) 이라는 패키지는 __코틀린의 core 함수들과 자료형(type)들이 구현__ 되어 있는 곳이다!
+여기서 [kotlin](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/) 이라는 패키지는 __코틀린의 core 함수들과 core 자료형(type)들이 구현__ 되어 있는 곳이다!
 
 즉, 이곳에 Boolean, Int, Char 등의 자료형들도 구현되어 있고, 이 외의 여러 core 함수들이 구현되어 있다는 것이다.
 
@@ -44,15 +48,17 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 
     일단 [BooleanArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/) 를 예로 들어 Array 형태의 자료구조 모습에 대해서 알아보자.
 
-    BooleanArray는 Java의 __boolean[]__ 과 같다. 즉, 배열이고 배열에 저장될 데이터들의 타입이 boolean 이라는 것이다.
+    BooleanArray는 리스트가 아니라 배열이다. 더 자세히 말하자면 배열에 저장될 데이터들의 타입이 boolean 인 배열이다.
 
-    BooleanArray 외의 다른 자료형들의 Array들도 이와 똑같다.
+    BooleanArray 외의 IntArray, CharArray 등 다른 이름의 Array들도 원리는 이와 똑같다.
+
+    __배열__ 이라는 자료구조에 대해서는 [이 블로그의 다른 포스팅](https://choheeis.github.io/newblog//articles/2019-07/BasicDataStructure) 의 배열 부분에서 알 수 있을 것이다.
 
 * Array 자료구조 선언하기
 
     > 아래 내용들은 [여기](https://kotlinlang.org/docs/reference/basic-types.html#arrays) 를 참고하여 작성한 것!
 
-    1. 첫 번째 방법 ) 확장 함수 사용하기
+    1. __첫 번째 방법 ) 확장 함수 사용하기__
 
         ~~~kotlin
         var arrayTest = intArrayOf(1, 2, 3)
@@ -62,7 +68,7 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 
         위 코드는 배열 [1, 2, 3] 의 모습으로 생성되었다.
 
-    2. 두 번째 방법 ) 생성자 함수 사용하기
+    2. __두 번째 방법 ) 생성자 함수 사용하기__
 
         ~~~kotlin
         var arrayTest = IntArray(5){ i -> i }
@@ -80,7 +86,7 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 
         BooleanArray의 [Init 방법](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/-init-.html) 을 보면 두 번째 인자에 함수가 들어갈 수 있는 것을 알 수 있다.
 
-        코틀린은 함수형 프로그래밍 언어이기 때문에 어떤 함수의 인자에 또 다른 함수가 들어갈 수 있는데 만약 마지막 인자로 함수가 들어오면 위 코드와 같이 () 밖으로 {} 를 뺄 수 있다. 이에 대한 내용은 [이전 포스팅 - 코틀린 언어 압축 스터디](https://choheeis.github.io/newblog//articles/2020-07/KotlinZip) 포스팅의 고차 함수 부분을 보면 알 수 있을 것이다.
+        코틀린은 함수형 프로그래밍 언어이기 때문에 어떤 함수의 인자에 또 다른 함수가 들어갈 수 있는데 만약 마지막 인자로 함수가 들어오면 위 코드와 같이 () 밖으로 {} 를 뺄 수 있다. 이에 대한 내용은 [이 블로그의 다른 포스팅 - 고차함수와 람다표현식](https://choheeis.github.io/newblog//articles/2020-12/kotlinHigherOrderFunctionAndLambda) 포스팅을 보면 알 수 있을 것이다.
 
         따라서 위 코드에서 IntArray 형 배열의 초기화를 IntArray(5){ i -> i } 이라고 작성한 것이다.
 

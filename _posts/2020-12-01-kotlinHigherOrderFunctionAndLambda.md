@@ -226,6 +226,24 @@ run ({ println("...") })
 run { println("...") }
 ~~~
 
+마지막으로 람다 표현식을 사용하다보면 __it__ 이라는 변수 비슷한 것이 나타낼 때가 있을 것이다.
+
+<img width="450" alt="02" src="https://user-images.githubusercontent.com/31889335/101335014-f8414900-38bb-11eb-9967-8eab220efd03.png">
+
+람다 표현식으로 표현되는 함수의 매개변수가 1개일 경우에는 컴파일러가 __->__ 기호를 생략할 수 있게 해준다.
+
+~~~kotlin
+{ a -> a.length }
+~~~
+
+예를 들어 위 코드처럼 람다 표현식으로 표현되는 함수의 매개변수가 한 개 일 때 -> 기호를 생략할 수 있고, __대신 매개변수 a를 it 이라고 표시__ 한다.
+
+~~~kotlin
+{ it.length }
+~~~
+
+즉, 위 코드처럼 더 간단하게 나타낼 수 있다는 것이다!
+
 ## 3️⃣ 익명 함수(Anonymous Function) 이란?
 
 ✍🏻 [kotlin 도큐먼트 - 익명 함수](https://kotlinlang.org/docs/reference/lambdas.html#anonymous-functions) 를 참고하여 작성합니다.

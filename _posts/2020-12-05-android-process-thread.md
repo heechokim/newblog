@@ -92,7 +92,7 @@ Android API에서는 메인 쓰레드 외의 추가 쓰레드(Worker 쓰레드)�
 
 > 이 포스팅에서 Thread 클래스 사용법에 대해서는 언급하지 않을 것이다.
 
-그런데 거의 대부분의 경우에서는 Worker 쓰레드에서 작업한 결과에 따라 UI가 업데이트 되어야 하는 경우가 존재할 것이다.
+그런데 거의 대부분의 경우에서는 Worker 쓰레드에서 작업한 결과에 따라 UI가 업데이트 되어야 하는 경우가 존재할 것이다.(UI 업데이트 작업은 UI 쓰레드에서 실행된다.)
 
 즉, Worker 쓰레드에서 UI 쓰레드에 접근(Access)할 수 있어야 한다는 것이다.
 
@@ -117,6 +117,8 @@ fun onClick(v: View) {
 
 하지만 복잡한 Android 앱일수록 위와 같은 코드는 양이 많아지고 복잡해질 가능성이 크다. 따라서 [Handler](https://developer.android.com/reference/android/os/Handler) 라는 클래스를 사용해 UI 쓰레드에 접근하는 방안도 등장하였다.
 
- Android API는 점점 더 발전하면서 __[AsyncTask](https://developer.android.com/reference/android/os/AsyncTask)__ 클래스를 사용하는 방안이 등장하여 한 때 유용하게 사용되었는데 Android API Level 30이 되면서 AsyncTask 가 deprecated 되었다. 그 대신 __[코루틴(Coroutine)](https://developer.android.com/topic/libraries/architecture/coroutines)__ 이라는 것을 사용하여 UI 쓰레드와 Worker 쓰레드의 상호작용을 구현하길 권고하고 있다.
+Android API는 점점 더 발전하면서 __[AsyncTask](https://developer.android.com/reference/android/os/AsyncTask)__ 클래스를 사용하여 Worker 쓰레드 작업 중 UI 쓰레드에 접근하는 방안이 등장하였고, 한 때 유용하게 사용되었다.
+ 
+하지만 Android API Level 30이 되면서 AsyncTask 가 deprecated 되었다. 그 대신 __[코루틴(Coroutine)](https://developer.android.com/topic/libraries/architecture/coroutines)__ 이라는 것을 사용하여 UI 쓰레드와 Worker 쓰레드의 상호작용을 구현하길 권고하고 있다.
 
 # 끝!

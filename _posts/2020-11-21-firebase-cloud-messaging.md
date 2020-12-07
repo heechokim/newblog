@@ -476,7 +476,7 @@ FCM은 Firebase가 지원하는 라이브러리 중 하나일 뿐이기 때문�
     > 
     > 예를 들어, Google Play 서비스 앱이 없어 설치 한 후 다시 Android 클라이언트 앱에 돌아왔을 때 확인 작업을 이어서 할 수 있는 것이다.
 
-    기기에 호환되는 Google Play 서비스 앱이 없으면 __GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable()__ 을 호출하여 사용자가 구글 플레이 스토어에서 다운 받게끔 할 수도 있다.
+    기기에 호환되는 Google Play 서비스 앱이 없으면 __[GoogleApiAvailability](https://developers.google.com/android/reference/com/google/android/gms/common/GoogleApiAvailability).getInstance().isGooglePlayServicesAvailable()__ 을 호출하여 사용자가 구글 플레이 스토어에서 다운 받게끔 할 수도 있다.
 
 7. __자동 초기화 방지하기__
 
