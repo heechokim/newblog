@@ -110,3 +110,10 @@ Array 형태의 자료구조들도 코틀린 표준 라이브러리 안에 구�
 * [toList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html) 함수 사용
 
 * [toMutableList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html) 함수 사용
+
+## 4️⃣ Array에 포함된 원소 중 가장 큰 값/작은 값 구하기
+
+kotlin.collections 패키지에 구현되어 있는 __[maxOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/max-or-null.html)__ 메소드를 사용하면 된다.
+
+가장 작은 값은 __[minOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/min-or-null.html)__ 메소드를 사용하면 된다.
+
