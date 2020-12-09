@@ -573,6 +573,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // 앱이 foreground 상태에 있을 때 FCM 알림을 받았다면 onMessageReceived() 콜백 메소드가 호출됨으로써 FCM 알림이 대신된다.
         Log.d("onMessageReceived 콜백 호출됨", "From: ${remoteMessage.from}")
 
+        // 메시지 유형이 데이터 메시지일 경우
         // Check if message contains a data payload.
         var fcmBody: String = ""
         if (remoteMessage.data.isNotEmpty()) {
@@ -580,8 +581,17 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             fcmBody = remoteMessage.data.get("Body").toString()
         }
 
-        // 원래는 매개변수로 fcmBody 변수를 넘겨줘야 함
-        sendNotification("안뇽~!?")
+        // 메시지 유형이 알림 메시지일 경우
+        // Check if message contains a notification payload.
+        // Set FCM title, body to android notification
+        var notificationInfo: Map<String, String> = mapOf()
+        remoteMessage.notification?.let {
+            notificationInfo = mapOf(
+                "title" to it.title.toString(),
+                "body" to it.body.toString()
+            )
+            sendNotification(notificationInfo)
+        }
     }
 
     override fun onDeletedMessages() {
@@ -612,7 +622,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      * 
      * @param messageBody FCM message body received.
      */
-    private fun sendNotification(messageBody: String) {
+    private fun sendNotification(messageBody: Map<String, String>) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -624,8 +634,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // icon, color는 메타 데이터에서 설정한 것으로 설정해주면 된다.
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(getString(R.string.app_name))
-            .setContentText(messageBody)
+            .setContentTitle(messageBody["title"]))
+            .setContentText(messageBody["body"])
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)
@@ -654,6 +664,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 만약 이 콜백 메소드가 호출된다면 해당 앱 인스턴스를 앱 서버와 전체 동기화 해주는 작업이 필요하다.
 
 <img width="283" alt="13" src="https://user-images.githubusercontent.com/31889335/100893307-928d3f80-34fe-11eb-9d52-102b532137de.png">
+
+onMessageReceived 의 remoteMessage 객체가 가지고 있는 data, notification 등이 무엇인지 더 알고 싶다면 FCM 서버 측 설정에 대해 조금 알 필요가 있다.
+
+[FCM 도큐먼트 - 서버 측 FCM 설정 요청 형식](https://firebase.google.com/docs/cloud-messaging/server#xmpp-request) 부분을 보면 FCM 알림 메시지를 클라이언트 앱에 보내기 위해 서버 측에서 어떤 요청 형식을 작성하는지 알 수 있을 것이다.
 
 # 끝!
 
