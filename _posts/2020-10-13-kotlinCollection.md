@@ -1,21 +1,46 @@
 ---
 layout: post
-title:  "[Kotlin] 6️⃣ 코틀린의 Collection 패키지"
+title:  "[Kotlin] 코틀린의 Collection"
 date:   2020-10-13 18:34:10 +0700
 categories: [kotlin]
 ---
 
-## 0️⃣ 코틀린의 Collection 패키지가 뭔가!
+> 사실 이 포스팅은 코틀린의 List, ArrayList, MutableList 등을 먼저 공부한 후 작성하는 것이다.
+> 
+> 위의 것들을 공부하다 보니 Collection 패키지에 대해 궁금하게 되었고, 한 번 공부를 해야겠다고 생각했다.
 
-사실 이 포스팅은 코틀린의 배열인 List, ArrayList, MutableList 등을 먼저 공부한 후 작성하는 것이다.
+## 0️⃣ Collection이 뭔가?
 
-배열들을 공부하다 보니 Collection 패키지에 대해 궁금하게 되었고, 한 번 공부를 해야겠다고 생각했다.
+✍🏻 [kotlin 도큐먼트 - Collection 개요](https://kotlinlang.org/docs/reference/collections-overview.html) 를 참고하여 작성합니다.
 
-코틀린은 자체적으로 내장하고 있는 __표준 라이브러리(kotlin standard library = kotlin stdlib)__ 를 가지고 있다.
+Collection이라는 것은 코틀린 외에도 다양한 프로그래밍 언어에 존재하는 개념 중 하나이다.
 
-이 표준 라이브러리 안에는 코틀린 언어가 가지고 있는 다양한 함수나 기능들이 구현되어 있는데 이것들이 기능에 따라 분류되어 __폴더로 묶여 관리__ 되고 있다.
+__Collection__ 은 __여러 원소를 저장할 수 있는 자료구조__ 를 통틀어 말하는 개념이다.
 
-코틀린 표준 라이브러리를 구성하는 여러가지 폴더들을 __패키지(package)__ 라고 한다.
+여러 원소를 저장할 수 있는 자료구조에는 보통 __Array(배열)__, __List(리스트)__, __Map__, __Set__ 등이 포함된다.
+
+하지만 프로그래밍 언어마다 Collection 개념에 포함하는 자료구조들이 조금씩 다를 수 있다.
+
+## 1️⃣ Kotlin(코틀린)의 Collection에 대해서!
+
+위에서 언급한 것과 같이, 프로그래밍 언어마다 Collection 개념에 포함되는 자료구조의 종류가 조금씩 다를 수 있다.
+
+Kotlin(코틀린)에서는 __List__, __Set__, __Map__ 이 3가지 자료구조가 Collection 개념에 포함된다.
+
+> 각 자료구조에 대해서는 이 블로그의 자료구조 카테고리에서 알아볼 수 있을 것이다. 😁
+
+Kotlin(코틀린)은 이러한 Collection 개념에 속하는 자료구조들을 쉽게 생성하고, 조작하고, 관리할 수 있도록 __Kotlin Standard Library(코틀린 표준 라이브러리)__ 에 여러 관련 인터페이스와 클래스, 메소드들을 제공하고 있다.
+
+> 코틀린 표준 라이브러리가 무엇인지는 [이 블로그의 다른 포스팅 - Kotlin Standard Library(코틀린 표준 라이브러리)]() 를 읽어보면 알 수 있을 것이다 😃
+
+
+
+
+
+
+
+
+
 
 코틀린의 Collection도 표준 라이브러리 안에 존재하는 패키지들 중 하나의 패키지이다.
 
