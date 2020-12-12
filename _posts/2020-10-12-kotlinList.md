@@ -1,94 +1,90 @@
 ---
 layout: post
-title:  "[Kotlin] 7️⃣ 코틀린의 List들"
+title:  "[Kotlin] 7️⃣ 코틀린의 List형 자료구조들"
 date:   2020-10-12 18:34:10 +0700
 categories: [kotlin]
 ---
 
-## 0️⃣ 코틀린에서 List을 사용하려면?
+## 0️⃣ List형 자료구조란?
 
-코틀린에서 List은 kotlin 표준 라이브러리(kotlin stdlib) 안의 __kotlin.collections__ 라는 패키지 안에 구현되어 있다.
+이 포스팅을 읽기 전에 [이 블로그의 다른 포스팅 - 자료구조 List](https://choheeis.github.io/newblog//articles/2020-12/data-structure-list)와 [이 블로그의 다른 포스팅 - 코틀린의 Collection](https://choheeis.github.io/newblog//articles/2020-10/kotlinCollection) 을 보고 와야 한다.
 
-따라서 코틀린에서 List을 사용하려면 kotlin 표준 라이브러리에 있는 것들을 가져다 사용하면 된다!
+보고 왔다면 List 자료구조가 무엇인지와 코틀린에서 List는 Collection형 자료구조가 구현하고 있는 인터페이스라는 것을 알게 되었을 것이다.
 
-[kotlin collection에 관련된 이전 포스팅](https://choheeis.github.io/newblog//articles/2020-10/kotlinCollection) 을 보면 kotlin.collections 패키지 안에는 크게 List, Map, Set 3가지로 분류된 자료구조들이 구현되어 있음을 알 수 있을 것이다.
+## 1️⃣ List 인터페이스
 
-그 중 List에 관련된 자료구조는 __List__ 분류에 속해있다.
+✍🏻 [kotlin 도큐먼트 - Collection 개요, List 인터페이스](https://kotlinlang.org/docs/reference/collections-overview.html#list) 를 참고하여 작성합니다.
 
-## 1️⃣ List 라는 자료구조
+코틀린에서 List 인터페이스는 무엇일까?
 
-[List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/) 는 kotlin.collections 패키지에 구현되어 있는 자료구조 중 하나이다.
+<img width="660" alt="06" src="https://user-images.githubusercontent.com/31889335/101981493-ada34080-3cb0-11eb-87f5-01dfbc78f501.png">
 
-List는 일반적으로 순서가 있는 __직선형__ 자료구조이다. 
+먼저 위 다이어그램은 kotlin.collections 패키지에서 제공하는 자료구조들이 구현하는 인터페이스를 나타내는 다이어그램이다.
 
-> 주의할 점❗️
+여기에 List 인터페이스가 존재한다.
+
+그럼 List 인터페이스가 왜 존재하는지와 List 인터페이스에는 어떤 메소드들이 정의되어 있는지 알아보자.
+
+먼저 List 인터페이스는 __특정한 순서가 있는 선형 자료구조__ 를 구현할 때 필요한 함수들을 정의하고 있다. 따라서 이 인터페이스는 선형 자료구조를 구현할 때 사용되기 위해 존재한다.
+
+List 인터페이스를 구현하는 자료구조들은 __index를 통해 자료구조에 저장되어 있는 원소에 접근__ 할 수 있다. 
+
+> 💁🏼‍♀️ __선형 자료구조란?__
 >
-> [자료구조에 대한 이전 포스팅](https://choheeis.github.io/newblog//articles/2019-07/BasicDataStructure) 에서 __리스트(linked List)__ 을 읽어보면 배열과 리스트의 차이에 대해 알 수 있을 것이다.
+> 원소들 사이에 선후관계가 명확한 자료구조를 말한다.
 >
-> 코틀린의 List는 이름만 보면 배열이 아니라 리스트(링크드 리스트)일 것 같지만 직선형 배열이다.
->
-> 처음에 List가 linked list를 구현한 자료구조인 줄 알고 원소를 추가, 삭제하는 문제에 List를 가져다 풀었는데 시간초과가 났었다..
-> 
-> 알고보니 List는 배열이라 중간에 원소를 추가, 삭제하는데에 링크드 리스트 만큼 빠르지 않았던 것..!
->
-> <img width="719" alt="03" src="https://user-images.githubusercontent.com/31889335/96464890-51e5a980-1263-11eb-85f4-6b050dff98f9.png">
->
-> List를 구현할 때 사용되는 [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/) 이라는 인터페이스를 보면 
->
-> <img width="378" alt="04" src="https://user-images.githubusercontent.com/31889335/96464893-527e4000-1263-11eb-873c-af9d018d08b6.png">
->
-> 또 [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/) 이라는 인터페이스로 구현되어 있다.
->
-> Iterable 이라는 인터페이스에 대한 설명을 읽어보면 이 인터페이스로 구현된 것들은 sequence of elements 로 나타내질 수 있다고 쓰여있다.
->
-> sequence of elements 라는 것은 원소들이 직선형으로 되어 있는 것을 말한다. 따라서 코틀린의 List는 결국 Iterable 이라는 것을 구현하여 만들어진 것이므로 링크드 리스트처럼 원소들의 메모리 공간이 떨어져있는 것이 아니라 연속적으로 이어져있는 배열이라는 뜻이다.
+> 예를 들어, 첫 번째 원소, 두 번째 원소, 세 번째 원소... 등의 개념이 존재하는 Array(배열) 자료구조나 LinkedList(연결 리스트) 자료구조가 선형 자료구조에 속한다.
 
-다만 이 List 라는 자료구조는 선언시 초기화한 값들을 읽기만(read-only) 할 수 있게 되어 있다. 즉, List에 저장된 데이터를 추가, 삭제, 변경할 수 없는 것이다.
+또 [kotlin 도큐먼트 - List 인터페이스](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/) 를 봐보면 이 인터페이스 안에 정의되어 있는 함수들이 무엇인지 알 수 있을 것이다.
 
-만약 저장된 데이터를 추가, 삭제, 변경하려면 List가 아니라 __MutableList__ 라는 자료구조를 사용해야 한다!
+추가적으로 MutableList 인터페이스에 대해서도 간략히 알아보자.
 
-[List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/) 자료구조를 사용하여 데이터를 저장하고 관리하고 싶다면 링크로 걸어놓은 문서에 나와있는 여러 함수들을 사용하면 된다!
+위 다이어그램을 보면 알 수 있듯이, MutableList 인터페이스는 List 인터페이스를 상속하는 인터페이스이다.
 
-## 2️⃣ MutableList 라는 자료구조
+다만 List 인터페이스는 read-only 특징을 갖고 있어 자료구조에 저장된 원소를 수정하거나 삭제할 수 없지만 Mutable 인터페이스는 mutable 특징을 갖고 있어 자료구조에 저장된 원소를 수정하거나 추가/삭제 작업을 할 수 있게 해준다.
 
-[MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) 은 kotlin.collections 패키지에 구현되어 있는 자료구조에서 List 분류에 해당하는 자료구조 중 하나이다.
+## 2️⃣ List 인터페이스를 구현하고 있는 자료구조들(= List형 자료구조)
 
-<img width="505" alt="05" src="https://user-images.githubusercontent.com/31889335/96464895-5316d680-1263-11eb-9846-4993b7c9ac07.png">
+이제 위에서 알아본 List 인터페이스를 구현하고 있는 자료구조들은 어떤 것들이 있는지 알아보자. 
 
-사실 MutableList는 인터페이스이다.
+* __[ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/)__
 
-위 List 자료구조 설명 부분에서 설명한 것처럼 List와 비슷하지만 데이터를 추가하고 삭제할 수 있도록 구현된 자료구조이다. (mutable = 변하기 쉬운)
+    __코틀린에서 List 인터페이스를 구현하고 있는 default 자료구조__ 는 __ArrayList__ 이다.
 
-[MutableList 문서](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/) 를 보면 MutableList 자료구조에 사용할 수 있는 여러가지 함수들을 알 수 있다.
+    하지만 ArrayList에 대한 문서를 보면
+    
+    <img width="696" alt="07" src="https://user-images.githubusercontent.com/31889335/101981494-b136c780-3cb0-11eb-8236-060a6a8e2f3a.png">
 
-__여기서 한 가지 알 수 있는 것!__
+    실제로는 MutableList 인터페이스를 구현하고 있다.
 
-List 분류에 속하는 자료구조들은 상속받는 것들의 트리를 타고 올라가보면 맨 위에는 List 클래스가 있기 때문에 각 자료구조에서 사용되는 여러 함수들이 결국 List에서 상속받은 것들이 많다.
+    하지만 MutableList도 결국 List 인터페이스를 상속하고 있기 때문에 List 인터페이스를 구현하고 있는 default 자료구조가 ArrayList라고 말할 수도 있는 것이다.
 
-(아래에서 배울 ArrayList도 MutableList를 구현하고 있고, MutableList는 결국 List를 구현하고 있음!)
+    이제 ArrayList 자료구조의 특징에 대해 알아보자. ArrayList는 선형 자료구조이고, index로 각 원소 접근이 가능하다.
 
-따라서 List 분류에 속하는 자료구조에 사용할 수 있는 함수는 이름이 같은것도 많고, 사용법이나 작동 원리가 비슷한 것도 많다!
+    또한 언제든지 새로운 원소를 추가하고, 변경하고, 삭제할 수 있다.
 
-## 3️⃣ ArrayList 라는 자료구조
+    하지만 __ArrayList는 자체적으로 메모리 효율성을 높이는 기능이 없는__ 선형 자료구조이다.
 
-[ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/) 는 kotlin.collections 패키지에 구현되어 있는 자료구조에서 List 분류에 해당하는 자료구조 중 하나이다.
+    이 말을 이해하기 위해 [c++의 vector 포스팅](https://choheeis.github.io/newblog//articles/2020-01/C++Vector)에서 vector가 동적으로 크기를 변경하는 과정을 읽어보면 좋다.
 
-<img width="446" alt="02" src="https://user-images.githubusercontent.com/31889335/96464889-514d1300-1263-11eb-91af-878bda15549b.png">
+    vector는 초반에 임의의 크기의 배열을 만들어 놓고 데이터를 추가하다가 배열이 꽉 차게 되면 기존 배열의 복사본에 임의의 크기(2배 정도)를 더 늘린 새로운 배열을 만드는 형식으로 크기가 변경된다.
 
-ArrayList는 위에서 설명한 MutableList라는 자료구조를 상속한 형태이기 때문에 ArrayList에도 데이터를 추가하거나 삭제할 수 있다.
+    하지만 이러한 방법으로 크기를 늘렸을 때 새로 늘린 크기 만큼의 메모리 공간에 데이터를 꽉 채워 추가하지 않는한 메모리 낭비가 생길 수 있다. 
 
-ArrayList는 추가, 삭제 외에 또 다른 특징이 있다.
+    ArrayList도 vector와 같은 방법으로 데이터를 추가한다.
+    
+    그렇기 때문에 메모리 낭비가 발생할 수 있는데 ArrayList에는 이렇게 낭비되는 메모리를 효율적으로 관리하는 기능이 없다.
 
-__ArrayList는 자체적으로 메모리 효율성을 높이는 기능이 없다는 것이다.__
+    예를 들어, 자바스크립트에서는 배열이 꽉 차서 길이를 늘려야 할 때 2배 정도 늘리는 것이 아니라 늘려야 할 만큼만 늘리는 기능이 있다. 따라서 메모리 낭비가 일어나지 않는다.
 
-이 말을 이해하기 위해 [c++의 vector 포스팅](https://choheeis.github.io/newblog//articles/2020-01/C++Vector)에서 vector가 동적으로 크기를 변경하는 과정 부분을 읽어보면 좋다.
+    ArrayList 자료구조에 사용할 수 있는 여러 조작 함수들과 확장 함수는 [kotlin 도큐먼트 - ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/) 에서 확인할 수 있으니 필요할 때 적절하게 사용하면 된다!
 
-vector는 초반에 임의의 크기의 배열을 만들어 놓고 데이터를 추가하다가 배열이 꽉 차게 되면 기존 배열의 복사본에 임의의 크기(2배 정도)를 더 늘린 새로운 배열을 만드는 형식으로 크기가 변경된다.
+## 3️⃣ MutableList 인터페이스를 구현하고 있는 자료구조들(= MutableList형 자료구조)
 
-이러한 방법으로 크기를 늘렸을 때 새로 늘린 크기 만큼의 메모리 공간에 데이터를 꽉 채워 추가하지 않는한 메모리 낭비가 생길 수 있다. 
+* __[ArrayList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/)__
 
-ArrayList도 vector와 같은 방법으로 데이터를 추가하기 때문에 메모리 낭비가 발생할 수 있다. 하지만 ArrayList에는 데이터가 저장되지 않아 낭비되는 메모리를 효율적으로 관리하는 기능이 없다.
+    위 List 인터페이스를 구현하고 있는 자료구조에서 설명했으므로 생략하겠다.
 
-> --> [MutableList와 ArrayList에 대한 차이를 가장 납득할 만하게 써놓은 블로그](https://zladnrms.tistory.com/140)
+# 끝!
 
-[ArrayList 를 조작할 수 있는 함수들](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/#functions) 이나 [ArrayList 의 확장 함수들](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/#extension-functions) 을 보고 입맛대로 사용하면 된다.
+List 인터페이스를 구현하고 있는 자료구조와 MutableList 인터페이스를 구현하고 있는 자료구조는 공부를 하게 될 경우 계속 추가하자!
