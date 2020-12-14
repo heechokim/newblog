@@ -134,6 +134,8 @@ ListIterator가 기존 Iterator와 다른 점에 대해 알아보자.
 
 기존의 Iterator는 인덱스를 확인할 수 없었다.
 
+더불어 원칙은 listIterator() 함수를 호출해 ListIterator를 생성하면 가장 첫 번째 원소를 가리키게 되지만 __[listIterator(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/list-iterator.html)__ 를 호출하여 ListIterator를 생성하면 원하는 index부터 가리키도록 생성할 수 있다.
+
 ~~~kotlin
 fun main() {
     val list = listOf<Int>(1, 2, 3)
