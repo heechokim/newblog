@@ -23,11 +23,11 @@ Iterator 라는 것을 알아보기 위해서는 [코틀린의 Collection](https
 
 Iterator은 Collection 개념에 속하는 자료구조들의 원소들을 순회할 때 공통적으로 사용할 수 있는 녀석이다.
 
-다시 말해 Collection 개념에 속하는 자료구조들은 ArrayList, Map, Set 등 다양한데 이 자료구조들의 원소를 순회할 때 공통적으로 Iterator를 사용할 수 있다는 것이다!
+다시 말해 Collection 개념에 속하는 자료구조들은 ArrayList, Map, Set 등 다양한데 이 자료구조들의 원소를 순회할 때 공통적으로 사용할 수 있는게 Iterator 라는 것이다!
+
+따라서 Collection 개념에 속하는 자료구조들의 원소를 각각 하나 하나 탐색하거나 출력해야 할 때, 원소들의 값을 업데이트 해야 할 때 사용하면 유용하다.
 
 Iterator는 [코틀린 Standard Library](https://choheeis.github.io/newblog//articles/2020-12/kotlin-stdlib) 에서 제공하고 있어서 필요할 때 가져다 사용하면 된다.
-
-Iterator는 Collection 개념에 속하는 자료구조들의 원소를 각각 하나 하나 탐색하거나 출력해야 할 때, 원소들의 값을 업데이트 해야 할 때 사용하면 유용하다.
 
 Iterator의 개념적인 부분을 알아보았으니 좀 더 코드적인(?) 부분을 알아보자!
 
@@ -49,7 +49,7 @@ Iterator는 [Iterable 인터페이스](https://kotlinlang.org/api/latest/jvm/std
 
 구현되어 있는 Iterator는 __[iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)__ 라는 함수를 호출함으로써 사용할 수 있다.
 
-iterator()를 호출한 시점에서 Iterator가 가리키는 point는 해당 자료구조의 첫 번째 원소이다.
+iterator()를 호출하면 Iterator가 생성되고 해당 자료구조의 첫 번째 원소를 가리키게 된다.
 
 <img width="651" alt="07" src="https://user-images.githubusercontent.com/31889335/102019845-05c56a00-3db9-11eb-94cd-18cac4f3be07.png">
 
@@ -76,7 +76,7 @@ fun main() {
 
 위 코드의 출력 결과는 위와 같다.
 
-이렇게 Iterator를 사용해서 Collection 개념에 속하는 자료구조들의 원소를 순회할수도 있지만 코틀린에서는 이와 똑같은 또 다른 방법이 존재한다.
+이렇게 Iterator를 사용해서 Collection 개념에 속하는 자료구조들의 원소를 순회할수도 있지만 코틀린에서는 이와 똑같은 다른 방법이 존재한다.
 
 바로 __for문__ 을 이용하는 것이다.
 
