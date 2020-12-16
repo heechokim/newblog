@@ -101,3 +101,45 @@ fun main() {
 ~~~
 
 또 다른 방법은 위 코드처럼 forEach 문을 사용하는 것이다. forEach 문은 위에서 본 for(char in str) 과 똑같은 기능을 한다.
+
+## 4️⃣ String에 포함된 char형 데이터 하나씩 for 문 돌리기
+
+__[String.indics](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/indices.html)__ 라는 확장 프로퍼티를 이용하는 걸 추천!
+
+> indic는 한글로 번역하면 '표시' 라는 뜻을 가지고 있다.
+
+indics는 __문자열에 포함된 문자(Char)들이 갖는 인덱스 범위__ 를 나타냄
+
+~~~kotlin
+fun main() {
+    val test = "abc"
+    println(test.indices)
+}
+~~~
+
+위 코드의 출력 결과는
+
+<img width="54" alt="06" src="https://user-images.githubusercontent.com/31889335/102378064-bd03f000-4008-11eb-96d8-3ea78195b606.png">
+
+위와 같다.
+
+즉, 범위 자체를 나타내는 것이 String.indics다.
+
+따라서 아래와 같이 for문을 돌리면 String이 포함하는 Char 문자 범위만큼 반복문을 돌려야할 때 편하다.
+
+~~~kotlin
+fun main() {
+    val test = "abc"
+
+    // for(i in 0..test.length-1) 과 같음
+    for(i in test.indices) {
+        println(test[i])
+    }
+}
+~~~
+
+위 코드의 출력 결과는
+
+<img width="27" alt="07" src="https://user-images.githubusercontent.com/31889335/102378259-f63c6000-4008-11eb-83a4-d847dfcca4a9.png">
+
+위와 같다.
