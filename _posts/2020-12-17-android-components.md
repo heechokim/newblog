@@ -75,19 +75,19 @@ __Activity__, __Service__, __Broadcast Receiver__, __Content Provider__ 이 Andr
 
 * __Activity__
 
-    Activity는 __사용자와 앱이 상호작용하기 위한 진입점__ 이다. 따라서 Activity는 사용자 인터페이스(UI)를 포함한 화면 하나를 의미한다.
+    Activity는 __사용자와 앱이 상호작용하기 위한 진입점__ 이며 사용자 인터페이스(UI)를 포함한 화면 하나를 의미한다.
 
-    대부분의 앱은 단 한 개의 Activity가 아닌 여러 Activity로 이루어져 있을 것이다.
+    대부분의 앱은 한 개의 Activity가 아닌 여러 Activity로 이루어져 있다.
 
-    예를 들어 이메일 앱이라면 이메일을 작성하는 Activity, 보낸 이메일 목록을 확인하는 Activity, 받은 이메일 목록을 확인하는 Activity 등이 함께 작동하여 이메일 앱을 구성하고 있을 것이다.
+    예를 들어 이메일 앱이라면 이메일을 작성하는 Activity, 보낸 이메일 목록을 확인하는 Activity, 받은 이메일 목록을 확인하는 Activity 등이 존재하며 이것들이 함께 이메일 앱을 구성하고 있을 것이다.
 
     그렇지만 각각의 __Activity는 사실 독립되어 있다.__
 
     따라서 Android 시스템에서 허용할 경우, 다른 앱이 이메일 앱의 Acitivity 중 하나에 접근할 수도 있다.
 
-    Activity는 Android 시스템과 Android 앱 사이에서 아래와 같은 상호작용을 돕는 역할을 한다.
+    Activity는 Android 시스템과 Android 앱 사이의 상호작용을 돕는 역할을 한다. 아래에 2가지 상호작용을 적어놓았다.
 
-    * 사용자 화면에 현재 표시되고 있는 Acitivity를 추적하여 해당 Activity를 실행하고 있는 프로세스를 시스템에서 계속 실행하도록 한다.
+    * 사용자 화면에 현재 표시되고 있는 Acitivity를 추적하여 해당 Activity를 실행하고 있는 프로세스를 시스템에서 중단시키지 않고 계속 실행하도록 한다.
 
     * 사용자가 다시 찾을 만한 Activity(중단된 Activity)를 실행하고 있는 프로세스를 종료시키지 않고 유지한다. 프로세스 유지 우선순위 중 더 높은 우선순위를 부여한다.
 
@@ -109,13 +109,17 @@ __Activity__, __Service__, __Broadcast Receiver__, __Content Provider__ 이 Andr
 
     Broadcast라는 용어를 한글로 번역하면 __'방송'__ 이라는 뜻이고 Broadcast Receiver는 __'방송을 수신하는 사람'__ 을 의미한다.
     
-    Android 시스템이 앱에 알려야 하는 사건을 '방송' 이라고 생각하면 되고 이 방송을 수신하는 것이 Broadcast라고 생각하면 된다.
+    Android 시스템이 앱에 알려야 하는 사건을 '방송' 이라고 생각하면 되고 이 방송을 수신하여 적절한 응답을 할 수 있도록 하는 것이 'Broadcast Receiver' 라고 생각하면 된다.
+
+    예를 들어, 앱이 사용자에게 무엇인가를 알리는 알람을 예약할 경우, 이 알람을 앱의 Broadcast Receiver에게 전달하면 된다. 이렇게 하면 알람이 울릴 때까지 앱을 계속 실행시키고 있을 필요가 없다.
 
     대부분의 'Broadcast(방송, 앱에 알려야하는 사건)'은 Android 시스템에서 발생한다. 
 
+    또 현재 실행되고 있지 않은 앱에도 Android 시스템에서 Broadcast를 전달할 수 있다.
+
     예를 들어, 배터리가 부족하거나 사진을 캡쳐했을 때 Android 시스템은 Broadcast를 발생시킨다.
 
-    이 '방송'을 수신하는 Broadcast Receiver에 해당 이벤트를 수신했을 때 어떤 작업을 실행해야 하는지 작성해줄 수 있다.
+    Android 시스템 뿐 아니라 앱도 Broadcast를 발생시킬 수 있다.
 
     Broadcast Receiver는 사용자 인터페이스를 제공하지 않지만 __상태표시줄 알림__ 을 제공한다.
 
@@ -129,7 +133,7 @@ __Activity__, __Service__, __Broadcast Receiver__, __Content Provider__ 이 Andr
 
     Content Provider는 __Android 앱 간 데이터를 공유할 수 있도록 해주는 녀석__ 이다.
 
-    예를 들어, 전화번후부 앱이 저장하고 있는 지인들의 연락처를 다른 앱에서 사용해야 한다던지, 갤러리 앱이 저장하고 있는 사진들을 다른 앱에서 사용해야 한다던지 할 때 Content Provider를 사용할 수 있다.
+    예를 들어, 전화번호부 앱이 저장하고 있는 지인들의 연락처를 다른 앱에서 사용해야 한다던지, 갤러리 앱이 저장하고 있는 사진들을 다른 앱에서 사용해야 한다던지 할 때 Content Provider를 사용할 수 있다.
 
     다른 앱은 Content Provider를 통해 해당 데이터를 가져오거나 Content Provider가 허용할 경우, 해당 데이터를 수정할 수도 있다.
 
