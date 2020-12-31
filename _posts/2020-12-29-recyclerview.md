@@ -92,13 +92,8 @@ categories: [안드로이드]
         * <img width="266" alt="14" src="https://user-images.githubusercontent.com/31889335/103298423-a6fd2300-4a3d-11eb-85a5-4afb1df0051d.png">
 
 
-> 도큐먼트 '레이아웃 관리자가 어댑터의 onCreateViewHolder() 메서드를 호출합니다.~' 부터 이어서하고 new -> file -> fragment(list) 로 만든거 비교하고, apply 나 recyclerview 속성들 추가 공부하기
+> 도큐먼트 '레이아웃 관리자가 어댑터의 onCreateViewHolder() 메서드를 호출합니다.~' 부터 이어서하고 new -> file -> fragment(list) 로 만든거 비교하고, apply 나 recyclerview 속성들 추가 공부하기 + Recyclerview 샘플 프로젝트 정리하기
 
 <!-- 
 6. __RecyclerView에 LayoutManager와 어댑터를 연결시키기__
     <img width="710" alt="05" src="https://user-images.githubusercontent.com/31889335/103293799-e292ef80-4a33-11eb-9e00-4723e9600ae6.png"> -->
-
-
-
-   
-        
