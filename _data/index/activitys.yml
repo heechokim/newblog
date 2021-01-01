@@ -1,13 +1,23 @@
 # activitys section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: NAVER WEBTOON 동계 인턴
+  link: https://dreamin.career/academy/ios
+  date: 2021
+  job: Android Developer
+
+- name: 한화 드림인 iOS 아카데미 1기
+  link: https://dreamin.career/academy/ios
+  date: 2020.08 - 2020.11
+  job: iOS Developer
+
 - name: SW 마에스트로 11기
   link: http://swmaestro.org/user/main.do
-  date: 2020
-  job: 
+  date: 2020.06 - 2020.11
+  job: React Web Developer
 
 - name: Prography 6기
   link: http://prography.org/
-  date: 2020
+  date: 2020.04 - 2020.07
   job: Android Developer
 
 - name: NAVER AI Burning Day 해커톤 출전
