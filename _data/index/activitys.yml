@@ -1,7 +1,7 @@
 # activitys section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
 - name: NAVER WEBTOON 동계 인턴
-  link: https://dreamin.career/academy/ios
+  link: 
   date: 2021
   job: Android Developer
 
