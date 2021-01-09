@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[안드로이드] App Build & Run(앱 빌드 & 실행)"
+title:  "[안드로이드] Android 앱 빌드 및 실행하기(Build & Run)"
 date:   2021-01-08 18:34:10 +0700
 categories: [안드로이드]
 ---
