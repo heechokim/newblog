@@ -136,6 +136,8 @@ categories: [안드로이드]
 
 * 먼저 알아본 인증서, 키, 키 저장소에 관한 이해를 했다면 앱 서명이 무엇인지 자연스럽게 깨닫게 될 것이다.
 
+* 앱 서명은 [공개 키 암호 방식](https://ko.wikipedia.org/wiki/%EA%B3%B5%EA%B0%9C_%ED%82%A4_%EC%95%94%ED%98%B8_%EB%B0%A9%EC%8B%9D)을 따라 동작한다.
+
 ## 2️⃣ 앱에 서명하는 방법
 
 * 2018 Google I/O에서는 Google Play에 앱을 업로드하기 위한 새로운 방법으로 Dynamic Delivery라는 모델을 제시했다.
@@ -205,15 +207,3 @@ categories: [안드로이드]
         * <img width="375" alt="11" src="https://user-images.githubusercontent.com/31889335/104139722-b6db1680-53f0-11eb-9569-a5c60482099f.png">
 
     3. __이렇게 서명된 APK를 Google Play에 업로드하여 출시하면 된다.__
-
-
-
-
-        
-
-
-        
-
-
-
-> app-build-publish 포스팅에 이 포스팅 링크 걸기

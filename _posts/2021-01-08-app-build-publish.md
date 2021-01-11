@@ -75,7 +75,7 @@ categories: [안드로이드]
 
     * 앱 빌드에 관해서는 [이 블로그의 다른 포스팅 - 앱 빌드](https://choheeis.github.io/newblog//articles/2021-01/app-build-run) 을 참고하자.
 
-    * 앱 서명에 관해서는 [이 블로그의 다른 포스팅 - 앱 서명]()을 참고하자.
+    * 앱 서명에 관해서는 [이 블로그의 다른 포스팅 - 앱 서명](https://choheeis.github.io/newblog//articles/2021-01/app-signing)을 참고하자.
 
 3. __출시할 수 있도록 앱에 사용되는 리소스 최종 점검하기__
 
