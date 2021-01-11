@@ -57,6 +57,10 @@ categories: [안드로이드]
 
         * [pakage 이름에 관한 참고 문서](https://developer.android.com/guide/topics/manifest/manifest-element#package)
 
+    * 앱 버전 설정하기
+
+        * 앱 버전 설정에 관해서는 [이 블로그의 다른 포스팅 - 앱 버전 설정하기](https://choheeis.github.io/newblog//articles/2021-01/app-version)에서 확인하자.
+
     * 다양한 기기와 호환 가능한지 점검하기
 
         * [Android Developer 도큐먼트 - 화면 호환성 overview](https://developer.android.com/guide/practices/screens_support#screen-independence)를 참고하여 여러 화면에 대응할 수 있는 앱을 개발하는 것이 좋다.(사용자는 다양한 화면 크기의 디바이스를 사용하기 때문!)
@@ -71,6 +75,8 @@ categories: [안드로이드]
 
     * 앱 빌드에 관해서는 [이 블로그의 다른 포스팅 - 앱 빌드](https://choheeis.github.io/newblog//articles/2021-01/app-build-run) 을 참고하자.
 
+    * 앱 서명에 관해서는 [이 블로그의 다른 포스팅 - 앱 서명]()을 참고하자.
+
 3. __출시할 수 있도록 앱에 사용되는 리소스 최종 점검하기__
 
     * 이미지, 멀티미디어 파일, 그래픽 등 앱에 사용되는 모든 리소스가 앱 자체 리소스에 포함되거나 프로덕션 서버 저장소에 저장되어 있는지 꼼꼼히 확인해야 한다.
@@ -83,7 +89,7 @@ categories: [안드로이드]
 
 5. __출시 버전의 앱을 테스트 기기에 배포 후, 최종 테스트하기__
 
-    * 앱을 Google Play나 마켓에 배포하기 전에, 1대 이상의 디바이스 기기와 테블릿에서 출시 버전의 앱을 철저히 테스트해야 한다.
+    * 앱을 Google Play나 마켓에 배포하기 전에, 1대 이상의 디바이스 기기와 테블릿에서 출시 버전의 앱을 철저히 테스트해야 한다.(생성한 APK를 테스트 기기에 설치)
 
     * UI 요소의 크기가 올바르게 보이는지 확인
 
