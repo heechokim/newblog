@@ -38,17 +38,19 @@ layout: default
   <article class="post-content">
     {{ content }}
   </article>
-</div>
 
-<!-- {% if site.owner.disqus-shortname and page.comments == true %} -->
-<div id="disqus_thread">
   <script src="https://utteranc.es/client.js"
   repo="choheeis/blog-comments"
   issue-term="pathname"
   theme="github-light"
   crossorigin="anonymous"
   async>
-</script>
+  </script>
 </div>
-<!-- {% include disqus.html %} -->
-<!-- {% endif %} -->
+
+<!-- {% if site.owner.disqus-shortname and page.comments == true %} -->
+<div id="disqus_thread">
+  
+</div>
+<!-- {% include disqus.html %}
+{% endif %} -->
