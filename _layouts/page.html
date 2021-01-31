@@ -14,15 +14,7 @@ layout: default
   </div><!-- end page content -->
 
 
-  <!-- {% if site.owner.disqus-shortname and page.comments == true %} -->
-  <div id="disqus_thread">
-    <script src="https://utteranc.es/client.js"
-        repo="choheeis/blog-comments"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-    </script>
-  </div>
-  <!-- {% include disqus.html %} -->
+  {% if site.owner.disqus-shortname and page.comments == true %}
+  <div id="disqus_thread"></div>
+  {% include disqus.html %}
   {% endif %}
