@@ -150,8 +150,9 @@ a.read-more {
 }
 .post-image-feature {
   margin-bottom: 40px;
+  width: auto;
   .feature-image {
-    width: 40%;
+  
     max-height: 500px;
   }
 }
