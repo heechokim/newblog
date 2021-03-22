@@ -103,9 +103,30 @@ categories: [안드로이드]
  
     * 또한 ListView에 보여질 데이터가 바뀐 경우, __기존의 ListView의 Adapter는 데이터가 변경되었다는 사실만 알 수 있을 뿐 구체적으로 어떤 데이터가 변경되었는지 인식할 수 없었습니다.__ 예를 들어, 사용자의 눈에 보이고 있는 아이템 뷰 중 세 번째 아이템 뷰에 연결된 데이터가 어떠한 처리에 의해 바뀌게 되면 Adapter는 데이터가 바뀌었다는 사실만 알 뿐 몇 번째 아이템 뷰에 연결된 데이터를 바꿔야 하는지는 알 수 없었습니다. 따라서 세 번째 아이템 뷰의 데이터를 바꾸기 위해 모든 아이템 뷰에 데이터를 다시 연결해야 했습니다. 이러한 문제는 애니메이션 처리 또한 더욱 어렵게 했습니다.
 
-    * 이렇게 다양한 곳에서 문제점이 등장하기 시작하자 Google Android API 팀은 기존 ListView가 가지고 있던 문제점들을 해결한 새로운 API인 RecyclerView를 개발하게 된 것입니다. RecyclerView는 ListView가 가지고 있던 실수와 문제들이 또 다시 반복되지 않도록 철저히 구현되었습니다.
+    * 이렇게 다양한 곳에서 문제점이 등장하기 시작하자 Google Android API 팀은 기존 ListView가 가지고 있던 문제점들을 해결한 새로운 API인 RecyclerView를 개발하게 된 것입니다. RecyclerView는 ListView가 가지고 있던 실수와 문제들이 또 다시 반복되지 않도록 철저히 구현되었습니다. Google I/O 발표에 따르면 'Google Android API 개발 팀은 ListView를 통해 기존 ListView 설계에 존재했던 실수들을 깨닫게 되었다' 라고 말하면서 이 실수들을 다시는 반복하지 않고자 RecyclerView를 개발하게 되었다고 합니다.
 
 * __RecyclerView의 내부 동작__
 
-    > 이어서 작성 중에 있습니다 :) 조금만 기다려 주세요~
+    * RecyclerView의 내부 아키텍처는 __컴포넌트(Componenet) 기반 아키텍처__ 입니다.(컴포넌트 기반 아키텍처에 대해 궁금하다면 아래 내용을 조금 더 읽어봅시다!)
 
+    * ![09](https://user-images.githubusercontent.com/31889335/111988900-73212d80-8b54-11eb-97ca-621a242dc35b.png)
+
+    * (위 그림 참고) RecyclerView 내부 아키텍처를 구성하는 컴포넌트 중 __Layout Manager__, __Item Animator__, __Adapter__ 라는 3가지 컴포넌트가 가장 중요합니다. Layout Manager는 Item View를 올바른 위치에 배치해주는 컴포넌트이고, Item Animator는 Item View의 애니메이션을 담당하는 컴포넌트 입니다. Adapter는 Item View를 제공해주는 컴포넌트 입니다. 이 3가지 컴포넌트가 적절하게 상호작용하여 Item View를 RecyclerView(목록형 레이아웃)안에 배치해줍니다.
+
+    * 이렇게 RecyclerView, Layout Manager, Item Animator, Adapter 등의 컴포넌트가 서로 상호작용하여 하나의 목록형 레이아웃을 동작하게끔 만들기 때문에 RecyclerView 내부 아키텍처를 '컴포넌트 기반 아키텍처'라고 부릅니다.
+
+## 2️⃣ RecyclerView의 내부 동작을 자세히 알아보자~
+
+* __Layout Manager가 뭘까?__
+
+    * ![10](https://user-images.githubusercontent.com/31889335/111990090-f4c58b00-8b55-11eb-9461-f8f582a7320a.png)
+
+    * (위 그림 참고) Layout Manager는 목록형 레이아웃의 모습을 __선형(Linear)__ 으로 구성할 수 있도록 또는 __격자형(Grid)__ 으로 구성할 수 있도록 또는 __엇갈린 격자형(Staggerd Grid)__ 으로 구성할 수 있게 해주는 컴포넌트입니다.
+
+    * 즉, Layout Manger는 RecyclerView의 모양을 만드는 부분을 책임지고 RecyclerView 모양에 따라 ItemView를 적절한 위치에 배치하는 작업을 담당합니다. Layout Manager에게 이러한 책임을 부여했기 때문에 RecyclerView 본인은 자기 자신이 선형 모양이 될지, 격자형 모양이 될지, 엇갈린 격자형 모양이 될지에 대한 정보는 알고 있지 않고, 각 ItemView가 어느 위치에 놓여야 하는지에 대해서도 관여하지 않습니다.
+
+    * ![11](https://user-images.githubusercontent.com/31889335/111997193-22aecd80-8b5e-11eb-9e06-5355fa2ac121.png)
+
+    * (위 그림 참고) 만약 유저가 RecyclerView를 스크롤하고 있는 상황이라면 어떻게 동작할까요? RecyclerView는 유저의 손가락(스크롤 인식)과만 상호작용 합니다. 만약 Linear 모양의 RecyclerView가 존재하고 유저가 목록을 더 보기 위해 위로 스크롤했다고 가정해봅시다. 이러한 경우, RecyclerView는 유저 손가락과의 상호작용의 결과로 새로운 ItemView를 보여줘야 한다는 것을 인식합니다. 하지만 ItemView를 어디에 배치해야 할 지에 관해서는 RecyclerView가 알고 있는 것이 아니라 Layout Manager가 알고 있기 때문에 Layout Manager에게 스크롤되었다고 알립니다. 스크롤 알림을 받은 Layout Manager는 적절한 위치(이 상황에서는 목록 아래에 새로운 ItemView 추가)에 데이터가 연결된 ItemView를 배치합니다. 즉, Layout Manager가 ItemView를 배치할 순간에는 데이터가 ItemView에 연결되어 있는 상태입니다.
+
+    > 조금만 기다려주세요 열심히 공부 중입니다 :)
