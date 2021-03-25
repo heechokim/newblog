@@ -118,4 +118,14 @@ categories: [thinking]
 
 <img src="https://user-images.githubusercontent.com/31889335/110487418-e8423b00-8130-11eb-94b9-fb977302050f.jpeg" width="300">
 
+최종 면접 보고 10일이 지나서 결과 메일을 받았다! 두구 두구.... 과연?
+
+![06](https://user-images.githubusercontent.com/31889335/112430248-38e8a380-8d81-11eb-9e96-9799c1f5e353.png)
+
+10일 동안 속으로 온갖 생각을 다하며 초조하게 기다렸는데 합격이라니!! 대박~~!!! 취뽀했다 😆
+
+흐허ㅠㅠ 진짜 겁나 잘하고 멋있는 안드로이드 개발자가 될테야!! ㅠㅠ
+
 # 끝!
+
+마지막 수정일 : 2021/03/25
