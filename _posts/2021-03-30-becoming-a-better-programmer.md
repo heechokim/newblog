@@ -201,10 +201,9 @@ categories: [books]
 
     val isCheck: Boolean // 선언 부분
     isCheck = true       // 정의 부분
-
     ~~~
 
-* 변수 선언 부분과 정의 부분을 같은 위치에 쓰자. 
+* (위 코드 참고) 변수 선언 부분과 정의 부분을 같은 위치에 쓰자. 
 
 > 조금씩 읽는 중..!
 
