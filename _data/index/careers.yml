@@ -1,8 +1,18 @@
 # careers section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name: NAVER WEBTOON 입사
+  link:
+  date: 2021.07
+  job: Android Developer
+
+- name: NAVER WEBTOON 동계 인턴
+  link:
+  date: 2021.01 - 2021.02
+  job: Android Developer
+
 - name: 홀로테크 인턴
   link:
-  date: January 2019 - April 2019
+  date: 2019.01 - 2019.04
   job: Android Developer
 
 - name: 외주 - 모교 총동문회 사이트 관리(2개월)

@@ -1,8 +1,8 @@
 # activitys section data
 # if you don't have language feature(language.yml is empty), ignore "i18n" items
-- name: NAVER WEBTOON 동계 인턴
+- name: 우리은행 블루아워 온택트 해커톤
   link: 
-  date: 2021
+  date: 2021.05
   job: Android Developer
 
 - name: 한화 드림인 iOS 아카데미 1기
@@ -15,29 +15,29 @@
   date: 2020.06 - 2020.11
   job: React Web Developer
 
-- name: Prography 6기
+- name: Prography 6기/6.5기
   link: http://prography.org/
-  date: 2020.04 - 2020.07
+  date: 2020.04 - 2020.11
   job: Android Developer
 
 - name: NAVER AI Burning Day 해커톤 출전
   link: https://campaign.naver.com/aihackathon_ai_burning/
-  date: 2020
+  date: 2020.02
   job: Android Developer
 
 - name: IT 창업 동아리 SOPT 25기 수료
   link: http://sopt.org/wp/
-  date: 2019
+  date: 2019.07 - 2020.01
   job: Android Developer
 
 - name: 2019 스마트 서울 모바일 앱 공모전 출전
   link: https://www.seoulappcontest.org/
-  date: 2019
+  date: 2019.09
   job: Android Developer
 
 - name: AWSkrug University Student Group 3기
   link: https://www.facebook.com/ausgkr/
-  date: 2019 - 2020
+  date: 2019.07 - ing
   job: Android Developer
 
 - name: 한이음 공모전 출전
