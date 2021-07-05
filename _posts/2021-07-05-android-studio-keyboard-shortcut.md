@@ -28,7 +28,7 @@ categories: [안드로이드]
 
 * __command + shift + f__ 단축키 누르기~
 
-* <img width="400" alt="스크린샷 2021-07-05 오후 11 24 17" src="https://user-images.githubusercontent.com/31889335/124486056-2d792f80-dde8-11eb-8d3a-9bb3d8a2bd62.png">
+* <img width="500" alt="스크린샷 2021-07-05 오후 11 24 17" src="https://user-images.githubusercontent.com/31889335/124486056-2d792f80-dde8-11eb-8d3a-9bb3d8a2bd62.png">
 
 ## 2️⃣ 프로젝트 내에서 원하는 파일 찾기<a id="2"></a>
 
@@ -36,7 +36,7 @@ categories: [안드로이드]
 
 * 그럴 땐 __shift 두번 누르기__ ~
 
-* <img width="500" alt="스크린샷 2021-07-05 오후 11 28 20" src="https://user-images.githubusercontent.com/31889335/124486589-b728fd00-dde8-11eb-8b46-6833eab2d430.png">
+* <img width="700" alt="스크린샷 2021-07-05 오후 11 28 20" src="https://user-images.githubusercontent.com/31889335/124486589-b728fd00-dde8-11eb-8b46-6833eab2d430.png">
 
 * (위 그림 참고) 검색창에 파일 이름 검색하면 바로 나옴!
 
@@ -44,7 +44,7 @@ categories: [안드로이드]
 
 * 현재 내가 보고 있는 파일이 Android Studio 왼쪽에 보이는 프로젝트 구조 내에서 어디에 위치하는지 확인하고 싶다면?
 
-* <img width="500" alt="04" src="https://user-images.githubusercontent.com/31889335/124487012-2868b000-dde9-11eb-97b5-eead50e3c7b5.png">
+* <img width="700" alt="04" src="https://user-images.githubusercontent.com/31889335/124487012-2868b000-dde9-11eb-97b5-eead50e3c7b5.png">
 
 * (위 그림 참고) 빨간 박스 부분 클릭 (이거에 대응하는 단축키가 option + F1이라는데.. 왜 내 맥북에선 option + F1이 안 먹지)
 
@@ -52,7 +52,7 @@ categories: [안드로이드]
 
 * 여러 파일들 이것 저것을 열다보면 여러 폴더들이 열려있게 된다. 그럼 Android Studio의 왼쪽에 보이는 프로젝트 구조가 정리가 안 되어 있게 되는데 이것을 한 번에 원상복귀할 수 있다.
 
-* <img width="327" alt="스크린샷 2021-07-05 오후 11 44 48" src="https://user-images.githubusercontent.com/31889335/124488598-007a4c00-ddeb-11eb-9762-cedaae29660f.png">
+* <img width="400" alt="스크린샷 2021-07-05 오후 11 44 48" src="https://user-images.githubusercontent.com/31889335/124488598-007a4c00-ddeb-11eb-9762-cedaae29660f.png">
 
 * (위 그림 참고) __빨간 박스 부분 클릭__ 하거나 __command + -__ 단축키 누르기!
 
