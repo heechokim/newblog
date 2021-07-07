@@ -157,7 +157,7 @@ categories: [kotlin]
 
 * (위 코드 참고) 코틀린 Enum Class는 자체적으로 위 4가지 기능을 제공한다.
   
-* __EnumClass.values(): Array<EnumClass>__ 
+* __EnumClass.values(): Array<EnumClass>__
   
   * ~~~kotlin
     fun main() {
