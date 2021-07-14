@@ -12,7 +12,8 @@ categories: [kotlin]
 > __목차__  
 > [0. 프롤로그](#0)  
 > [1. object expressions 와 object declarations 구분하기](#1)  
-> [2. What is object expressions?](#2)
+> [2. What is object expressions?](#2)  
+> [3. What is object declarations?](#3)
 
 
 
@@ -93,6 +94,11 @@ categories: [kotlin]
 
 * (위 코드 참고) XXOnXXXListener() 라는 메소드를 호출할 때 인자로 특정 인터페이스를 구현한 객체를 넘겨줘야 하는 경우가 많은데 보통 이럴 때 object expressions을 사용한다. (람다로 대체할 수도 있긴 하지만..) XXOnXXXListener() 메소드를 호출하는 코드라인에서 인자로 전달하려는 목적으로 단 한번만 구현하면 되기 때문이기도 하고, 해당 인터페이스를 구현한 클래스를 더 이상 프로젝트 다른 곳에서 재사용하지도 않기 때문에 익명 클래스를 만들어 구현하는 것! (예를 들어, 텍스트 뷰를 클릭한 결과로 실행되어야 하는 작업은 모든 텍스트 뷰에서 동일하지 않을 것이기 때문에.. 각각 다른 텍스트 뷰의 클릭 리스너를 호출하는 순간 순간마다 각기 다른 작업을 실행하는 코드를 매번 구현해야 하기 때문이다!)
 
+## 3️⃣ What is object declarations?<a id="3"></a>
+
+* 코틀린에서 지원하는 __object declarations는 [싱글톤 패턴](https://en.wikipedia.org/wiki/Singleton_pattern)을 패턴을 사용해서 싱글톤을 선언해야하는 것을 쉽게 할 수 있도록 도와주는 것__ 이다.
+
 # 끝 아님~
 
 이어서 작성 중입니다 :)
+싱글톤 패턴 자세히 공부 후 이어서 작성하기!
