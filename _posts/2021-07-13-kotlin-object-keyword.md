@@ -96,9 +96,80 @@ categories: [kotlin]
 
 ## 3️⃣ What is object declarations?<a id="3"></a>
 
-* 코틀린에서 지원하는 __object declarations는 [싱글톤 패턴](https://en.wikipedia.org/wiki/Singleton_pattern)을 패턴을 사용해서 싱글톤을 선언해야하는 것을 쉽게 할 수 있도록 도와주는 것__ 이다.
+* 코틀린에서 지원하는 __object declarations는 소프트웨어 디자인 패턴 중 하나인 [싱글톤 패턴](https://en.wikipedia.org/wiki/Singleton_pattern)을 만드는 작업을 쉽게 할 수 있도록 도와주는 것__ 이다.
+
+* 싱글톤 패턴을 간단하게만 설명하자면.. 객체 지향 언어에서는 필요한 클래스들을 만들어놓고 실제로 사용할 때는 클래스에서 정의한 것을 토대로 객체라는 것을 만들어서 메모리에 할당한다. (즉, 객체는 클래스의 인스턴스(instance)이다.) 이 때, 똑같은 클래스를 토대로 한 객체를 여러 개 생성한다면 각 객체는 모두 따로 따로 메모리 공간을 차지하게 된다.(즉, 생성된 객체 수 만큼 따로 따로 메모리에 할당된다는 것!) 하지만 싱글톤 패턴으로 클래스를 만들게 되면 해당 클래스의 객체는 여러 번 생성할 수 없고 단 한 번만 생성할 수 있다. 따라서 메모리에 한 번만 할당되게 되는 것이다.
+
+* 코틀린에서는 싱글톤 패턴이 적용되는 클래스를 쉽게 정의할 수 있도록 지원하고 있는데 이 때 사용되는 키워드가 __object__ 이고, 이러한 행위를 __object declaration__ 이라고 부른다. 앞서 설명한 object expressions도 object 키워드를 사용하기 때문에 조금 헷갈릴 수 있지만, 서로 이름이 다른 것처럼 역할도 다르다! (object expression과 object declaration 구분하기!)
+
+* ~~~kotlin
+  // 코틀린에서 싱글톤 패턴이 적용된 클래스 만들기
+  object MySingleTon {
+      fun printName() {
+          println("Kimchohee")
+      }
+  }
+  ~~~
+  
+* (위 코드 참고) class 키워드를 사용하여 클래스를 정의하는 모습과 비슷하지만 class 키워드 대신 object라는 키워드를 붙여서 클래스를 생성해주면 싱글톤 패턴이 적용된 클래스가 생성된다!
+
+* ~~~java
+  // 자바에서 싱글톤 패턴이 적용된 클래스 만들기
+  public class MySingleTon {
+      private static MySingleTon INSTANCE;
+      
+      private MySingleTon() { }
+      
+      public static MySingleTon getInstance() {
+          if (INSTANCE == null) {
+              INSTANCE = new MySingleTon();
+          }
+          return INSTANCE;
+      }
+      
+      public void printName() {
+          System.out.println("Kimchohee");
+      }
+  }
+  ~~~
+  
+* (위 코드 참고) 자바로 싱글톤 패턴을 만들기 위해서는 위와 같은 코드를 작성해야 한다. INSTANCE라는 static 변수를 만들어 놓고 null 체크를 하는 방식이다. 만약 INSTANCE가 null이 아니면(즉, 단 한 번이라도 객체가 생성된 적이 있으면) 기존의 객체를 반환해줌으로써 새로운 객체가 여러 번 생성되는 것을 막는 방식으로 싱글톤 패턴을 구현한다.(사실 자바에서 싱글톤 패턴을 구현하는 방법은 다양하다! 위 코드는 다양한 방법 중 null 체크를 통해 싱글톤 패턴을 구현하는 방법이다.)
+
+* 하지만 코틀린에서는 object 키워드를 사용해서 클래스를 정의하기만 하면 바로 해당 클래스는 싱글톤 패턴이 적용되도록 코틀린 언어 내부적으로 구현되어 있다! 따라서 자바보다 코틀린에서 더 쉽게 싱글톤 패턴을 구현할 수 있는 것이다!!
+
+* 딱 봐도 싱글톤 패턴을 만들 때 사용하는 object 키워드는 "수식"이 아니라 "(클래스)정의"를 하는 모습을 하고 있으므로 object declaration이라는 이름으로 부르는 것 같다. 
+
+* ~~~kotlin
+  // 코틀린에서 MySingleTon 클래스의 객체 사용하기
+  fun main() {
+      val mySingleTon = MySingleTon
+      mySingleTon.printName()// Kimchohee 출력됨
+  }
+  
+  // 자바에서 MySingleTon 클래스의 객체 사용하기
+  public static void main(String[] args){
+      MySingleTon mySingleTon = MySingleTon.getInstance();
+      mySingleTon.printName(); // Kimchohee 출력됨
+  }
+  ~~~
+  
+* (위 코드 참고) 코틀린에서 싱글톤 패턴이 적용된 클래스의 객체를 생성하고 사용하기 위해서는 해당 클래스 이름 자체를 사용하면 된다.
+
+* ~~~kotlin
+  object MySingleTon: SuperClass() {
+      override superExample() { 
+          //...
+      }
+
+      fun printName() {
+          println("Kimchohee")
+      }
+  }
+  ~~~
+  
+* (위 코드 참고) object 키워드를 사용하여 싱글톤 패턴이 적용된 클래스를 만들 때는 부모 클래스 상속도 가능하다.
+
 
 # 끝 아님~
 
-이어서 작성 중입니다 :)
-싱글톤 패턴 자세히 공부 후 이어서 작성하기!
+계속 이어서 작성 중입니다 :)
