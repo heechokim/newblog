@@ -150,7 +150,7 @@ categories: [kotlin]
 
 * ~~~kotlin
   fun EnumClass.values(): Array<EnumClass>
-  fun EnumClass.valueOf(value: String): EnumClass
+  fun EnumClass.valueOf(value: String): EnumClass객체
   val EnumClass객체.name
   val EnumClass객체.ordinal // original 아님 ㅋㅋ,,,
   ~~~
