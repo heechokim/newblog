@@ -185,7 +185,7 @@ categories: [kotlin]
   
   * (위 코드 참고) main 함수를 실행시킨 결과는 우유 샀음 개행 아이스크림 샀음이다! 즉, values()는 해당 Enum Class에 선언된 객체들을 배열로 반환해주는 메소드임을 알 수 있다.
   
-* __EnumClass.valueOf(value: String): EnumClass__
+* __EnumClass.valueOf(value: String): EnumClass객체__
   
   * ~~~kotlin
     fun main() {
