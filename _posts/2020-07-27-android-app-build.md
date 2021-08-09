@@ -72,10 +72,21 @@ categories: [안드로이드]
 
   * Build Variants는 앞에서 설명한 Build Type과 Product Flavor을 섞은, 말그대로 '빌드 변형' 이다. 예를 들어, 빌드 타입에 debug와 release가 정의되어 있고, 제품 버전에 free(무료)와 paid(유료)가 정의되어 있을 때 만들 수 있는 Build Variant는 'debugFree', 'debugPaid', 'releaseFree', 'releasePaid' 이렇게 4가지 이다. 따라서 무료 버전의 앱을 debug용으로 빌드하고 싶을 때는 debugFree 빌드 변형을 사용하여 빌드하면 된다.
 
-* __4. Manifest entries(메니페스트 항목)__
+* __4. Manifest entries(메니페스트 항목들)__
 
-  * 여기서부터 이어서~~~
+  * 여러 개의 Build Variant를 구성해야 하는 경우, 각 Build Variant마다 적용될 manifest 파일의 항목들을 다르게 해야할 때도 있다. 예를 들어, 각 Build Variant 별로 application name을 다르게 해야 하거나 minimumSdkVersion 값이나 targetSdkVersion 값을 다르게 해야 할 수도 있다. (application name, minimumSdkVersion, targetSdkVersion 등은 manifest 파일에서 정의하는 항목들임) 이런 경우, [다중 매니페스트 파일 구성 문서](https://developer.android.com/studio/build/manifest-merge) 을 참고하여 Build Variant 별로 폴더를 생성하고 각 빌드 변형마다 적용될 manifest 파일을 생성해주면 된다. 그 다음, 새로 생성한 manifest 파일 안에 각 빌드 변형에 적용되어야 하는 manifest 항목을 정의해주면 된다. 이 항목들은 기존 manifest 파일의 항목을 재정의(override)하는 것과 동일하고, 기존의 manifest 파일과 병합(merge)되어 해당 빌드 변형으로 빌드 시에 적용된다.
 
+* __5. Dependencies(종속 항목들)__
+
+  * Android 빌드 시스템은 프로젝트 파일 내 선언된 종속 항목들과 원격 저장소(google(), mavenCentral() 등)의 종속 항목들을 연결하여 관리한다. 즉, 빌드 시 자동으로 원격 저장소에서 프로젝트 파일 내 선언된 종속 항목들의 바이너리 패키지들을 검색하고 다운로드하여 프로젝트 디렉토리에 복사한다. 
+
+* __6. Signing(서명)__
+
+  * Android 빌드 시스템은 빌드 시 서명 작업을 자동으로 수행한다. Build Configuration(빌드 구성) 을 통해 서명에 필요한 세팅을 Build Type 마다 다르게 구성해주면 빌드 시스템은 이를 참고하여 서명한다. debug 버전으로 빌드 시 기본으로 생성된 debug용 키와 인증서로 서명 작업을 수행하기 때문에 따로 비밀번호를 묻는 창이 뜨지 않는다. release 버전으로 빌드하려면 release 용 서명 구성을 명시적으로 작성해야 하고, 작성되어 있지 않으면 빌드 시스템은 release 버전에 서명하지 않는다. 또한, release용 키는 [앱 서명 문서](https://developer.android.com/studio/publish/app-signing)를 참고하여 개발자가 직접 생성해야 한다.
+
+* __7. Code and Resource Shrinking(코드와 리소스 축소 작업)__ 
+
+  * 여기서부터 이어서~~
 
 
 
