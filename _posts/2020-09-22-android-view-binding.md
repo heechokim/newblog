@@ -9,7 +9,7 @@ categories: [안드로이드]
 > [Android Developers - View Binding](https://developer.android.com/topic/libraries/view-binding)  
 > [Youtube Android Developers - Replace findViewById with view binding](https://www.youtube.com/watch?v=W7uujFrljW0)  
 > [Medium Android Developers - Now in Android #4, view binding](https://medium.com/androiddevelopers/now-in-android-4-23b0d6cdea40)  
-> [Medium Android Developers - Use view binding to replace findViewById](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)
+> [Medium Android Developers - Use view binding to replace findViewById](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)  
 > [Github - ViewBindingSample](https://github.com/android/architecture-components-samples/tree/master/ViewBindingSample)
 >
 > __목차__  
