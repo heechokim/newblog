@@ -27,19 +27,19 @@ categories: [kotlin]
 
 ## 1️⃣ object expressions 와 object declarations 구분하기<a id="1"></a>
 
-* [kotlin 공식 문서의 Object expressions and declarations](https://kotlinlang.org/docs/object-declarations.html)을 읽어보니 __Object expressions__ 와 __Object declarations__ 로 나누어서 설명하고 있다.
+* [kotlin 공식 문서의 Object expressions and declarations](https://kotlinlang.org/docs/object-declarations.html)을 읽어보니 __Object expressions__ 와 __Object declarations__ 로 나누어서 설명하고 있음
 
-* 먼저 이 두 용어를 한글 번역해보면 Object expression은 "객체 식" 이고 Object declaration은 "객체 선언" 이다.(객체 선언은 대충 감이 잡히지만 객체 식은 뭘까? 알게 되겠지..)
+* 먼저 이 두 용어를 한글 번역해보면 Object expression은 "객체 식(표현식)" 이고 Object declaration은 "객체 선언" 임
 
 * __object expressions와 object declarations의 공통점__
 
-  * 예를 들어, 개발을 하다가.. A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스의 객체를 생성해야 할 경우가 있을 수도 있다. 이런 경우, B 클래스를 명시적으로 새로 작성하는 건 비효율적일 수 있다. 왜? 거의 비슷한 코드를 하나 더 작성하는 것이니까! 그럼 B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
+  * 예를 들어, 개발을 하다가.. A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스를 작성해야 할 경우가 있을 수 있음. 이런 경우, 거의 비슷한 코드를 하나 더 작성하는 꼴이 되는 B 클래스를 작성하는 건 비효율적일 수 있음. 그럼 B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
 
-  * 코틀린은 딱! 이런 상황에서 사용할 수 있도록 object expressions와 object declarations라는 것을 제공한다! (일단, 이 두 개가 뭔진 모르겠지만 요런 상황에서 사용할 수 있다는 공통점이 있구나~ 라고 생각하고 넘어가자)
+  * 코틀린은 딱 이런 상황에서 사용할 수 있도록 object expressions와 object declarations라는 것을 제공함 (일단, 이 두 개가 뭔진 모르겠지만 요런 상황에서 사용할 수 있다는 공통점이 있구나~ 라고 생각하고 넘어가자)
 
 ## 2️⃣ What is object expressions?<a id="2"></a>
 
-* 코틀린에서 지원해주는 __object expressions라는 것은 object 키워드를 사용하여 익명 클래스의 객체를 생성해주는 것이다.__ 바로 아래 코드를 보면 무슨 말인지 한 방에 이해될 것! (익명 클래스는 class 키워드를 사용하여 명시적으로 이름과 함께 선언된 클래스가 아닌, 이름 없는 클래스를 말한다.)
+* 코틀린에서 지원하는 __object expressions라는 것은 object 키워드를 사용하여 익명 클래스의 객체를 생성해주는 것임.__ 바로 아래 코드를 보면 무슨 말인지 한 방에 이해될 것! (익명 클래스는 class 키워드를 사용하여 클래스 이름을 명시적으로 작성하는 클래스가 아니라, 이름 없는 클래스를 말함)
 
 * ~~~kotlin
   fun main() {
@@ -55,11 +55,13 @@ categories: [kotlin]
   }
   ~~~
   
-* (위 코드 참고) object 키워드 뒤에 나오는 코드를 보면 멤버 변수가 LastName과 FirstName이고, 멤버 메소드로 toString() 를 가지는 익명 클래스가 작성되어 있다! 이런 식으로 익명 클래스를 작성해주고 그 앞에 object 키워드를 붙여주면 해당 익명 클래스의 __객체가 바로 생성된다.__ 따라서 __object expressions라는 것은 익명 클래스를 객체화해주는 것!__ 이라고 쉽게 이해하면 될 듯하다.
+* <위 코드 참고> object 키워드 뒤에 나오는 코드를 보면 멤버 변수가 LastName과 FirstName이고, 멤버 메소드로 toString() 를 가지는 익명 클래스가 작성되어 있음을 알 수 있음. 이런 식으로 익명 클래스를 작성해주고 그 앞에 object 키워드를 붙여주면 그 시점에서 해당 익명 클래스의 __객체가 바로 생성됨.__ 
+
+* 즉, __object expressions라는 것은 익명 클래스를 선언한 시점에서 바로 객체화해주는 것!__ 이라고 쉽게 이해하면 될 듯?
 
 * <img width="700" alt="01" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
 
-* (위 그림 참고) 다시 한 번 보자. 위 코드는 object 키워드를 익명 클래스 앞에 붙여줌으로써 해당 익명 클래스의 객체를 바로 생성하고, 생성한 객체를 변수 yourName에 할당한 코드이다. 위 코드의 main 함수를 실행해보면 Your name is Kim Chohee가 출력된다!
+* <위 그림 참고> 다시 한 번 보자. 위 코드는 object 키워드를 익명 클래스 앞에 붙여줌으로써 해당 익명 클래스의 객체를 바로 생성하고, 생성한 객체를 변수 yourName에 할당한 코드임. 위 코드의 main 함수를 실행해보면 Your name is Kim Chohee가 출력됨!
 
 * 이렇게 특정 코드 라인에서 익명 클래스를 작성하고 이를 바로 객체로 만드는 경우는, 해당 익명 클래스를 프로젝트 내에서 여러번 재사용하지 않고 딱 한 번만 사용해야 하는 경우에 유용할 것이다.(ㅇㅈ!)
  
