@@ -18,7 +18,7 @@ categories: [안드로이드]
 > [1. What is View Binding?](#1)  
 > [2. view binding 의 장점](#2)  
 > [3. 자동으로 생성되는 binding class에 대해 집중적으로 알아보자!](#3)  
-> [4. <include> 태그로 정의되어 있는 뷰에도 view binding이 적용될까?](#4)  
+> [4. \<include\> 태그로 정의되어 있는 뷰에도 view binding이 적용될까?](#4)   
 > [5. Google에서 제공해주는 샘플 코드로 배우는 View Binding](#5)
 
 <br>
@@ -129,7 +129,7 @@ categories: [안드로이드]
   
 * (위 코드 참고) binding class에는 xml 파일에 정의되어 있고 ID가 존재하는 모든 뷰들의 참조값을 저장할 멤버 변수들이 선언된다. 따라서 개발자는 Activity나 Fragment 같은 클래스에서 binding class의 인스턴스를 생성한 후, 해당 binding class 내의 멤버 변수를 그냥 가져다 사용하기만 하면 된다. 또한, rootView라는 이름의 멤버 변수는 자동으로 항상 선언되는데 이 변수에는 해당 xml 파일에 존재하는 모든 뷰들 중 가장 top에 존재하는 뷰 객체의 참조값이 저장된다. 위에서 예시로 든 activity_main.xml을 예로 들면 ConstraintLayout이 root view이다.
   
-* binding class 안에는 __inflate()__ 라는 public static 멤버 메소드도 자동으로 정의된다. 이 메소드는 해당 레이아웃의 inflate 작업을 한 후 뷰 객체의 참조값들을 멤버 변수들에 저장한다. 그 후, binding class의 인스턴스를 생성하여 반환해주는 메소드이다.(안드로이드에서 inflate의 정의는 xml에 정의된 뷰들을 메모리에 객체화시키는 행위이다. 예를 들어 xml 파일에 <TextView> 태그로 정의되어 있는 어떤 textView는 [TextView](https://developer.android.com/reference/android/widget/TextView) 클래스의 객체로 생성되어야만 실제로 사용할 수 있게 된다. 즉, xml에 정의된 뷰들을 객체화해서 코드에서 사용할 수 있게 하는 행위가 inflate이다.) inflate() 메소드는 2가지 형태가 있는데 각각의 형태에 대해서와 언제 어떤 형태의 inflate() 메소드를 사용해야 하는지는 [여기](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)를 보면 알 수 있다.(링크 걸어놓은 문서에서 조금 아랫 부분에서 볼 수 있다ㅎㅎ)
+* binding class 안에는 __inflate()__ 라는 public static 멤버 메소드도 자동으로 정의된다. 이 메소드는 해당 레이아웃의 inflate 작업을 한 후 뷰 객체의 참조값들을 멤버 변수들에 저장한다. 그 후, binding class의 인스턴스를 생성하여 반환해주는 메소드이다.(안드로이드에서 inflate의 정의는 xml에 정의된 뷰들을 메모리에 객체화시키는 행위이다. 예를 들어 xml 파일에 \<TextView\> 태그로 정의되어 있는 어떤 textView는 [TextView](https://developer.android.com/reference/android/widget/TextView) 클래스의 객체로 생성되어야만 실제로 사용할 수 있게 된다. 즉, xml에 정의된 뷰들을 객체화해서 코드에서 사용할 수 있게 하는 행위가 inflate이다.) inflate() 메소드는 2가지 형태가 있는데 각각의 형태에 대해서와 언제 어떤 형태의 inflate() 메소드를 사용해야 하는지는 [여기](https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc)를 보면 알 수 있다.(링크 걸어놓은 문서에서 조금 아랫 부분에서 볼 수 있다ㅎㅎ)
   
 * binding class 안에는 __getRoot()__ 라는 public 멤버 메소드도 자동으로 정의되는데, 이 메소드는 해당 xml 파일의 root view 객체의 참조값을 반환한다. (root view는 xml 파일에 존재하는 모든 뷰들 중 가장 top에 존재하는 뷰이다.)
   
@@ -185,13 +185,13 @@ categories: [안드로이드]
     
 * (위 코드 참고) 위 코드에서 included_buttons.xml처럼 어떤 xml 파일에 \<include\> 태그로 끼어 들어가 있는 뷰도 존재할 수 있다. view binding은 모듈 내의 모든 xml 파일에 대해 binding class가 생성된다고 했으니, included_buttons.xml 파일에 대해서도 binding class가 생성될 것이다. (binding class의 이름은 IncludeButtonsBinding 이겠지)
     
-* ~~kotlin
+* ~~java
   // ActivityAwesomeBinding 클래스 예시
   public final class ActivityAwesomeBinding implements ViewBinding {
   ...
 
   @NonNull
-  public final IncludedButtonsBinding includes; // <include> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding 이다.
+  public final IncludedButtonsBinding includes; // \<include\> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding 이다.
   ~~
     
 * (위 코드 참고) 이 때 ActivityAwesomeBinding 클래스 내부에는 \<include\> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding으로 선언된다. 따라서 \<include\> 태그를 사용하여 어떤 xml 파일을 끼어넣고 싶은 경우 반드시 \<include\> 태그에 id 값을 할당해줘야 한다. 그래야 \<include\> 태그에 해당하는 뷰에 대해서도 view binding이 정상적으로 적용된다.
