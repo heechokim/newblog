@@ -190,8 +190,9 @@ categories: [안드로이드]
   public final class ActivityAwesomeBinding implements ViewBinding {
   ...
 
-  @NonNull
-  public final IncludedButtonsBinding includes; // \<include\> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding 이다.
+      @NonNull
+      public final IncludedButtonsBinding includes; // \<include\> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding 이다.
+  }
   ~~
     
 * (위 코드 참고) 이 때 ActivityAwesomeBinding 클래스 내부에는 \<include\> 태그의 id 값과 동일한 이름을 갖는 멤버 변수가 선언되고, 이 변수의 타입은 IncludeButtonsBinding으로 선언된다. 따라서 \<include\> 태그를 사용하여 어떤 xml 파일을 끼어넣고 싶은 경우 반드시 \<include\> 태그에 id 값을 할당해줘야 한다. 그래야 \<include\> 태그에 해당하는 뷰에 대해서도 view binding이 정상적으로 적용된다.
