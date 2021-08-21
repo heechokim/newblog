@@ -10,7 +10,7 @@ categories: [kotlin]
 >
 > __목차__  
 > [0. 프롤로그](#0)  
-> [1. object expressions 와 object declarations 구분하기](#1)  
+> [1. object expressions VS object declarations](#1)  
 > [2. What is object expressions?](#2)  
 > [3. What is object declarations?](#3)
 
@@ -24,20 +24,24 @@ categories: [kotlin]
 하지만 그동안 대충 구글링하여 짧은 순간 습득한 지식으로 이해한 후 사용했었는데..(으이구~) 좀 제대로 알고 사용하려는 목적으로 공부해본다..ㅎㅎ  
 (아! 그리고 object 키워드에 대해서 공부하게 된 가장 큰 목적은 companion object를 제대로 이해해보고자 시작하게 된 것이다..ㅋㅋㅋ)
 
-## ✅ object expressions 와 object declarations 구분<a id="1"></a>
+## ✅ object expressions VS object declarations<a id="1"></a>
 
-* [코틀린 공식 문서](https://kotlinlang.org/docs/object-declarations.html)을 읽어보니 object 키워드에 대한 설명을 \<Object expressions\> 와 \<Object declarations\> 두 가지로 나누어서 설명하고 있음
-* 한글 번역해보면 \<Object expression\>은 \<객체 표현식\> 이고 \<Object declaration\>은 \<객체 선언\>
-* __\<object expressions\>와 \<object declarations\>의 공통점__
-  * 개발을 하다 보면.. A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스를 작성해야 하는 경우가 있을 수 있다. 이런 경우, B 클래스를 새로 생성하게 되면 거의 비슷한 클래스를 하나 더 작성하는 꼴이 되고, 비효율적이다. B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
-  * 코틀린은 딱 이런 상황에서 사용할 수 있도록 object expressions와 object declarations라는 것을 제공한다.
+- `object` 키워드 사용법을 알려면 object expression 이랑 object declaration 라는 걸 구분할 수 있어야 함
+- `object` 키워드를 이 두 가지 모두에서 사용하기 때문
+- 용어 한글 번역
+  - object expression = 객체 표현식
+  - object declaration = 객체 선언
+- object expressions와 object declarations의 공통점
+  - 개발을 하다 보면 A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스를 작성해야 하는 경우가 있을 수 있다. 이런 경우, B 클래스를 만들면 A 클래스와 거의 비슷한 클래스를 하나 더 작성하는 꼴이 되어 비효율적이다.
+  - B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
+  - 코틀린은 딱 이런 상황에서 사용할 수 있도록 object expressions와 object declarations라는 것을 제공한다.
 
 ## ✅ What is object expressions?<a id="2"></a>
 
-* object expression은 `object` 키워드를 사용하여 익명 클래스의 객체를 생성해주는 녀석이다.
-* 익명 클래스 : 클래스를 작성할 때 클래스 이름이 명시적으로 작성되어 있지 않은 클래스. 즉, 이름이 없는 클래스
-* 바로 아래 코드를 보면 무슨 말인지 한 방에 이해될 것이다.
-* ~~~kotlin
+- object expression(객체 표현식)는 `object` 키워드를 사용하여 익명 클래스의 객체를 생성할 때 사용
+- 익명 클래스 = 클래스를 작성할 때 클래스 이름이 명시적으로 작성되어 있지 않은 클래스. 즉, 이름이 없는 클래스
+- 바로 아래 코드를 보면 무슨 말인지 한 방에 이해됨
+- ~~~kotlin
   fun main() {
       val yourName = object {
           val LastName = "Kim"
@@ -50,9 +54,9 @@ categories: [kotlin]
       println(yourName.toString())
   }
   ~~~
-* (위 코드 참고) object 키워드 뒤에 나오는 코드를 보면 멤버 변수가 LastName과 FirstName이고, 멤버 메소드로 toString() 를 가지는 익명 클래스가 작성되어 있음을 알 수 있음. 이런 식으로 익명 클래스를 작성해주고 그 앞에 object 키워드를 붙여주면 그 시점에서 해당 익명 클래스의 __객체가 바로 생성됨.__ 
-
-* 즉, __object expressions라는 것은 익명 클래스를 선언한 시점에서 바로 객체화해주는 것!__ 이라고 쉽게 이해하면 될 듯?
+- (위 코드 참고) `object` 키워드 뒤에 나오는 코드를 보면 LastName, FirstName라는 멤버 변수가 선언되어 있고, toString()라는 멤버 메소드를 가지는 익명 클래스가 작성되어 있음
+- 이런 식으로 익명 클래스를 작성하고 그 앞에 `object` 키워드를 붙여주면 그 시점에서 해당 익명 클래스의 __객체가 바로 생성됨__ 
+- 즉, object expression은 익명 클래스를 선언한 시점에서 바로 객체화해주는 것!
 
 * <img width="700" alt="01" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
 
