@@ -19,18 +19,16 @@ categories: [kotlin]
 
 <br>
 
-## 0️⃣ 프롤로그<a id="0"></a>
+## ✍🏻 프롤로그<a id="0"></a>
 
-코틀린으로 코드를 작성하다보면(저는 안드로이드 앱 개발을 코틀린으로 합니다아) __object__ 라는 키워드를 사용하게 되는 몇 가지 경우가 있다!  
+코틀린으로 코드를 작성하다보면(저는 안드로이드 앱 개발을 코틀린으로 합니다) __object__ 라는 키워드를 사용하게 되는 몇 가지 경우가 있다!  
 하지만 그동안 대충 구글링하여 짧은 순간 습득한 지식으로 이해한 후 사용했었는데..(으이구~) 좀 제대로 알고 사용하려는 목적으로 공부해본다..ㅎㅎ  
 (아! 그리고 object 키워드에 대해서 공부하게 된 가장 큰 목적은 companion object를 제대로 이해해보고자 시작하게 된 것이다..ㅋㅋㅋ)
 
-## 1️⃣ object expressions 와 object declarations 구분하기<a id="1"></a>
+## ✅ object expressions 와 object declarations 구분하기<a id="1"></a>
 
-* [kotlin 공식 문서의 Object expressions and declarations](https://kotlinlang.org/docs/object-declarations.html)을 읽어보니 __Object expressions__ 와 __Object declarations__ 로 나누어서 설명하고 있음
-
-* 먼저 이 두 용어를 한글 번역해보면 Object expression은 "객체 식(표현식)" 이고 Object declaration은 "객체 선언" 임
-
+* [코틀린 공식 문서](https://kotlinlang.org/docs/object-declarations.html)을 읽어보니 object 키워드에 대한 설명을 \<Object expressions\> 와 \<Object declarations\> 두 가지로 나누어서 설명하고 있음
+* 한글 번역해보면 \<Object expression\>은 \<객체 표현식\> 이고 \<Object declaration\>은 \<객체 선언\>
 * __object expressions와 object declarations의 공통점__
 
   * 예를 들어, 개발을 하다가.. A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스를 작성해야 할 경우가 있을 수 있음. 이런 경우, 거의 비슷한 코드를 하나 더 작성하는 꼴이 되는 B 클래스를 작성하는 건 비효율적일 수 있음. 그럼 B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
