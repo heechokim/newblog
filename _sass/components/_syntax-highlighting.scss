@@ -6,7 +6,7 @@
 pre, code {
   font-family: $font-family-monospace;
   color: #525252;
-  font-size: 1.5em;
+  font-size: 0.9em;
   background-color: #f8f8f8;
   font-size: ($font-size-base - 3);
 }
@@ -25,7 +25,7 @@ pre { // only apply for code blocks
   line-height: $base-line-height * 0.925;
   word-break: break-all;
   word-wrap: break-word;
-  border-radius: 0;
+  border-radius: 5;
   font-weight: normal;
 }
 pre code {
