@@ -6,12 +6,12 @@
 pre, code {
   font-family: $font-family-monospace;
   color: #525252;
-  font-size: 1em;
+  font-size: 0.9em;
   background-color: #313746;
+  border-radius: 5px;
 }
 code {
   color: #e96900;
-  border-radius: 10px;
   white-space: nowrap;
   background-color: #e8e8e8;
 }
@@ -44,7 +44,7 @@ pre code {
     position: relative;
   }
   pre code {
-    color: #525252;
+    color: #d3d3d3;
     &::before {
       content: attr(data-lang);
       position: absolute;
