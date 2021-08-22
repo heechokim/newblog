@@ -61,13 +61,13 @@ pre code {
     }
   }
   .hll { background-color: #ffffcc }
-  .c { color: #B0B2B0; font-style: italic } /* Comment */
+  .c { color: #999999; font-weight: bold } /* Comment */
   .err {  } /* Error */
-  .k { color: #AA22FF; font-weight: bold } /* Keyword */
+  .k { color: #F8C455; font-weight: bold } /* Keyword */
   .o { color: #666666 } /* Operator */
-  .cm { color: #B0B2B0; font-style: italic } /* Comment.Multiline */
-  .cp { color: #B0B2B0 } /* Comment.Preproc */
-  .c1 { color: #B0B2B0; font-style: italic } /* Comment.Single */
+  .cm { color: #999999; font-weight: bold } /* Comment.Multiline */
+  .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+  .c1 { color: #999999; font-weight: bold } /* Comment.Single */
   .cs { color: #B0B2B0; font-weight: bold } /* Comment.Special */
   .gd { color: #A00000 } /* Generic.Deleted */
   .ge { font-style: italic } /* Generic.Emph */
@@ -79,12 +79,12 @@ pre code {
   .gs { font-weight: bold } /* Generic.Strong */
   .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
   .gt { color: #0040D0 } /* Generic.Traceback */
-  .kc { color: #F99129; font-weight: bold } /* Keyword.Constant */
-  .kd { color: #F99129; font-weight: bold } /* Keyword.Declaration */
-  .kn { color: #F99129; font-weight: bold } /* Keyword.Namespace */
-  .kp { color: #AA22FF } /* Keyword.Pseudo */
-  .kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
-  .kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
+  .kc { color: #F8C455; font-weight: bold } /* Keyword.Constant */
+  .kd { color: #F8C455; font-weight: bold } /* Keyword.Declaration */
+  .kn { color: #F8C455; font-weight: bold } /* Keyword.Namespace */
+  .kp { color: #F8C455 } /* Keyword.Pseudo */
+  .kr { color: #F8C455; font-weight: bold } /* Keyword.Reserved */
+  .kt { color: #F8C455; font-weight: bold } /* Keyword.Type */
   .m { color: #666666 } /* Literal.Number */
   .s { color: #BB4444 } /* Literal.String */
   .na { color: #BB4444 } /* Name.Attribute */
@@ -92,9 +92,9 @@ pre code {
   .nc { color: #0000FF } /* Name.Class */
   .no { color: #880000 } /* Name.Constant */
   .nd { color: #AA22FF } /* Name.Decorator */
-  .ni { color: #999999; font-weight: bold } /* Name.Entity */
+  .ni { color: #C2C2C3; font-weight: bold } /* Name.Entity */
   .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-  .nf { color: #00A000 } /* Name.Function */
+  .nf { color: #EF8D49 } /* Name.Function */
   .nl { color: #A0A000 } /* Name.Label */
   .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
   .nt { color: #008000; font-weight: bold } /* Name.Tag */
