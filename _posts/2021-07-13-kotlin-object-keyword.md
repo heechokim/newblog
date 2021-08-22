@@ -11,10 +11,12 @@ categories: [kotlin]
 > __목차__  
 > [0. 프롤로그](#0)  
 > [1. object expression VS object declaration](#1)  
-> [2. object expression이 뭐예요?](#2) 
+> [2. object expression이 뭐예요?](#2)  
 > [3. object expression 더 알아보기](#3)   
 > [4. object declaration가 뭐예요?](#4)  
-> [5. object declaration 더 알아보기](#5) 
+> [5. object declaration 더 알아보기](#5)  
+> [6. companion object가 뭐예요?](#6)  
+> [7. companion object 더 알아보기](#7)
 
 
 
@@ -138,6 +140,7 @@ categories: [kotlin]
     - 즉, 생성된 객체 수 만큼 따로 따로 메모리에 할당됨
   - 하지만 `싱글톤 패턴` 으로 클래스를 만들어 놓으면 해당 클래스를 토대로 생성되는 객체는 여러 번 생성할 수 없음
   - 따라서 딱 한 번만 객체로 생성되어 메모리에 할당됨
+  - 싱글톤 패턴이 적용된 클래스의 객체를 여러 곳에서 사용하더라도 이 객체는 항상 같은 메모리 주소를 바라봄
 
 <br>
 
@@ -164,7 +167,23 @@ categories: [kotlin]
   - 자바에서는 싱글톤 패턴이 적용된 클래스를 만들기 위해서 위와 같은 코드를 작성해야 했음
   - INSTANCE라는 static 변수를 만들어 놓고 이 변수의 값을 null 체크하는 방식
   - 만약 INSTANCE가 null이 아니면(즉, 단 한 번이라도 객체가 생성된 적이 있으면) 기존의 생성되어 있던 객체를 반환해줌으로써 새로운 객체가 여러 번 생성되는 것을 막는 방식
-  - (사실 자바에서 싱글톤 패턴을 구현하는 방법은 다양하다! 위 코드는 다양한 방법 중 null 체크를 통해 싱글톤 패턴을 구현하는 방법임)
+  - 하지만 이 방식은 thread-safe 하지 않았음
+    - 쓰레드 A에서 위 코드의 if (INSTANCE == null) 코드줄을 실행하고 있다고 해보자.
+    - 쓰레드 A가 이 코드줄을 실행할 시점에서 INSTANCE는 null 이였다고 가정
+    - 이 때 갑자기 운영체제에 의해 쓰레드 B에게 제어권이 넘어가게 되었다고 하면 쓰레드 A는 다음 코드줄을 실행하지 못하고 실행을 멈추게 된다.
+    - 즉, INSTANE = new MySingleTon(); 을 실행하지 못하고 이 줄에서 멈춤
+    - 그런데 쓰레드 B에서도 MySingleTon 클래스의 코드 실행하는 작업이 실행된다면? 
+    - ![image](https://user-images.githubusercontent.com/31889335/130348819-b55a69f1-b353-47d0-89b6-95c6859f5fa7.png)
+    - 즉, 두 개의 쓰레드가 동시에 MySingleTon 클래스에 접근하게 될 경우임
+    - 쓰레드 A가 멈춘 동안 쓰레드 B가 INSTANCE null 체크를 하는 순간에도 INSTANCE는 null이다.(쓰레드 A에서 new MySingleTon(); 이 실행되지 못했으므로)
+    - 쓰레드 B에서 INSTANCE = new MySingleTon(); 이 실행되어 INSTANCE에 MySingleTon 클래스의 객체가 할당됨
+    - 이 후 다시 쓰레드 A에게 제어권이 돌아오면 쓰레드 A는 실행 멈춤되었던 코드 줄을 실행하기 시작함
+    - 쓰레드 A에 의해서 INSTANCE = new MySingleTon(); 이 또 실행되어 결국 두 개의 메모리 주소에 MySingleTon 클래스의 객체가 할당됨
+    - 이는 싱글톤 패턴이 아님 (메모리에 한 번만 할당되어야 하기 때문)
+    - thread-safe를 보장하기 위해 위 코드에 쓰레드 여러 개에서 더블 체크하는 경우를 방지하는 코드가 더 추가되게 됨
+    - ![image](https://user-images.githubusercontent.com/31889335/130349171-b3964d08-3c1b-46c9-be82-69aa6bf1ef39.png)
+    - 이 외에도 여러 가지 문제를 방지하기 위한 코드가 붙여져 싱글톤 패턴 적용된 클래스를 자바로 작성하는 방법이 복잡해짐
+  - 자바에서 싱글톤 패턴 클래스 하나 작성하는데 긴 코드를 작성해야 했고, 싱글톤 패턴을 만들 때 마다 반복적으로 작성해야 하는 불편함 발생
 
 <br>
 
@@ -180,8 +199,9 @@ categories: [kotlin]
   - 코틀린에서는 `싱글톤 패턴` 이 적용된 클래스를 자바보다 더 쉽게 만들 수 있도록 지원해줌
   - `object` 키워드를 사용하면 되고, 이러한 행위를 object decalaration라고 부름
   - `class` 키워드를 사용하여 클래스를 정의하는 모습과 비슷하지만 class 키워드 대신 `object` 키워드를 붙여서 클래스를 생성해주면 싱글톤 패턴이 적용된 클래스가 생성됨
-  - 즉, òbject` 키워드를 사용해서 클래스를 작성하기만 하면 바로 해당 클래스는 싱글톤 패턴이 적용됨(코틀린 언어 내부적으로 싱글톤 패턴 처리하도록 되어 있음)
+  - 코틀린 언어 내부적으로 이렇게 클래스 생성 시 thread-safe한 싱글톤 패턴이 되도록 처리 다 되어있음
   - 자바보다 훨씬 간단
+  - 이렇게 클래스 작성하면 작성 시점에 바로 해당 클래스의 객체를 단 한 개 생성해놓음
 
 <br>
 
@@ -189,7 +209,7 @@ categories: [kotlin]
   - object declaration = 싱글톤 패턴 적용된 클래스 만들 때 사용하는 것
   - obejct declaration에서 사용되는 `object` 키워드는 한글 해석한 그대로 `객체` 라고 생각하기
     - òbject` 키워드를 붙여 생성한 클래스는 싱글톤 패턴이 적용된 클래스라 딱 한 번만 객체화 되기 때문
-    - 즉, 클래스 작성 시점에 바로 단 한 개의 객체로 만들어 놓는다고 봐도 됨
+    - 또 클래스 작성 시점에 바로 해당 클래스의 객체를 단 한 개 생성하기 때문
 
 <br>
 
@@ -233,9 +253,160 @@ categories: [kotlin]
   }
   ~~~
 
+## ✅ companion object가 뭐예요?<a id="6"></a>
 
-# 끝 아님~
+- companion object = object declaration을 일반 클래스 내부에서 바로 작성하는 것
+- `companion` 라는 키워드를 object declaration 앞에 붙여줌
+- companion 한글 번역 = "동반자"
+- companion object = "동반자 객체"
 
-계속 이어서 작성 중입니다 :)  
-  asgdgasdf
-git asdfsdafstest 중
+<br>
+
+- 바로 아래 코드 봐보자!
+- ~~~kotlin
+  class MyClass {
+      // MySingleTon 이라는 이름 안 써도 됨
+      companion object MySingleTon {
+          fun printName() {
+              println("kimchohee")
+          }
+      }
+      
+      ...
+  }
+  ~~~
+  - MyClass라는 일반 클래스 내부에서 바로 싱글톤 패턴이 적용된 MySingleTon 클래스를 작성하는 모습
+  - companion object의 이름은 생략 가능(이름 없어도 됨)
+  - MyClass 안에 작성된 MySingleTon 객체는 작성 시점에서 바로 객체로 생성됨
+  - 또 딱 한 번만 생성되어 메모리에 한 번만 할당됨
+
+<br>
+
+- companion object 안에 선언된 멤버 변수/메소드 호출법
+- ~~~kotlin
+  fun main() {
+      // companion object 클래스의 이름이 있는 경우
+      val myName = MyClass.MySingleTon.printName()
+      
+      // companion object 클래스의 이름이 없는 경우
+      val myName = MyClass.printName()
+  }
+  ~~~
+  - companion object 안에 선언된 변수/메소드 호출할 때는 위 코드와 같이 호출
+  - 클래스 이름 자체가 companion object로 작성한 클래스의 객체 참조자 이름으로 사용됨 
+
+## ✅ companion object 더 알아보기<a id="7"></a>
+
+- companion object 사용시 주의점
+  - companion object가 자바의 static처럼 보이지만 진정한 static은 아님
+  - 자바의 static 변수/메소드
+    - 싱글톤 패턴과 비슷한 개념
+    - 어떤 클래스의 객체 생성 시 객체가 생성되는 횟수에 상관 없이 static으로 선언된 변수/메소드는 딱 한 번만 생성되어 메모리에 한 번만 할당됨
+    - static 변수는 컴파일 시(런타임 때가 아님) 메모리에 할당됨
+  - companion object로 선언한 클래스는 왜 자바의 static처럼 보일까?
+    - `companion object` 로 선언한 클래스는 작성 시점에서 바로 객체화되고, 단 한 번만 메모리에 할당되기 때문
+    - static 변수와 동일하다고 생각할 수 있음
+    - 심지어 자바로 작성된 static 변수를 코틀린 언어으로 변환시키면 companion object 안에 static으로 선언했던 변수들이 선언되어 있는 모습으로 바뀜
+  - 하지만 companion object와 자바의 static 변수/메소드는 다름
+
+<br>
+
+- 자바의 static 변수/메소드 예시
+- ~~~java
+  public class Example {
+      // static 변수
+      static int number = 0;
+      
+      // static 메소드
+      public static Int getNumber() {
+          return number;
+      }
+  }
+  ~~~
+  
+<br>
+
+- companion object의 실체
+- ~~~kotlin
+  class MyClass {
+      companion object Counter {
+          // 멤버 변수
+          private var count: Int = 0
+          
+          // 멤버 메소드
+          fun count(): Int {
+              return count++
+          }
+      }
+  }
+  ~~~
+  - MyClass라는 일반 클래스 내부에 Counter라는 이름의 companion object가 선언되어 있다고 가정
+
+<br>
+
+- 위 companion object를 자바로 변환하면 아래와 같음
+- ~~~java
+  public final class MyClass {
+      private static int count;
+      public static final MyClass.Counter Counter = new MyClass.Counter(); // Counter 클래스 생성
+
+      // inner class로 작성되는 Counter 클래스
+      public static final class Counter {
+          // 첫 번째, 생성자 함수 = private
+          private Counter() {}
+          
+          public final void count() {
+              MyClass.count = MyClass.count + 1;
+              return count;
+          }
+          
+          // 두 번째 생성자 함수 = public
+          public Counter(DefaultConstructorMarker d) {
+              this(); // = Counter();
+          }
+      }
+  }
+  ~~~
+    - companion object로 선언된 Counter 클래스는 자바에서는 사실 MyClass의 inner class로 작성됨
+    - inner class = 클래스 내에 또 클래스가 작성되는 것
+    - Counter 클래스의 생성자 함수가 private과 public 두 가지로 생성되어 있음
+    - MyClass에서 Counter 클래스의 public 생성자 함수를 호출해 Counter 클래스의 객체를 생성하는 코드가 있음
+    - Counter 클래스의 객체는 static final 변수에 할당됨(final 변수 = 값을 바꿀 수 없음)
+    - 즉, Counter 클래스의 객체는 MyClass 클래스의 객체가 생성될 때 자동으로 생성되는 "객체"임
+
+<br>
+
+- companion object가 자바의 static 변수/메소드와 같지 않은 이유
+- ~~~java
+  public final class MyClass {
+      private static int count;
+      
+      public static Int count() {
+          count++;
+          return count;
+      }
+  }
+  ~~~
+    - 위와 같이 변환되어야 자바의 static 변수/메소드랑 같다고 할 수 있음
+    - static 메소드일 것 같았던 count() 메소드는 Counter 클래스의 멤버 메소드이기 때문에 static과 다름
+    
+<br>
+
+- 그러나 companion object 작성 시 멤버 메소드에는 `@JvmStatic` 어노테이션을 붙이고, 멤버 변수에는 `@JvmField` 어노테이션을 붙이면 JVM이 companion object로 선언한 클래스의 멤버 변수/메소드를 진짜 자바의 static 변수/메소드처럼 변환해줌
+- ~~~kotlin
+  class A {
+      companion object {
+          @JvmStatic
+          fun count() {
+              ...
+          }
+          
+          @JvmField
+          val number = 0
+      }
+  }
+  ~~~
+  - 즉, companion object로 선언한 클래스의 멤버 변수/메소드를 inner class로 만들지 않고 static 변수/메소드와 같은 모습으로 변환함
+  - 어노테이션 관련해서는 [여기](https://kotlinlang.org/docs/java-to-kotlin-interop.html#static-fields) 보기
+
+# 끝!
