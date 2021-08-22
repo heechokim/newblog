@@ -65,7 +65,7 @@ categories: [kotlin]
 
 <br>
 
-- <img width="700" alt="01" align="left" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
+- <img width="700" alt="01" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
 
   - (위 그림 참고) `object` 키워드를 `익명 클래스` 앞에 붙여줌으로써 익명 클래스의 객체를 `object` 키워드 작성 시점에서 바로 생성함
   - 생성한 객체가 yourName 변수에 할당됨
