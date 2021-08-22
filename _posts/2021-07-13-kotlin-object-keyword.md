@@ -410,3 +410,5 @@ categories: [kotlin]
   - 어노테이션 관련해서는 [여기](https://kotlinlang.org/docs/java-to-kotlin-interop.html#static-fields) 보기
 
 # 끝!
+
+마지막 수정일 : 2021/08/22
