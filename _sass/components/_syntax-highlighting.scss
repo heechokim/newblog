@@ -44,7 +44,6 @@ pre code {
     position: relative;
   }
   pre code {
-    color: #d3d3d3;
     &::before {
       content: attr(data-lang);
       position: absolute;
@@ -100,7 +99,7 @@ pre code {
   .nt { color: #008000; font-weight: bold } /* Name.Tag */
   .nv { color: #B8860B } /* Name.Variable */
   .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-  .w { color: #bbbbbb } /* Text.Whitespace */
+  .w { color: #ffffff } /* Text.Whitespace */
   .mf { color: #666666 } /* Literal.Number.Float */
   .mh { color: #666666 } /* Literal.Number.Hex */
   .mi { color: #666666 } /* Literal.Number.Integer */
