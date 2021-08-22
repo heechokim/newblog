@@ -6,7 +6,7 @@
 pre, code {
   font-family: $font-family-monospace;
   color: #525252;
-  font-size: 1.2em;
+  font-size: 1em;
   background-color: #313746;
 }
 code {
@@ -89,8 +89,8 @@ pre code {
   .s { color: #BB4444 } /* Literal.String */
   .na { color: #BB4444 } /* Name.Attribute */
   .nb { color: #AA22FF } /* Name.Builtin */
-  .nc { color: #0000FF } /* Name.Class */
-  .no { color: #880000 } /* Name.Constant */
+  .nc { color: #efefef } /* Name.Class */
+  .no { color: #e8e8e8 } /* Name.Constant */
   .nd { color: #AA22FF } /* Name.Decorator */
   .ni { color: #C2C2C3; font-weight: bold } /* Name.Entity */
   .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
