@@ -10,8 +10,9 @@ categories: [kotlin]
 >
 > __목차__  
 > [0. 프롤로그](#0)  
-> [1. object expressions VS object declarations](#1)  
-> [2. What is object expressions?](#2)  
+> [1. object expression VS object declaration](#1)  
+> [2. object expression이 뭐예요?](#2) 
+> [3. object expression 더 알아보기](#3)   
 > [3. What is object declarations?](#3)
 
 
@@ -24,22 +25,25 @@ categories: [kotlin]
 하지만 그동안 대충 구글링하여 짧은 순간 습득한 지식으로 이해한 후 사용했었는데..(으이구~) 좀 제대로 알고 사용하려는 목적으로 공부해본다..ㅎㅎ  
 (아! 그리고 object 키워드에 대해서 공부하게 된 가장 큰 목적은 companion object를 제대로 이해해보고자 시작하게 된 것이다..ㅋㅋㅋ)
 
-## ✅ object expressions VS object declarations<a id="1"></a>
+## ✅ object expression VS object declaration<a id="1"></a>
 
 - `object` 키워드 사용법을 알려면 object expression 이랑 object declaration 라는 걸 구분할 수 있어야 함
 - `object` 키워드를 이 두 가지 모두에서 사용하기 때문
 - 용어 한글 번역
   - object expression = 객체 표현식
   - object declaration = 객체 선언
-- object expressions와 object declarations의 공통점
+- object expression와 object declaration의 공통점
   - 개발을 하다 보면 A 클래스의 모습에서 아주 살짝만 수정된 모습인 B 클래스를 작성해야 하는 경우가 있을 수 있다. 이런 경우, B 클래스를 만들면 A 클래스와 거의 비슷한 클래스를 하나 더 작성하는 꼴이 되어 비효율적이다.
   - B 클래스를 새로 작성하지 않고 B 클래스의 객체를 생성할 수 있을까?
-  - 코틀린은 딱 이런 상황에서 사용할 수 있도록 object expressions와 object declarations라는 것을 제공한다.
+  - 코틀린은 딱 이런 상황에서 사용할 수 있도록 object expression와 object declaration라는 것을 제공한다.
 
-## ✅ What is object expressions?<a id="2"></a>
+## ✅ object expression이 뭐예요?<a id="2"></a>
 
-- object expression(객체 표현식)는 `object` 키워드를 사용하여 익명 클래스의 객체를 생성할 때 사용
-- 익명 클래스 = 클래스를 작성할 때 클래스 이름이 명시적으로 작성되어 있지 않은 클래스. 즉, 이름이 없는 클래스
+- object expression(객체 표현식)는 `object` 키워드를 사용하여 익명 클래스의 객체를 생성할 때 사용   
+- `익명 클래스` = 클래스를 작성할 때 클래스 이름이 명시적으로 작성되어 있지 않은 클래스. 즉, 이름이 없는 클래스
+
+<br>
+
 - 바로 아래 코드를 보면 무슨 말인지 한 방에 이해됨
 - ~~~kotlin
   fun main() {
@@ -54,21 +58,41 @@ categories: [kotlin]
       println(yourName.toString())
   }
   ~~~
-- (위 코드 참고) `object` 키워드 뒤에 나오는 코드를 보면 LastName, FirstName라는 멤버 변수가 선언되어 있고, toString()라는 멤버 메소드를 가지는 익명 클래스가 작성되어 있음
-- 이런 식으로 익명 클래스를 작성하고 그 앞에 `object` 키워드를 붙여주면 그 시점에서 해당 익명 클래스의 __객체가 바로 생성됨__ 
-- 즉, object expression은 익명 클래스를 선언한 시점에서 바로 객체화해주는 것!
+- `object` 키워드 뒤에 나오는 코드를 보면 LastName, FirstName라는 멤버 변수가 선언되어 있고, toString()라는 멤버 메소드를 가지는 익명 클래스가 작성되어 있음
+- 이런 식으로 `익명 클래스`를 작성하고 그 앞에 `object` 키워드를 붙여주면 그 시점에서 해당 익명 클래스의 __객체가 바로 생성됨__ 
+- 객체가 바로 생성된다 = 해당 클래스의 생성자 함수 호출
 
-* <img width="700" alt="01" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
+<br>
 
-* (위 그림 참고) 다시 한 번 보자. 위 코드는 object 키워드를 익명 클래스 앞에 붙여줌으로써 해당 익명 클래스의 객체를 바로 생성하고, 생성한 객체를 변수 yourName에 할당한 코드임. 위 코드의 main 함수를 실행해보면 Your name is Kim Chohee가 출력됨!
+- <img width="700" alt="01" src="https://user-images.githubusercontent.com/31889335/125470357-c2ffd2d5-b7a3-437b-b3ff-a7b465de7cf2.png">
+- (위 그림 참고) `object` 키워드를 `익명 클래스` 앞에 붙여줌으로써 익명 클래스의 객체를 `object` 키워드 작성 시점에서 바로 생성함
+- 생성한 객체가 yourName 변수에 할당됨
+- 위 코드의 main 함수를 실행해보면 Your name is Kim Chohee가 출력됨
 
-* 이렇게 특정 코드 라인에서 익명 클래스를 작성하고 이를 바로 객체로 만드는 경우는, 해당 익명 클래스를 프로젝트 내에서 여러번 재사용하지 않고 딱 한 번만 사용해야 하는 경우에 유용할 것이다.(ㅇㅈ!)
- 
-* 그리고 object expressions의 한글 번역이 "객체 식"이었던 것을 기억해보자. 프로그래밍 언어 분야에서 "expression" 라는 것은 "수식" 이라는 뜻을 가지고 있고, 숫자와 연산자로 이루어지는 1+2와 같은 수식 외에도 함수 호출식, 변수 이름 같은 식별자, 배열의 할당 연산자([])와 같은 것도 모두 "수식"에 포함된다. 여기서 중요한 것은 프로그래밍 언어 분야에서 "수식"이라고 불리는 것들은 모양과 형태가 다를 수 있지만 모두 하나의 단일 값이 될 수 있는 것을 의미한다. 따라서 익명 클래스를 객체화하는 행위를 object expressions 라고 이름 붙인 것도 익명 클래스를 객체화하여 하나의 단일한 값으로 만들 수 있기 때문일 것이라고 추측한다 ㅎ.ㅎ
+<br>
 
-* 위 코드 주석을 보면 object expressions는 기본적으로 [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/)라는 코틀린 클래스를 상속하고 있다고 언급했다! 좀 더 확장해서.. Any 클래스 말고도 다른 클래스나 다른 인터페이스를 상속한 익명 클래스도 object expressions로 객체화할 수 있다.
+- 정리
+  - object expression = `object` 키워드 뒤에 익명 클래스를 선언하면 그 시점에서 바로 객체화해주는 것
+  - 이렇게 특정 코드 라인에서 익명 클래스를 작성하고 바로 객체로 만드는 경우는, 해당 익명 클래스를 프로젝트 내에서 여러번 재사용하지 않고 딱 한 번만 사용해야 하는 경우에 유용
+  - obejct expression에서 사용되는 `object` 키워드는 한글 해석한 그대로 `객체` 라고 생각하기 = 키워드 작성 시점에서 바로 객체로 생성되므로!
 
-* ~~~kotlin
+<br>
+
+- 생각
+  - 왜 이름이 object expression 일까?
+  - object expression = 객체 표현식 인 것을 떠올려보자
+  - 프로그래밍 언어 분야에서 "표현식" = "수식" 임
+  - 프로그래밍 언어에서 "수식" = 1+2와 같은 수식 / 함수 호출식 / 변수 이름 등 포함
+  - 프로그래밍 언어에서 "수식" = 모양과 형태가 다를 수 있지만 모두 하나의 단일 값이 될 수 있는 것을 의미
+  - 따라서 익명 클래스를 객체화하는 행위인 object expression도 익명 클래스를 객체화하여 하나의 단일 값으로 만들 수 있기 때문에 object "expression" 라는 이름이라고 추측해 봄
+
+## ✅ object expression 더 알아보기<a id="3"></a>
+
+- object expression은 기본적으로 [Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/)라는 코틀린 클래스를 상속함
+- Any 클래스 말고도 다른 클래스나 다른 인터페이스를 상속한 익명 클래스도 object expression로 객체화 가능
+
+- 아래 코드 봐보기
+- ~~~kotlin
   fun main() {
       // Person 인터페이스를 상속하는 익명 클래스를 object expressions 사용해서 객체화시키기
       val yourName = object: Person {
@@ -86,14 +110,18 @@ categories: [kotlin]
       fun getYourName(): String
   }
   ~~~
-  
-* (위 코드 참고) 이번에는 Person 이라는 인터페이스를 하나 만들고 getYourName() 이라는 메소드를 정의한 후, Person 인터페이스를 상속하는 익명 클래스를 object expressions로 객체화해보았다. main 함수를 실행시키면 Your name is 당신은 천재!가 출력된다.
+- 위 코드 처럼 Person 이라는 인터페이스를 하나 만듬
+- Person 인터페이스를 상속하는 익명 클래스를 object expressions로 객체화 가능
+- main 함수 실행시키면 Your name is 당신은 천재!가 출력됨
 
-* 보통 안드로이드 앱 개발에서, 위와 같이 부모 클래스나 인터페이스를 상속하는 익명 클래스를 object expressions로 객체화하는 경우는 아래와 같다.
-
-* <img width="650" alt="02" src="https://user-images.githubusercontent.com/31889335/125475693-b3260e6d-0d4f-4f2f-b50c-5703c9f40a2c.png">
-
-* (위 코드 참고) XXOnXXXListener() 라는 메소드를 호출할 때 인자로 특정 인터페이스를 구현한 객체를 넘겨줘야 하는 경우가 많은데 보통 이럴 때 object expressions을 사용한다. (람다로 대체할 수도 있긴 하지만..) XXOnXXXListener() 메소드를 호출하는 코드라인에서 인자로 전달하려는 목적으로 단 한번만 구현하면 되기 때문이기도 하고, 해당 인터페이스를 구현한 클래스를 더 이상 프로젝트 다른 곳에서 재사용하지도 않기 때문에 익명 클래스를 만들어 구현하는 것! (예를 들어, 텍스트 뷰를 클릭한 결과로 실행되어야 하는 작업은 모든 텍스트 뷰에서 동일하지 않을 것이기 때문에.. 각각 다른 텍스트 뷰의 클릭 리스너를 호출하는 순간 순간마다 각기 다른 작업을 실행하는 코드를 매번 구현해야 하기 때문이다!)
+- 안드로이드 앱 개발에서 언제 object expression를 쓰면 좋을까?
+  - <img width="650" alt="02" src="https://user-images.githubusercontent.com/31889335/125475693-b3260e6d-0d4f-4f2f-b50c-5703c9f40a2c.png">
+  - XXOnXXXListener() 라는 메소드를 호출할 때 많이 사용함
+  - XXOnXXXListener() 메소드는 인자로 특정 인터페이스를 구현한 클래스의 객체를 넘겨줘야 하는 경우가 많음
+  - 위 코드에서는 View.OnClickListener라는 인터페이스를 구현한 클래스의 객체를 setOnClickListener() 메소드의 인자로 넘겨야 함
+  - 보통 이럴 때 object expressions을 사용해서(람다로 대체할 수도 있긴 하지만..) 인자로 전달해야 하는 객체를 생성
+  - 특정 인터페이스를 구현한 클래스를 더 이상 프로젝트 다른 곳에서 재사용하지 않기 때문에 익명 클래스를 만들어 구현하는 것!
+  - 예를 들어, 텍스트 뷰를 클릭한 결과로 실행되어야 하는 작업은 모든 텍스트 뷰에서 동일하지 않을 것이다. 각각 다른 텍스트 뷰의 클릭 리스너를 호출하는 순간 순간마다 각기 다른 작업을 실행하는 코드를 매번 구현해야 하기 때문
 
 ## 3️⃣ What is object declarations?<a id="3"></a>
 
