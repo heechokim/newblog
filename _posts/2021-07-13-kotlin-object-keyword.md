@@ -372,6 +372,7 @@ categories: [kotlin]
     - Counter 클래스의 생성자 함수가 private과 public 두 가지로 생성되어 있음
     - MyClass에서 Counter 클래스의 public 생성자 함수를 호출해 Counter 클래스의 객체를 생성하는 코드가 있음
     - Counter 클래스의 객체는 static final 변수에 할당됨(final 변수 = 값을 바꿀 수 없음)
+    - static final 변수에 할당되므로 결국 싱글톤 패턴처럼 메모리에 딱 한번 할당되는 것은 맞음
     - 즉, Counter 클래스의 객체는 MyClass 클래스의 객체가 생성될 때 자동으로 생성되는 "객체"임
 
 <br>
