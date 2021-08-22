@@ -44,6 +44,7 @@ pre code {
     position: relative;
   }
   pre code {
+    color: #d3d3d3;
     &::before {
       content: attr(data-lang);
       position: absolute;
