@@ -36,10 +36,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: 김초희
-  avatar: avatar.png
-  job: "나는야 안드로이드 개발자 꿈나무 🍎"
-  bio: "구경하러 오신 분들 모두 좋은 하루 되세요 🍉"
+  name: 
+  avatar: profile.png
+  job: 
+  bio: 
   email: chchgml10@gmail.com
   disqus-shortname:
   twitter: #username
@@ -57,7 +57,7 @@ owner:
   linkedin: #username
   skype: #username
   xing: #username
-  instagram: chooeeh
+  instagram: 
   lastfm: #username
   tumblr: #username
   pinterest: #username
