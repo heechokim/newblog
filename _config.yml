@@ -4,9 +4,9 @@
 ####################################
 #
 remote_theme : renyuanz/leonids
-title: choheeis
+title: heechokim
 email: chchgml10@gmail.com
-description: 안드로이드 개발자를 목표로 달려나가는 김초희의 블로그입니다😍
+description:
 url: https://heechokim.github.io/newblog/
 baseurl : ""
 keywords: ["blog", "jekyll"]
