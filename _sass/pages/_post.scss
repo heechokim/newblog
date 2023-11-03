@@ -31,6 +31,8 @@
 // Post Section
 section.post {
 	margin-bottom: 80px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 // Back home button
@@ -90,8 +92,8 @@ a.read-more {
 #post {
   font-size: 16px;
   color: #353535;
-  font-weight: 600;
-  padding-bottom: 10px;
+  font-weight: 500;
+  padding-bottom: 11px;
   .post-header {
     margin: 0 auto 50px;
   }
@@ -112,7 +114,6 @@ a.read-more {
 
 #page {
   padding-bottom: 50px;
-  margin-right: 100px;
   min-height: 70vh;
   .page-header {
     margin: 0 auto 50px;
