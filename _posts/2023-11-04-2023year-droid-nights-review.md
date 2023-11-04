@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "[후기] 2023 Droid Nights 후기"
-date:   2023-11-04 18:34:10 +0700
 categories: [이것 저것]
 ---
 
